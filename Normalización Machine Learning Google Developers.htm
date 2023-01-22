@@ -1,0 +1,2602 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="es-419-x-mtfrom-en"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta name="google-signin-client-id" content="721724668570-nbkv1cfusk7kk4eni4pjvepaus73b13t.apps.googleusercontent.com">
+    <meta name="google-signin-scope" content="profile email https://www.googleapis.com/auth/developerprofiles https://www.googleapis.com/auth/developerprofiles.award">
+    <meta property="og:site_name" content="Google Developers">
+    <meta property="og:type" content="website"><meta name="robots" content="noindex"><meta name="theme-color" content="#ffffff"><meta charset="utf-8">
+    <meta content="IE=Edge" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+
+    <link rel="manifest" href="https://developers.google.com/_pwa/developers/manifest.json" crossorigin="use-credentials">
+    <link rel="preconnect" href="https://www.gstatic.com/" crossorigin="">
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="">
+    <link rel="preconnect" href="https://fonts.googleapis.com/" crossorigin="">
+    <link rel="preconnect" href="https://apis.google.com/" crossorigin="">
+    <link rel="preconnect" href="https://www.google-analytics.com/" crossorigin=""><link rel="stylesheet" href="Normalizaci%C3%B3n%20Machine%20Learning%20Google%20Developers_files/css.css">
+      <link rel="stylesheet" href="Normalizaci%C3%B3n%20Machine%20Learning%20Google%20Developers_files/css2.css"><link rel="stylesheet" href="Normalizaci%C3%B3n%20Machine%20Learning%20Google%20Developers_files/app.css">
+      <link rel="shortcut icon" href="https://www.gstatic.com/devrel-devsite/prod/v8630d525d2c63b97010320bed1b0ce38685d514a45414a53dd4326ac0a263ebf/developers/images/favicon.png">
+    <link rel="apple-touch-icon" href="https://www.gstatic.com/devrel-devsite/prod/v8630d525d2c63b97010320bed1b0ce38685d514a45414a53dd4326ac0a263ebf/developers/images/touchicon-180.png"><link rel="canonical" href="https://developers.google.com/machine-learning/data-prep/transform/normalization?hl=es-419"><link rel="search" type="application/opensearchdescription+xml" title="Google Developers" href="https://developers.google.com/s/opensearch.xml">
+      <link rel="alternate" hreflang="en" href="https://developers.google.com/machine-learning/data-prep/transform/normalization"><link rel="alternate" hreflang="x-default" href="https://developers.google.com/machine-learning/data-prep/transform/normalization"><link rel="alternate" hreflang="ar" href="https://developers.google.com/machine-learning/data-prep/transform/normalization?hl=ar"><link rel="alternate" hreflang="bn" href="https://developers.google.com/machine-learning/data-prep/transform/normalization?hl=bn"><link rel="alternate" hreflang="zh-Hans" href="https://developers.google.com/machine-learning/data-prep/transform/normalization?hl=zh-cn"><link rel="alternate" hreflang="zh-Hant" href="https://developers.google.com/machine-learning/data-prep/transform/normalization?hl=zh-tw"><link rel="alternate" hreflang="fa" href="https://developers.google.com/machine-learning/data-prep/transform/normalization?hl=fa"><link rel="alternate" hreflang="fr" href="https://developers.google.com/machine-learning/data-prep/transform/normalization?hl=fr"><link rel="alternate" hreflang="de" href="https://developers.google.com/machine-learning/data-prep/transform/normalization?hl=de"><link rel="alternate" hreflang="he" href="https://developers.google.com/machine-learning/data-prep/transform/normalization?hl=he"><link rel="alternate" hreflang="hi" href="https://developers.google.com/machine-learning/data-prep/transform/normalization?hl=hi"><link rel="alternate" hreflang="id" href="https://developers.google.com/machine-learning/data-prep/transform/normalization?hl=id"><link rel="alternate" hreflang="it" href="https://developers.google.com/machine-learning/data-prep/transform/normalization?hl=it"><link rel="alternate" hreflang="ja" href="https://developers.google.com/machine-learning/data-prep/transform/normalization?hl=ja"><link rel="alternate" hreflang="ko" href="https://developers.google.com/machine-learning/data-prep/transform/normalization?hl=ko"><link rel="alternate" hreflang="pl" href="https://developers.google.com/machine-learning/data-prep/transform/normalization?hl=pl"><link rel="alternate" hreflang="pt-BR" href="https://developers.google.com/machine-learning/data-prep/transform/normalization?hl=pt-br"><link rel="alternate" hreflang="ru" href="https://developers.google.com/machine-learning/data-prep/transform/normalization?hl=ru"><link rel="alternate" hreflang="es-419" href="https://developers.google.com/machine-learning/data-prep/transform/normalization?hl=es-419"><link rel="alternate" hreflang="th" href="https://developers.google.com/machine-learning/data-prep/transform/normalization?hl=th"><link rel="alternate" hreflang="tr" href="https://developers.google.com/machine-learning/data-prep/transform/normalization?hl=tr"><link rel="alternate" hreflang="vi" href="https://developers.google.com/machine-learning/data-prep/transform/normalization?hl=vi"><title>
+    Normalización
+  
+ &nbsp;|&nbsp; Machine Learning &nbsp;|&nbsp; Google Developers</title>
+
+<meta property="og:title" content="
+    Normalización
+  
+ &nbsp;|&nbsp; Machine Learning &nbsp;|&nbsp; Google Developers"><meta property="og:url" content="https://developers.google.com/machine-learning/data-prep/transform/normalization?hl=es-419"><meta property="og:image" content="https://www.gstatic.com/devrel-devsite/prod/v8630d525d2c63b97010320bed1b0ce38685d514a45414a53dd4326ac0a263ebf/developers/images/opengraph/white.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="675"><meta property="og:locale" content="es_419"><meta name="twitter:card" content="summary_large_image"><script src="Normalizaci%C3%B3n%20Machine%20Learning%20Google%20Developers_files/cb=gapi.loaded_1" nonce="" async=""></script><script src="Normalizaci%C3%B3n%20Machine%20Learning%20Google%20Developers_files/cb=gapi.loaded_0" nonce="" async=""></script><script type="text/javascript" async="" src="Normalizaci%C3%B3n%20Machine%20Learning%20Google%20Developers_files/linkid.js" nonce=""></script><script async="" src="Normalizaci%C3%B3n%20Machine%20Learning%20Google%20Developers_files/app_loader.js"></script><script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [{
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Machine Learning",
+      "item": "https://developers.google.com/machine-learning"
+    },{
+      "@type": "ListItem",
+      "position": 2,
+      "name": "
+    Normalización
+  
+",
+      "item": "https://developers.google.com/machine-learning/data-prep/transform/normalization"
+    }]
+  }
+  </script>
+  <meta name="xsrf_token" content="WZUxChhasD_TOjXpeCONGxTeYLIVc3-onHDvBTcL2ik6MTY3NDQxODI0MTAwNDc2NQ">
+  
+
+  <meta name="session_expiry" content="0"><link rel="alternate machine-translated-from" hreflang="en" href="https://developers.google.com/machine-learning/data-prep/transform/normalization?hl=en">
+  
+
+  
+
+  
+
+
+    
+      <link rel="stylesheet" href="Normalizaci%C3%B3n%20Machine%20Learning%20Google%20Developers_files/extras.css"><script src="Normalizaci%C3%B3n%20Machine%20Learning%20Google%20Developers_files/devsite_app_module__es.js" nonce=""></script><script src="Normalizaci%C3%B3n%20Machine%20Learning%20Google%20Developers_files/devsite_app_custom_elements_module__es.js" nonce=""></script><script src="Normalizaci%C3%B3n%20Machine%20Learning%20Google%20Developers_files/devsite_devsite_a11y_announce_module__es.js" nonce=""></script><script src="Normalizaci%C3%B3n%20Machine%20Learning%20Google%20Developers_files/devsite_devsite_analytics_module__es.js" nonce=""></script><script src="Normalizaci%C3%B3n%20Machine%20Learning%20Google%20Developers_files/devsite_devsite_badger_module__es.js" nonce=""></script><script src="Normalizaci%C3%B3n%20Machine%20Learning%20Google%20Developers_files/devsite_devsite_book_nav_module__es.js" nonce=""></script><script src="Normalizaci%C3%B3n%20Machine%20Learning%20Google%20Developers_files/devsite_devsite_bookmark_module__es.js" nonce=""></script><script src="Normalizaci%C3%B3n%20Machine%20Learning%20Google%20Developers_files/devsite_devsite_content_module__es.js" nonce=""></script><script src="Normalizaci%C3%B3n%20Machine%20Learning%20Google%20Developers_files/devsite_devsite_feature_tooltip_module__es.js" nonce=""></script><script src="Normalizaci%C3%B3n%20Machine%20Learning%20Google%20Developers_files/devsite_devsite_feedback_module__es.js" nonce=""></script><script src="Normalizaci%C3%B3n%20Machine%20Learning%20Google%20Developers_files/devsite_devsite_footer_linkboxes_module__es.js" nonce=""></script><script src="Normalizaci%C3%B3n%20Machine%20Learning%20Google%20Developers_files/devsite_devsite_footer_promos_module__es.js" nonce=""></script><script src="Normalizaci%C3%B3n%20Machine%20Learning%20Google%20Developers_files/devsite_devsite_footer_utility_module__es.js" nonce=""></script><script src="Normalizaci%C3%B3n%20Machine%20Learning%20Google%20Developers_files/devsite_devsite_header_module__es.js" nonce=""></script><script src="Normalizaci%C3%B3n%20Machine%20Learning%20Google%20Developers_files/devsite_devsite_heading_link_module__es.js" nonce=""></script><script src="Normalizaci%C3%B3n%20Machine%20Learning%20Google%20Developers_files/devsite_devsite_language_selector_module__es.js" nonce=""></script><script src="Normalizaci%C3%B3n%20Machine%20Learning%20Google%20Developers_files/devsite_devsite_mathjax_module__es.js" nonce=""></script><script src="Normalizaci%C3%B3n%20Machine%20Learning%20Google%20Developers_files/devsite_devsite_notification_module__es.js" nonce=""></script><script src="Normalizaci%C3%B3n%20Machine%20Learning%20Google%20Developers_files/devsite_devsite_panel_module__es.js" nonce=""></script><script src="Normalizaci%C3%B3n%20Machine%20Learning%20Google%20Developers_files/devsite_devsite_progress_module__es.js" nonce=""></script><script src="Normalizaci%C3%B3n%20Machine%20Learning%20Google%20Developers_files/devsite_devsite_recommendations_module__es.js" nonce=""></script><script src="Normalizaci%C3%B3n%20Machine%20Learning%20Google%20Developers_files/devsite_devsite_recommendations_dropdown_module__es.js" nonce=""></script><script src="Normalizaci%C3%B3n%20Machine%20Learning%20Google%20Developers_files/devsite_devsite_recommendations_sidebar_module__es.js" nonce=""></script><script src="Normalizaci%C3%B3n%20Machine%20Learning%20Google%20Developers_files/devsite_devsite_search_module__es.js" nonce=""></script><script src="Normalizaci%C3%B3n%20Machine%20Learning%20Google%20Developers_files/devsite_devsite_sitemask_module__es.js" nonce=""></script><script src="Normalizaci%C3%B3n%20Machine%20Learning%20Google%20Developers_files/devsite_devsite_snackbar_module__es.js" nonce=""></script><script src="Normalizaci%C3%B3n%20Machine%20Learning%20Google%20Developers_files/devsite_devsite_tabs_module__es.js" nonce=""></script><script src="Normalizaci%C3%B3n%20Machine%20Learning%20Google%20Developers_files/devsite_devsite_thumb_rating_module__es.js" nonce=""></script><script src="Normalizaci%C3%B3n%20Machine%20Learning%20Google%20Developers_files/devsite_devsite_toc_module__es.js" nonce=""></script><script src="Normalizaci%C3%B3n%20Machine%20Learning%20Google%20Developers_files/devsite_devsite_tooltip_module__es.js" nonce=""></script><script src="Normalizaci%C3%B3n%20Machine%20Learning%20Google%20Developers_files/devsite_devsite_user_module__es.js" nonce=""></script><script src="Normalizaci%C3%B3n%20Machine%20Learning%20Google%20Developers_files/analytics.js" nonce=""></script><script src="Normalizaci%C3%B3n%20Machine%20Learning%20Google%20Developers_files/devsite_devsite_badge_awarded_module__es.js" nonce=""></script><script src="Normalizaci%C3%B3n%20Machine%20Learning%20Google%20Developers_files/devsite_devsite_dialog_module__es.js" nonce=""></script><script src="Normalizaci%C3%B3n%20Machine%20Learning%20Google%20Developers_files/MathJax.js" nonce=""></script><script src="Normalizaci%C3%B3n%20Machine%20Learning%20Google%20Developers_files/devsite_devsite_spinner_module__es.js" nonce=""></script><script src="Normalizaci%C3%B3n%20Machine%20Learning%20Google%20Developers_files/devsite_devsite_mwc_module__es.js" nonce=""></script><script src="Normalizaci%C3%B3n%20Machine%20Learning%20Google%20Developers_files/devsite_devsite_dropdown_list_module__es.js" nonce=""></script><script src="Normalizaci%C3%B3n%20Machine%20Learning%20Google%20Developers_files/devsite_devsite_checkbox_module__es.js" nonce=""></script><style type="text/css">.gb_6a:not(.gb_Nd){font:13px/27px Roboto,Arial,sans-serif;z-index:986}@-moz-keyframes gb__a{0%{opacity:0}50%{opacity:1}}@keyframes gb__a{0%{opacity:0}50%{opacity:1}}a.gb_da{border:none;color:#4285f4;cursor:default;font-weight:bold;outline:none;position:relative;text-align:center;text-decoration:none;text-transform:uppercase;white-space:nowrap;-moz-user-select:none}a.gb_da:hover:after,a.gb_da:focus:after{background-color:rgba(0,0,0,.12);content:"";height:100%;left:0;position:absolute;top:0;width:100%}a.gb_da:hover,a.gb_da:focus{text-decoration:none}a.gb_da:active{background-color:rgba(153,153,153,.4);text-decoration:none}a.gb_ea{background-color:#4285f4;color:#fff}a.gb_ea:active{background-color:#0043b2}.gb_fa{-moz-box-shadow:0 1px 1px rgba(0,0,0,.16);box-shadow:0 1px 1px rgba(0,0,0,.16)}.gb_da,.gb_ea,.gb_ga,.gb_ha{display:inline-block;line-height:28px;padding:0 12px;-moz-border-radius:2px;border-radius:2px}.gb_ga{background:#f8f8f8;border:1px solid #c6c6c6}.gb_ha{background:#f8f8f8}.gb_ga,#gb a.gb_ga.gb_ga,.gb_ha{color:#666;cursor:default;text-decoration:none}#gb a.gb_ha.gb_ha{cursor:default;text-decoration:none}.gb_ha{border:1px solid #4285f4;font-weight:bold;outline:none;background:#4285f4;background:-moz-linear-gradient(top,#4387fd,#4683ea);background:linear-gradient(top,#4387fd,#4683ea);filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#4387fd,endColorstr=#4683ea,GradientType=0)}#gb a.gb_ha.gb_ha{color:#fff}.gb_ha:hover{-moz-box-shadow:0 1px 0 rgba(0,0,0,.15);box-shadow:0 1px 0 rgba(0,0,0,.15)}.gb_ha:active{-moz-box-shadow:inset 0 2px 0 rgba(0,0,0,.15);box-shadow:inset 0 2px 0 rgba(0,0,0,.15);background:#3c78dc;background:-moz-linear-gradient(top,#3c7ae4,#3f76d3);background:linear-gradient(top,#3c7ae4,#3f76d3);filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#3c7ae4,endColorstr=#3f76d3,GradientType=0)}#gb .gb_ja{background:#fff;border:1px solid #dadce0;color:#1a73e8;display:inline-block;text-decoration:none}#gb .gb_ja:hover{background:#f8fbff;border-color:#dadce0;color:#174ea6}#gb .gb_ja:focus{background:#f4f8ff;color:#174ea6;outline:1px solid #174ea6}#gb .gb_ja:active,#gb .gb_ja:focus:active{background:#ecf3fe;color:#174ea6}#gb .gb_ja.gb_6{background:transparent;border:1px solid #5f6368;color:#8ab4f8;text-decoration:none}#gb .gb_ja.gb_6:hover{background:rgba(255,255,255,.04);color:#e8eaed}#gb .gb_ja.gb_6:focus{background:rgba(232,234,237,.12);color:#e8eaed;outline:1px solid #e8eaed}#gb .gb_ja.gb_6:active,#gb .gb_ja.gb_6:focus:active{background:rgba(232,234,237,.1);color:#e8eaed}.gb_i{display:none!important}.gb_Pa{visibility:hidden}.gb_md{display:inline-block;vertical-align:middle}.gb_Cf .gb_h{bottom:-3px;right:-5px}.gb_Df{position:relative}.gb_e{display:inline-block;outline:none;vertical-align:middle;-moz-border-radius:2px;border-radius:2px;-moz-box-sizing:border-box;box-sizing:border-box;height:40px;width:40px;color:#000;cursor:pointer;text-decoration:none}#gb#gb a.gb_e{color:#000;cursor:pointer;text-decoration:none}.gb_8a{border-color:transparent;border-bottom-color:#fff;border-style:dashed dashed solid;border-width:0 8.5px 8.5px;display:none;position:absolute;left:11.5px;top:43px;z-index:1;height:0;width:0;-moz-animation:gb__a .2s;animation:gb__a .2s}.gb_9a{border-color:transparent;border-style:dashed dashed solid;border-width:0 8.5px 8.5px;display:none;position:absolute;left:11.5px;z-index:1;height:0;width:0;-moz-animation:gb__a .2s;animation:gb__a .2s;border-bottom-color:#ccc;border-bottom-color:rgba(0,0,0,.2);top:42px}x:-o-prefocus,div.gb_9a{border-bottom-color:#ccc}.gb_M{background:#fff;border:1px solid #ccc;border-color:rgba(0,0,0,.2);color:#000;-moz-box-shadow:0 2px 10px rgba(0,0,0,.2);box-shadow:0 2px 10px rgba(0,0,0,.2);display:none;outline:none;overflow:hidden;position:absolute;right:8px;top:62px;-moz-animation:gb__a .2s;animation:gb__a .2s;-moz-border-radius:2px;border-radius:2px;-moz-user-select:text}.gb_md.gb_za .gb_8a,.gb_md.gb_za .gb_9a,.gb_md.gb_za .gb_M,.gb_za.gb_M{display:block}.gb_md.gb_za.gb_Ef .gb_8a,.gb_md.gb_za.gb_Ef .gb_9a{display:none}.gb_Ff{position:absolute;right:8px;top:62px;z-index:-1}.gb_Va .gb_8a,.gb_Va .gb_9a,.gb_Va .gb_M{margin-top:-10px}.gb_md:first-child,#gbsfw:first-child+.gb_md{padding-left:4px}.gb_Da.gb_Ue .gb_md:first-child{padding-left:0}.gb_Ve{position:relative}.gb_Xc .gb_Ve,.gb_4d .gb_Ve{float:right}.gb_e{padding:8px;cursor:pointer}.gb_Da .gb_ed:not(.gb_da):focus img{background-color:rgba(0,0,0,.20);outline:none;-moz-border-radius:50%;border-radius:50%}.gb_We button svg,.gb_e{-moz-border-radius:50%;border-radius:50%}.gb_We button:focus:not(:focus-visible) svg,.gb_We button:hover svg,.gb_We button:active svg,.gb_e:focus:not(:focus-visible),.gb_e:hover,.gb_e:active,.gb_e[aria-expanded=true]{outline:none}.gb_Hc .gb_We.gb_Xe button:focus-visible svg,.gb_We button:focus-visible svg,.gb_e:focus-visible{outline:1px solid #202124}.gb_Hc .gb_We button:focus-visible svg,.gb_Hc .gb_e:focus-visible{outline:1px solid #f1f3f4}@media (forced-colors:active){.gb_Hc .gb_We.gb_Xe button:focus-visible svg,.gb_We button:focus-visible svg,.gb_Hc .gb_We button:focus-visible svg{outline:1px solid currentcolor}}.gb_Hc .gb_We.gb_Xe button:focus svg,.gb_Hc .gb_We.gb_Xe button:focus:hover svg,.gb_We button:focus svg,.gb_We button:focus:hover svg,.gb_e:focus,.gb_e:focus:hover{background-color:rgba(60,64,67,.1)}.gb_Hc .gb_We.gb_Xe button:active svg,.gb_We button:active svg,.gb_e:active{background-color:rgba(60,64,67,.12)}.gb_Hc .gb_We.gb_Xe button:hover svg,.gb_We button:hover svg,.gb_e:hover{background-color:rgba(60,64,67,.08)}.gb_xa .gb_e.gb_Za:hover{background-color:transparent}.gb_e[aria-expanded=true],.gb_e:hover[aria-expanded=true]{background-color:rgba(95,99,104,.24)}.gb_e[aria-expanded=true] .gb_Ze,.gb_e[aria-expanded=true] .gb_0e{fill:#5f6368;opacity:1}.gb_Hc .gb_We button:hover svg,.gb_Hc .gb_e:hover{background-color:rgba(232,234,237,.08)}.gb_Hc .gb_We button:focus svg,.gb_Hc .gb_We button:focus:hover svg,.gb_Hc .gb_e:focus,.gb_Hc .gb_e:focus:hover{background-color:rgba(232,234,237,.10)}.gb_Hc .gb_We button:active svg,.gb_Hc .gb_e:active{background-color:rgba(232,234,237,.12)}.gb_Hc .gb_e[aria-expanded=true],.gb_Hc .gb_e:hover[aria-expanded=true]{background-color:rgba(255,255,255,.12)}.gb_Hc .gb_e[aria-expanded=true] .gb_Ze,.gb_Hc .gb_e[aria-expanded=true] .gb_0e{fill:#fff;opacity:1}.gb_md{padding:4px}.gb_Da.gb_Ue .gb_md{padding:4px 2px}.gb_Da.gb_Ue .gb_b.gb_md{padding-left:6px}.gb_M{z-index:991;line-height:normal}.gb_M.gb_1e{left:8px;right:auto}@media (max-width:350px){.gb_M.gb_1e{left:0}}.gb_2e .gb_M{top:56px}.gb_K .gb_e,.gb_L .gb_K .gb_e{background-position:-64px -29px}.gb_q .gb_K .gb_e{background-position:-29px -29px;opacity:1}.gb_K .gb_e,.gb_K .gb_e:hover,.gb_K .gb_e:focus{opacity:1}.gb_Od{display:none}.gb_h{display:none}.gb_6c{font-family:Google Sans,Roboto,Helvetica,Arial,sans-serif;font-size:20px;font-weight:400;letter-spacing:0.25px;line-height:48px;margin-bottom:2px;opacity:1;overflow:hidden;padding-left:16px;position:relative;text-overflow:ellipsis;vertical-align:middle;top:2px;white-space:nowrap;flex:1 1 auto}.gb_6c.gb_7c{color:#3c4043}.gb_Da.gb_Ea .gb_6c{margin-bottom:0}.gb_8c.gb_9c .gb_6c{padding-left:4px}.gb_Da.gb_Ea .gb_ad{position:relative;top:-2px}.gb_Da{color:black;min-width:320px;position:relative;-moz-transition:box-shadow 250ms;transition:box-shadow 250ms}.gb_Da.gb_Pc{min-width:240px}.gb_Da.gb_Pd .gb_Qd{display:none}.gb_Da.gb_Pd .gb_Rd{height:56px}header.gb_Da{display:block}.gb_Da svg{fill:currentColor}.gb_Sd{position:fixed;top:0;width:100%}.gb_Td{-moz-box-shadow:0px 4px 5px 0px rgba(0,0,0,.14),0px 1px 10px 0px rgba(0,0,0,.12),0px 2px 4px -1px rgba(0,0,0,.2);box-shadow:0px 4px 5px 0px rgba(0,0,0,.14),0px 1px 10px 0px rgba(0,0,0,.12),0px 2px 4px -1px rgba(0,0,0,.2)}.gb_Ud{height:64px}.gb_Rd{box-sizing:border-box;position:relative;width:100%;display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex;justify-content:space-between;min-width:-webkit-min-content;min-width:-moz-min-content;min-width:-ms-min-content;min-width:min-content}.gb_Da:not(.gb_Ea) .gb_Rd{padding:8px}.gb_Da.gb_Vd .gb_Rd{flex:1 0 auto}.gb_Da .gb_Rd.gb_Wd.gb_Xd{min-width:0}.gb_Da.gb_Ea .gb_Rd{padding:4px;padding-left:8px;min-width:0}.gb_Qd{height:48px;vertical-align:middle;white-space:nowrap;-moz-box-align:center;align-items:center;display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex;-moz-user-select:-moz-none}.gb_0d>.gb_Qd{display:table-cell;width:100%}.gb_8c{padding-right:30px;-moz-box-sizing:border-box;box-sizing:border-box;flex:1 0 auto}.gb_Da.gb_Ea .gb_8c{padding-right:14px}.gb_1d{flex:1 1 100%}.gb_1d>:only-child{display:inline-block}.gb_2d.gb_Zc{padding-left:4px}.gb_2d.gb_3d,.gb_Da.gb_Vd .gb_2d,.gb_Da.gb_Ea:not(.gb_4d) .gb_2d{padding-left:0}.gb_Da.gb_Ea .gb_2d.gb_3d{padding-right:0}.gb_Da.gb_Ea .gb_2d.gb_3d .gb_xa{margin-left:10px}.gb_Zc{display:inline}.gb_Da.gb_Sc .gb_2d.gb_5d,.gb_Da.gb_4d .gb_2d.gb_5d{padding-left:2px}.gb_6c{display:inline-block}.gb_2d{box-sizing:border-box;height:48px;line-height:normal;padding:0 4px;padding-left:30px;flex:0 0 auto;justify-content:flex-end}.gb_4d{height:48px}.gb_Da.gb_4d{min-width:initial;min-width:auto}.gb_4d .gb_2d{float:right;padding-left:32px}.gb_4d .gb_2d.gb_6d{padding-left:0}.gb_7d{font-size:14px;max-width:200px;overflow:hidden;padding:0 12px;text-overflow:ellipsis;white-space:nowrap;-moz-user-select:text}.gb_8d{transition:background-color .4s}.gb_9d{color:black}.gb_Hc{color:white}.gb_Da a,.gb_Mc a{color:inherit}.gb_A{color:rgba(0,0,0,.87)}.gb_Da svg,.gb_Mc svg,.gb_8c .gb_ae,.gb_Xc .gb_ae{color:#5f6368;opacity:1}.gb_Hc svg,.gb_Mc.gb_Qc svg,.gb_Hc .gb_8c .gb_ae,.gb_Hc .gb_8c .gb_Fc,.gb_Hc .gb_8c .gb_ad,.gb_Mc.gb_Qc .gb_ae{color:rgba(255,255,255,0.87)}.gb_Hc .gb_8c .gb_Ec:not(.gb_be){opacity:0.87}.gb_7c{color:inherit;opacity:1;text-rendering:optimizeLegibility;-moz-osx-font-smoothing:grayscale}.gb_Hc .gb_7c,.gb_9d .gb_7c{opacity:1}.gb_ce{position:relative}.gb_de{font-family:arial,sans-serif;line-height:normal;padding-right:15px}a.gb_n,span.gb_n{color:rgba(0,0,0,.87);text-decoration:none}.gb_Hc a.gb_n,.gb_Hc span.gb_n{color:white}a.gb_n:focus{outline-offset:2px}a.gb_n:hover{text-decoration:underline}.gb_o{display:inline-block;padding-left:15px}.gb_o .gb_n{display:inline-block;line-height:24px;vertical-align:middle}.gb_ee{font-family:Google Sans,Roboto,Helvetica,Arial,sans-serif;font-weight:500;font-size:14px;letter-spacing:0.25px;line-height:16px;margin-left:10px;margin-right:8px;min-width:96px;padding:9px 23px;text-align:center;vertical-align:middle;-moz-border-radius:4px;border-radius:4px;-moz-box-sizing:border-box;box-sizing:border-box}.gb_Da.gb_4d .gb_ee{margin-left:8px}#gb a.gb_ha.gb_ha.gb_ee{cursor:pointer}.gb_ha.gb_ee:hover{background:#1b66c9;-moz-box-shadow:0 1px 3px 1px rgba(66,64,67,.15),0 1px 2px 0 rgba(60,64,67,.3);box-shadow:0 1px 3px 1px rgba(66,64,67,.15),0 1px 2px 0 rgba(60,64,67,.3)}.gb_ha.gb_ee:focus,.gb_ha.gb_ee:hover:focus{background:#1c5fba;-moz-box-shadow:0 1px 3px 1px rgba(66,64,67,.15),0 1px 2px 0 rgba(60,64,67,.3);box-shadow:0 1px 3px 1px rgba(66,64,67,.15),0 1px 2px 0 rgba(60,64,67,.3)}.gb_ha.gb_ee:active{background:#1b63c1;-moz-box-shadow:0 1px 3px 1px rgba(66,64,67,.15),0 1px 2px 0 rgba(60,64,67,.3);box-shadow:0 1px 3px 1px rgba(66,64,67,.15),0 1px 2px 0 rgba(60,64,67,.3)}.gb_ee{background:#1a73e8;border:1px solid transparent}.gb_Da.gb_Ea .gb_ee{padding:9px 15px;min-width:80px}.gb_fe{text-align:left}#gb .gb_Hc a.gb_ee:not(.gb_6),#gb.gb_Hc a.gb_ee{background:#fff;border-color:#dadce0;-moz-box-shadow:none;box-shadow:none;color:#1a73e8}#gb a.gb_ha.gb_6.gb_ee{background:#8ab4f8;border:1px solid transparent;-moz-box-shadow:none;box-shadow:none;color:#202124}#gb .gb_Hc a.gb_ee:hover:not(.gb_6),#gb.gb_Hc a.gb_ee:hover{background:#f8fbff;border-color:#cce0fc}#gb a.gb_ha.gb_6.gb_ee:hover{background:#93baf9;border-color:transparent;-moz-box-shadow:0 1px 3px 1px rgba(0,0,0,.15),0 1px 2px rgba(0,0,0,.3);box-shadow:0 1px 3px 1px rgba(0,0,0,.15),0 1px 2px rgba(0,0,0,.3)}#gb .gb_Hc a.gb_ee:focus:not(.gb_6),#gb .gb_Hc a.gb_ee:focus:hover:not(.gb_6),#gb.gb_Hc a.gb_ee:focus:not(.gb_6),#gb.gb_Hc a.gb_ee:focus:hover:not(.gb_6){background:#f4f8ff;outline:1px solid #c9ddfc}#gb a.gb_ha.gb_6.gb_ee:focus,#gb a.gb_ha.gb_6.gb_ee:focus:hover{background:#a6c6fa;border-color:transparent;-moz-box-shadow:none;box-shadow:none}#gb .gb_Hc a.gb_ee:active:not(.gb_6),#gb.gb_Hc a.gb_ee:active{background:#ecf3fe}#gb a.gb_ha.gb_6.gb_ee:active{background:#a1c3f9;-moz-box-shadow:0 1px 2px rgba(60,64,67,.3),0 2px 6px 2px rgba(60,64,67,.15);box-shadow:0 1px 2px rgba(60,64,67,.3),0 2px 6px 2px rgba(60,64,67,.15)}.gb_xa{background-color:rgba(255,255,255,.88);border:1px solid #dadce0;box-sizing:border-box;cursor:pointer;display:inline-block;max-height:48px;overflow:hidden;outline:none;padding:0;vertical-align:middle;width:134px;-moz-border-radius:8px;border-radius:8px}.gb_xa.gb_6{background-color:transparent;border:1px solid #5f6368}.gb_ya{display:inherit}.gb_xa.gb_6 .gb_ya{background:#fff;-moz-border-radius:4px;border-radius:4px;display:inline-block;left:8px;margin-right:5px;position:relative;padding:3px;top:-1px}.gb_xa:hover{border:1px solid #d2e3fc;background-color:rgba(248,250,255,.88)}.gb_xa.gb_6:hover{background-color:rgba(241,243,244,.04);border:1px solid #5f6368}.gb_xa:focus-visible,.gb_xa:focus{background-color:rgba(255,255,255);outline:1px solid #202124;-moz-box-shadow:0px 1px 2px 0px rgba(60,64,67,.3),0px 1px 3px 1px rgba(60,64,67,.15);box-shadow:0px 1px 2px 0px rgba(60,64,67,.3),0px 1px 3px 1px rgba(60,64,67,.15)}.gb_xa.gb_6:focus-visible,.gb_xa.gb_6:focus{background-color:rgba(241,243,244,.12);outline:1px solid #f1f3f4;-moz-box-shadow:0 1px 3px 1px rgba(0,0,0,.15),0 1px 2px 0 rgba(0,0,0,.3);box-shadow:0 1px 3px 1px rgba(0,0,0,.15),0 1px 2px 0 rgba(0,0,0,.3)}.gb_xa.gb_6:active,.gb_xa.gb_za.gb_6:focus{background-color:rgba(241,243,244,.1);border:1px solid #5f6368}.gb_Aa{display:inline-block;padding-bottom:2px;padding-left:7px;padding-top:2px;text-align:center;vertical-align:middle;line-height:32px;width:78px}.gb_xa.gb_6 .gb_Aa{line-height:26px;margin-left:0;padding-bottom:0;padding-left:0;padding-top:0;width:72px}.gb_Aa.gb_Ba{background-color:#f1f3f4;-moz-border-radius:4px;border-radius:4px;margin-left:8px;padding-left:0}.gb_Aa.gb_Ba .gb_Ca{vertical-align:middle}.gb_Da:not(.gb_Ea) .gb_xa{margin-left:10px;margin-right:4px}.gb_Fa{max-height:32px;width:78px}.gb_xa.gb_6 .gb_Fa{max-height:26px;width:72px}.gb_g{background-size:32px 32px;border:0;-moz-border-radius:50%;border-radius:50%;display:block;margin:0px;position:relative;height:32px;width:32px;z-index:0}.gb_Qa{background-color:#e8f0fe;border:1px solid rgba(32,33,36,.08);position:relative}.gb_Qa.gb_g{height:30px;width:30px}.gb_Qa.gb_g:hover,.gb_Qa.gb_g:active{-moz-box-shadow:none;box-shadow:none}.gb_Ra{background:#fff;border:none;-moz-border-radius:50%;border-radius:50%;bottom:2px;-moz-box-shadow:0px 1px 2px 0px rgba(60,64,67,.30),0px 1px 3px 1px rgba(60,64,67,.15);box-shadow:0px 1px 2px 0px rgba(60,64,67,.30),0px 1px 3px 1px rgba(60,64,67,.15);height:14px;margin:2px;position:absolute;right:0;width:14px}.gb_Sa{color:#1f71e7;font:400 22px/32px Google Sans,Roboto,Helvetica,Arial,sans-serif;text-align:center;text-transform:uppercase}@media (min-resolution:1.25dppx),(-o-min-device-pixel-ratio:5/4),(-webkit-min-device-pixel-ratio:1.25),(min-device-pixel-ratio:1.25){.gb_g::before,.gb_Ta::before{display:inline-block;-moz-transform:scale(.5);transform:scale(.5);-moz-transform-origin:left 0;transform-origin:left 0}.gb_s .gb_Ta::before{-moz-transform:scale(0.416666667);transform:scale(0.416666667)}}.gb_g:hover,.gb_g:focus{-moz-box-shadow:0 1px 0 rgba(0,0,0,.15);box-shadow:0 1px 0 rgba(0,0,0,.15)}.gb_g:active{-moz-box-shadow:inset 0 2px 0 rgba(0,0,0,.15);box-shadow:inset 0 2px 0 rgba(0,0,0,.15)}.gb_g:active::after{background:rgba(0,0,0,.1);-moz-border-radius:50%;border-radius:50%;content:"";display:block;height:100%}.gb_Ua{cursor:pointer;line-height:40px;min-width:30px;opacity:.75;overflow:hidden;vertical-align:middle;text-overflow:ellipsis}.gb_e.gb_Ua{width:auto}.gb_Ua:hover,.gb_Ua:focus{opacity:.85}.gb_Va .gb_Ua,.gb_Va .gb_Wa{line-height:26px}#gb#gb.gb_Va a.gb_Ua,.gb_Va .gb_Wa{font-size:11px;height:auto}.gb_Xa{border-top:4px solid #000;border-left:4px dashed transparent;border-right:4px dashed transparent;display:inline-block;margin-left:6px;opacity:.75;vertical-align:middle}.gb_Za:hover .gb_Xa{opacity:.85}.gb_xa>.gb_b{padding:3px 3px 3px 4px}.gb_0a.gb_Pa{color:#fff}.gb_q .gb_Ua,.gb_q .gb_Xa{opacity:1}#gb#gb.gb_q.gb_q a.gb_Ua,#gb#gb .gb_q.gb_q a.gb_Ua{color:#fff}.gb_q.gb_q .gb_Xa{border-top-color:#fff;opacity:1}.gb_L .gb_g:hover,.gb_q .gb_g:hover,.gb_L .gb_g:focus,.gb_q .gb_g:focus{-moz-box-shadow:0 1px 0 rgba(0,0,0,.15),0 1px 2px rgba(0,0,0,.2);box-shadow:0 1px 0 rgba(0,0,0,.15),0 1px 2px rgba(0,0,0,.2)}.gb_1a .gb_b,.gb_2a .gb_b{position:absolute;right:1px}.gb_b.gb_p,.gb_3a.gb_p,.gb_Za.gb_p{flex:0 1 auto;flex:0 1 main-size}.gb_4a.gb_5a .gb_Ua{width:30px!important}.gb_d{height:40px;position:absolute;right:-5px;top:-5px;width:40px}.gb_6a .gb_d,.gb_7a .gb_d{right:0;top:0}.gb_b .gb_e{padding:4px}.gb_j{display:none}sentinel{}</style><script id="ogb-head-script">;this.gbar_={CONFIG:[[[0,"www.gstatic.com","og.qtm.en_US.XoX8D-gT9fM.2019.O","com.py","en","331",0,[4,2,"","","","502265541","0"],null,"RZjNY8PWB-O8p84PmIuESA",null,0,"og.qtm.R8eY7m0D71I.L.F4.O","AA2YrTu5iFyPHKjIg4bk8v4hyk16pTWzzg","AA2YrTtZQaaLGWgX9yj-a2RCfh7W2MIOvA","",2,1,200,"PRY",null,null,"18","331",1],null,[1,0.1000000014901161,2,1],[1,0.001000000047497451,1],[1,0,0,null,"0","david.gonz.01@gmail.com","","ACMtNjfjQLH4n91w0gT_XJnaVBnadhac_5uX4r_VA4UbuUKjUbuLL5duumS8UF0xboKAVed1zwdZy1Whs9AGuibjUGYdc0QieQ"],[0,0,"",1,0,0,0,0,0,0,null,0,0,null,0,0,null,null,0,0,0,"","","","","","",null,0,0,0,0,0,null,null,null,"rgba(32,33,36,1)","rgba(255,255,255,1)",0,0,0,null,null,1,0,0],["%1$s (default)","Brand account",1,"%1$s (delegated)",1,null,83,"?authuser=$authuser",null,null,null,1,"https://accounts.google.com/ListAccounts?listPages=0\u0026authuser=0\u0026pid=331\u0026gpsia=1\u0026source=ogb\u0026atic=1\u0026mo=1\u0026mn=1\u0026hl=en",0,"dashboard",null,null,null,null,"Profile","",1,null,"Signed out","https://accounts.google.com/AccountChooser?source=ogb\u0026continue=$continue\u0026Email=$email\u0026ec=GAhAywI","https://accounts.google.com/RemoveLocalAccount?source=ogb","Remove","Sign in",0,1,1,0,1,1,0,null,null,null,"Session expired",null,null,null,"Visitor",null,"Default","Delegated","Sign out of all accounts",1,null,null,0,null,null,"myaccount.google.com","https",0,1,0],null,["1","gci_91f30755d6a6b787dcc2a4062e6e9824.js","googleapis.client:gapi.iframes","0","en"],null,null,null,null,["m;/_/scs/abc-static/_/js/k=gapi.gapi.en.3R2S2iMRC9o.O/d=1/rs=AHpOoo8-ukmJKpOYaCGRb909wNTowBRXFA/m=__features__","https://apis.google.com","","","1","",null,1,"es_plusone_gc_20230109.0_p0","en",null,0],[0.009999999776482582,"com.py","331",[null,"","0",null,1,5184000,null,null,"",null,null,null,null,null,0,null,0,0,1,0,0,0,null,null,0,0,null,0,0,0,0,0],null,null,null,0,null,null,["5061451","google\\.(com|ru|ca|by|kz|com\\.mx|com\\.tr)$",1]],[1,1,null,40400,331,"PRY","en","502265541.0",8,0.009999999776482582,1,0,null,null,null,null,"3700949,3701056",null,null,null,"RZjNY8PWB-O8p84PmIuESA",0,0,0,null,2,5,"nn",110,0,0,1,0,1],[[null,null,null,"https://www.gstatic.com/og/_/js/k=og.qtm.en_US.XoX8D-gT9fM.2019.O/rt=j/m=qabr,qgl,q_dnp,qcwid,qbd,qapid/exm=qaaw,qadd,qaid,qein,qhaw,qhba,qhbr,qhch,qhga,qhid,qhin,qhpr/d=1/ed=1/rs=AA2YrTu5iFyPHKjIg4bk8v4hyk16pTWzzg"],[null,null,null,"https://www.gstatic.com/og/_/ss/k=og.qtm.R8eY7m0D71I.L.F4.O/m=qcwid/excm=qaaw,qadd,qaid,qein,qhaw,qhba,qhbr,qhch,qhga,qhid,qhin,qhpr/d=1/ed=1/ct=zgms/rs=AA2YrTtZQaaLGWgX9yj-a2RCfh7W2MIOvA"]],null,null,null,[[[null,null,[null,null,null,"https://ogs.google.com/u/0/widget/account?amf=1\u0026sea=1"],0,414,400,57,4,1,0,0,65,66,8000,"https://accounts.google.com/SignOutOptions?hl=en\u0026continue=https://developers.google.com/_d/profile/ogb",68,2,null,null,1,113,"Something went wrong. Refresh to try again or %1$schoose another account%2$s.",3,null,null,75,0,null,null,null,null,null,null,null,"/widget/account",["https","myaccount.google.com",0,32,83,0],0,0,1,["Critical security alert","Important recommended actions"],0,1]],0,null,"18","331",1,0,null,"en",0,["?authuser=$authuser","https://accounts.google.com/AddSession?continue=\u0026ec=GAlAywI","https://accounts.google.com/Logout?continue=https://developers.google.com/\u0026service=ahsid\u0026ec=GAdAywI","https://accounts.google.com/ListAccounts?listPages=0\u0026authuser=0\u0026pid=331\u0026gpsia=1\u0026source=ogb\u0026atic=1\u0026mo=1\u0026mn=1\u0026hl=en",0,0,"",0,0,null,0,0],0,0,0,null,0],null,[["mousedown","touchstart","touchmove","wheel","keydown"],300000]]],};this.gbar_=this.gbar_||{};(function(_){var window=this;
+try{
+/*
+
+ Copyright The Closure Library Authors.
+ SPDX-License-Identifier: Apache-2.0
+*/
+var ja,ya,za,Aa,Ba,Ha,Ja,Ia,La,Ma,Pa,Ta,Qa,Wa,Xa;_.aa=function(a,b){if(Error.captureStackTrace)Error.captureStackTrace(this,_.aa);else{const c=Error().stack;c&&(this.stack=c)}a&&(this.message=String(a));void 0!==b&&(this.cause=b)};_.ba=function(){var a=_.m.navigator;return a&&(a=a.userAgent)?a:""};_.n=function(a){return-1!=_.ba().indexOf(a)};_.ca=function(){return _.n("Opera")};_.da=function(){return _.n("Trident")||_.n("MSIE")};_.ea=function(){return _.n("Firefox")||_.n("FxiOS")};
+_.ha=function(){return _.n("Safari")&&!(_.fa()||_.n("Coast")||_.ca()||_.n("Edge")||_.n("Edg/")||_.n("OPR")||_.ea()||_.n("Silk")||_.n("Android"))};_.fa=function(){return(_.n("Chrome")||_.n("CriOS"))&&!_.n("Edge")||_.n("Silk")};_.ia=function(){return _.n("Android")&&!(_.fa()||_.ea()||_.ca()||_.n("Silk"))};ja=function(){return _.n("iPhone")&&!_.n("iPod")&&!_.n("iPad")};_.la=function(){return ja()||_.n("iPad")||_.n("iPod")};
+_.ma=function(a){const b=a.length;if(0<b){const c=Array(b);for(let d=0;d<b;d++)c[d]=a[d];return c}return[]};_.na=function(){return-1!=_.ba().toLowerCase().indexOf("webkit")&&!_.n("Edge")};_.pa=function(a){return oa&&null!=a&&a instanceof Uint8Array};_.ra=function(a,b){if(_.qa)return a[_.qa]|=b;if(void 0!==a.Yb)return a.Yb|=b;Object.defineProperties(a,{Yb:{value:b,configurable:!0,writable:!0,enumerable:!1}});return b};
+_.ua=function(a,b){const c=_.sa(a);(c&b)!==b&&(Object.isFrozen(a)&&(a=Array.prototype.slice.call(a)),_.ta(a,c|b));return a};_.sa=function(a){let b;_.qa?b=a[_.qa]:b=a.Yb;return null==b?0:b};_.ta=function(a,b){_.qa?a[_.qa]=b:void 0!==a.Yb?a.Yb=b:Object.defineProperties(a,{Yb:{value:b,configurable:!0,writable:!0,enumerable:!1}})};_.va=function(a){_.ra(a,1);return a};_.wa=function(a){return!!(_.sa(a)&2)};_.xa=function(a){_.ra(a,16);return a};ya=function(a,b){_.ta(b,(a|0)&-51)};
+za=function(a,b){_.ta(b,(a|18)&-41)};Aa=function(a){return null!==a&&"object"===typeof a&&!Array.isArray(a)&&a.constructor===Object};Ba=function(a){var b=a.length;(b=b?a[b-1]:void 0)&&Aa(b)?b.g=1:a.push({g:1})};_.Ca=function(a,b){return null==a?b:a};_.Ea=function(a,b){Da=b;a=new a(b);Da=void 0;return a};
+Ha=function(a){switch(typeof a){case "number":return isFinite(a)?a:String(a);case "object":if(a)if(Array.isArray(a)){if(0!==(_.sa(a)&128))return a=Array.prototype.slice.call(a),Ba(a),a}else{if(_.pa(a))return _.Fa(a);if(a instanceof _.Ga){const b=a.Ea;return null==b?"":"string"===typeof b?b:a.Ea=_.Fa(b)}}}return a};Ja=function(a,b,c,d){if(null!=a){if(Array.isArray(a))a=Ia(a,b,c,void 0!==d);else if(Aa(a)){const e={};for(let f in a)e[f]=Ja(a[f],b,c,d);a=e}else a=b(a,d);return a}};
+Ia=function(a,b,c,d){const e=_.sa(a);d=d?!!(e&16):void 0;a=Array.prototype.slice.call(a);for(let f=0;f<a.length;f++)a[f]=Ja(a[f],b,c,d);c(e,a);return a};La=function(a){return a.we===Ka?a.toJSON():Ha(a)};Ma=function(a,b){a&128&&Ba(b)};
+Pa=function(a,b,c=za){if(null!=a){if(oa&&a instanceof Uint8Array)return a.length?new _.Ga(new Uint8Array(a),_.Na):_.Oa();if(Array.isArray(a)){const d=_.sa(a);if(d&2)return a;if(b&&!(d&32)&&(d&16||0===d))return _.ta(a,d|2),a;a=Ia(a,Pa,d&4?za:c,!0);b=_.sa(a);b&4&&b&2&&Object.freeze(a);return a}return a.we===Ka?Qa(a):a}};Ta=function(a,b,c,d,e,f,g){(a=a.j&&a.j[c])?(d=_.sa(a),d&2?d=a:(f=_.Ra(a,Qa),za(d,f),Object.freeze(f),d=f),_.Sa(b,c,d,e)):_.r(b,c,Pa(d,f,g),e)};
+Qa=function(a){if(_.wa(a.Da))return a;a=_.Ua(a,!0);_.ra(a.Da,2);return a};_.Ua=function(a,b){const c=a.Da;var d=_.xa([]),e=a.constructor.j;e&&d.push(e);e=a.Lb;if(e){d.length=c.length;d.fill(void 0,d.length,c.length);var f={};d[d.length-1]=f}0!==(_.sa(c)&128)&&Ba(d);b=b||a.mc()?za:ya;d=_.Ea(a.constructor,d);a.ud&&(d.ud=a.ud.slice());f=!!(_.sa(c)&16);const g=e?c.length-1:c.length;for(let h=0;h<g;h++)Ta(a,d,h-a.yc,c[h],!1,f,b);if(e)for(const h in e)Ta(a,d,+h,e[h],!0,f,b);return d};
+_.Va=function(a){if(!_.wa(a.Da))return a;const b=_.Ua(a,!1);b.A=a;return b};Wa=function(a,b){if(Array.isArray(a)){var c=_.sa(a),d=1;!b||c&2||(d|=16);(c&d)!==d&&_.ta(a,c|d)}};Xa=function(a,b){return Ha(b)};_.t=function(a,b){return null!=a?!!a:!!b};_.v=function(a,b){void 0==b&&(b="");return null!=a?a:b};_.Ya=function(a,b){void 0==b&&(b=0);return null!=a?a:b};_.Za=function(a,b,c){for(const d in a)b.call(c,a[d],d,a)};
+_.ab=function(a,b){let c,d;for(let e=1;e<arguments.length;e++){d=arguments[e];for(c in d)a[c]=d[c];for(let f=0;f<$a.length;f++)c=$a[f],Object.prototype.hasOwnProperty.call(d,c)&&(a[c]=d[c])}};var eb,fb,gb;_.bb=_.bb||{};_.m=this||self;_.cb=function(a){var b=typeof a;return"object"==b&&null!=a||"function"==b};_.db="closure_uid_"+(1E9*Math.random()>>>0);eb=function(a,b,c){return a.call.apply(a.bind,arguments)};fb=function(a,b,c){if(!a)throw Error();if(2<arguments.length){var d=Array.prototype.slice.call(arguments,2);return function(){var e=Array.prototype.slice.call(arguments);Array.prototype.unshift.apply(e,d);return a.apply(b,e)}}return function(){return a.apply(b,arguments)}};
+_.x=function(a,b,c){Function.prototype.bind&&-1!=Function.prototype.bind.toString().indexOf("native code")?_.x=eb:_.x=fb;return _.x.apply(null,arguments)};_.y=function(a,b){a=a.split(".");var c=_.m;a[0]in c||"undefined"==typeof c.execScript||c.execScript("var "+a[0]);for(var d;a.length&&(d=a.shift());)a.length||void 0===b?c[d]&&c[d]!==Object.prototype[d]?c=c[d]:c=c[d]={}:c[d]=b};
+_.z=function(a,b){function c(){}c.prototype=b.prototype;a.Z=b.prototype;a.prototype=new c;a.prototype.constructor=a;a.xi=function(d,e,f){for(var g=Array(arguments.length-2),h=2;h<arguments.length;h++)g[h-2]=arguments[h];return b.prototype[e].apply(d,g)}};gb=function(a){return a};_.hb=function(a){var b=null,c=_.m.trustedTypes;if(!c||!c.createPolicy)return b;try{b=c.createPolicy(a,{createHTML:gb,createScript:gb,createScriptURL:gb})}catch(d){_.m.console&&_.m.console.error(d.message)}return b};_.z(_.aa,Error);_.aa.prototype.name="CustomError";_.ib=String.prototype.trim?function(a){return a.trim()}:function(a){return/^[\s\xa0]*([\s\S]*?)[\s\xa0]*$/.exec(a)[1]};_.jb=function(a,b){return Array.prototype.indexOf.call(a,b,void 0)};_.kb=function(a,b,c){Array.prototype.forEach.call(a,b,c)};_.Ra=function(a,b,c){return Array.prototype.map.call(a,b,c)};_.lb=function(a){_.lb[" "](a);return a};_.lb[" "]=function(){};var zb,Ab,Fb;_.mb=_.ca();_.A=_.da();_.nb=_.n("Edge");_.ob=_.nb||_.A;_.pb=_.n("Gecko")&&!_.na()&&!(_.n("Trident")||_.n("MSIE"))&&!_.n("Edge");_.qb=_.na();_.rb=_.n("Macintosh");_.sb=_.n("Windows");_.tb=_.n("Linux")||_.n("CrOS");_.ub=_.n("Android");_.vb=ja();_.wb=_.n("iPad");_.xb=_.n("iPod");_.yb=_.la();zb=function(){var a=_.m.document;return a?a.documentMode:void 0};
+a:{var Bb="",Cb=function(){var a=_.ba();if(_.pb)return/rv:([^\);]+)(\)|;)/.exec(a);if(_.nb)return/Edge\/([\d\.]+)/.exec(a);if(_.A)return/\b(?:MSIE|rv)[: ]([^\);]+)(\)|;)/.exec(a);if(_.qb)return/WebKit\/(\S+)/.exec(a);if(_.mb)return/(?:Version)[ \/]?(\S+)/.exec(a)}();Cb&&(Bb=Cb?Cb[1]:"");if(_.A){var Db=zb();if(null!=Db&&Db>parseFloat(Bb)){Ab=String(Db);break a}}Ab=Bb}_.Eb=Ab;if(_.m.document&&_.A){var Gb=zb();Fb=Gb?Gb:parseInt(_.Eb,10)||void 0}else Fb=void 0;_.Hb=Fb;_.Ib=_.ea();_.Jb=ja()||_.n("iPod");_.Kb=_.n("iPad");_.Lb=_.ia();_.Mb=_.fa();_.Nb=_.ha()&&!_.la();var Ob;Ob={};_.Pb=null;_.Fa=function(a,b){void 0===b&&(b=0);_.Qb();b=Ob[b];const c=Array(Math.floor(a.length/3)),d=b[64]||"";let e=0,f=0;for(;e<a.length-2;e+=3){var g=a[e],h=a[e+1],l=a[e+2],p=b[g>>2];g=b[(g&3)<<4|h>>4];h=b[(h&15)<<2|l>>6];l=b[l&63];c[f++]=p+g+h+l}p=0;l=d;switch(a.length-e){case 2:p=a[e+1],l=b[(p&15)<<2]||d;case 1:a=a[e],c[f]=b[a>>2]+b[(a&3)<<4|p>>4]+l+d}return c.join("")};
+_.Qb=function(){if(!_.Pb){_.Pb={};for(var a="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789".split(""),b=["+/=","+/","-_=","-_.","-_"],c=0;5>c;c++){var d=a.concat(b[c].split(""));Ob[c]=d;for(var e=0;e<d.length;e++){var f=d[e];void 0===_.Pb[f]&&(_.Pb[f]=e)}}}};var oa;oa="undefined"!==typeof Uint8Array;_.Na={};_.Rb="undefined"!==typeof TextDecoder;_.Sb="undefined"!==typeof TextEncoder;var Tb;_.Oa=function(){return Tb||(Tb=new _.Ga(null,_.Na))};_.Ga=class{constructor(a,b){if(b!==_.Na)throw Error("m");this.Ea=a;if(null!=a&&0===a.length)throw Error("n");}lc(){return null==this.Ea}};_.qa=Symbol();var Ka,Ub,Wb;Ka={};Wb=[];_.ta(Wb,23);_.Vb=Object.freeze(Wb);_.Xb=function(a){if(_.wa(a.Da))throw Error("p");};var Yb;Yb=function(a){const b=a.o+a.yc;return a.Lb||(a.Lb=a.Da[b]={})};_.C=function(a,b,c){return-1===b?null:b>=a.o?a.Lb?a.Lb[b]:void 0:c&&a.Lb&&(c=a.Lb[b],null!=c)?c:a.Da[b+a.yc]};_.r=function(a,b,c,d){_.Xb(a);return _.Zb(a,b,c,d)};_.Zb=function(a,b,c,d){a.A&&(a.A=void 0);if(b>=a.o||d)return Yb(a)[b]=c,a;a.Da[b+a.yc]=c;(c=a.Lb)&&b in c&&delete c[b];return a};_.E=function(a,b){a=_.C(a,b);return null==a?a:!!a};
+_.$b=function(a,b,c,d){const e=_.C(a,c,d);{let g=!1;var f=null==e||"object"!==typeof e||(g=Array.isArray(e))||e.we!==Ka?g?new b(e):void 0:e}f!==e&&null!=f&&(_.Zb(a,c,f,d),_.ra(f.Da,_.sa(a.Da)&18));return f};_.F=function(a,b,c,d=!1){b=_.$b(a,b,c,d);if(null==b)return b;if(!_.wa(a.Da)){const e=_.Va(b);e!==b&&(b=e,_.Zb(a,c,b,d))}return b};_.G=function(a,b,c){_.Xb(a);null==c&&(c=void 0);return _.Zb(a,b,c)};
+_.Sa=function(a,b,c,d){_.Xb(a);let e=null==c?_.Vb:_.va([]);if(null!=c){let f=!!c.length;for(let g=0;g<c.length;g++){const h=c[g];f=f&&!_.wa(h.Da);e[g]=h.Da}e=_.ua(e,(f?8:0)|1);a.j||(a.j={});a.j[b]=c}else a.j&&(a.j[b]=void 0);return _.Zb(a,b,e,d)};_.ac=function(a,b,c=0){a=_.C(a,b);return null==a?c:a};_.bc=function(a,b,c=0){const d=_.C(a,b);var e=null==d?d:"number"===typeof d||"NaN"===d||"Infinity"===d||"-Infinity"===d?Number(d):void 0;null!=e&&e!==d&&_.Zb(a,b,e);return _.Ca(e,c)};var Da;_.H=class{constructor(a,b,c){null==a&&(a=Da);Da=void 0;var d=this.constructor.o||0,e=0<d,f=this.constructor.j,g=!1;if(null==a){a=f?[f]:[];var h=48;var l=!0;e&&(d=0,h|=128);_.ta(a,h)}else{if(!Array.isArray(a))throw Error();if(f&&f!==a[0])throw Error();let p=h=_.ra(a,0);if(l=0!==(16&p))(g=0!==(32&p))||(p|=32);if(e)if(128&p)d=0;else{if(0<a.length){const q=a[a.length-1];if(Aa(q)&&"g"in q){d=0;p|=128;delete q.g;let u=!0;for(let B in q){u=!1;break}u&&a.pop()}}}else if(128&p)throw Error();h!==p&&_.ta(a,
+p)}this.yc=(f?0:-1)-d;this.j=void 0;this.Da=a;a:{f=this.Da.length;d=f-1;if(f&&(f=this.Da[d],Aa(f))){this.Lb=f;this.o=d-this.yc;break a}void 0!==b&&-1<b?(this.o=Math.max(b,d+1-this.yc),this.Lb=void 0):this.o=Number.MAX_VALUE}if(!e&&this.Lb&&"g"in this.Lb)throw Error("u");if(c){b=l&&!g&&!0;e=this.o;let p;for(l=0;l<c.length;l++)g=c[l],g<e?(g+=this.yc,(d=a[g])?Wa(d,b):a[g]=_.Vb):(p||(p=Yb(this)),(d=p[g])?Wa(d,b):p[g]=_.Vb)}}toJSON(){const a=this.Da;return Ub?a:Ia(a,La,Ma)}Ha(){Ub=!0;try{return JSON.stringify(this.toJSON(),
+Xa)}finally{Ub=!1}}mc(){return _.wa(this.Da)}};_.H.prototype.we=Ka;_.H.prototype.toString=function(){return this.Da.toString()};_.cc=Symbol();_.dc=Symbol();_.ec=Symbol();_.fc=Symbol();var gc=class extends _.H{constructor(){super()}};_.hc=class extends _.H{constructor(){super()}Vc(a){return _.r(this,3,a)}};_.ic=class extends _.H{constructor(a){super(a)}};var jc=class extends _.H{constructor(a){super(a)}};_.kc=class extends _.H{constructor(a){super(a)}Wc(a){return _.r(this,24,a)}};_.lc=class extends _.H{constructor(a){super(a)}};_.I=function(){this.Fb=this.Fb;this.Oa=this.Oa};_.I.prototype.Fb=!1;_.I.prototype.isDisposed=function(){return this.Fb};_.I.prototype.ya=function(){this.Fb||(this.Fb=!0,this.R())};_.I.prototype.R=function(){if(this.Oa)for(;this.Oa.length;)this.Oa.shift()()};var mc=class extends _.I{constructor(){var a=window;super();this.A=a;this.j=[];this.o={}}resolve(a){var b=this.A;a=a.split(".");for(var c=a.length,d=0;d<c;++d)if(b[a[d]])b=b[a[d]];else return null;return b instanceof Function?b:null}md(){for(var a=this.j.length,b=this.j,c=[],d=0;d<a;++d){var e=b[d].j(),f=this.resolve(e);if(f&&f!=this.o[e])try{b[d].md(f)}catch(g){}else c.push(b[d])}this.j=c.concat(b.slice(a))}};var oc=class extends _.I{constructor(){var a=_.nc;super();this.A=a;this.C=this.j=null;this.B=0;this.D={};this.o=!1;a=window.navigator.userAgent;0<=a.indexOf("MSIE")&&0<=a.indexOf("Trident")&&(a=/\b(?:MSIE|rv)[: ]([^\);]+)(\)|;)/.exec(a))&&a[1]&&9>parseFloat(a[1])&&(this.o=!0)}F(a,b){this.j=b;this.C=a;b.preventDefault?b.preventDefault():b.returnValue=!1}};_.pc=class extends _.H{constructor(a){super(a)}};_.qc=class extends _.H{constructor(a){super(a)}};_.rc=class{constructor(){this.data={}}Ha(a){var b=[],c;for(c in this.data)b.push(encodeURIComponent(c)+"="+encodeURIComponent(String(this.data[c])));return("atyp=i&zx="+(new Date).getTime()+"&"+b.join("&")).substr(0,a)}};var sc=class extends _.rc{constructor(a,b){super();var c=_.F(a,jc,8)||new jc;window.google&&window.google.kEI&&(this.data.ei=window.google.kEI);this.data.sei=_.v(_.C(a,10));this.data.ogf=_.v(_.C(c,3));this.data.ogrp=(window.google&&window.google.sn?!/.*hp$/.test(window.google.sn):_.t(_.E(a,7)))?"1":"";this.data.ogv=_.v(_.C(c,6))+"."+_.v(_.C(c,7));this.data.ogd=_.v(_.C(a,21));this.data.ogc=_.v(_.C(a,20));this.data.ogl=_.v(_.C(a,5));b&&(this.data.oggv=b)}};var $a="constructor hasOwnProperty isPrototypeOf propertyIsEnumerable toLocaleString toString valueOf".split(" ");_.tc=class extends sc{constructor(a,b,c,d,e){super(a,b);_.ab(this.data,{jexpid:_.v(_.C(a,9)),srcpg:"prop="+_.v(_.C(a,6)),jsr:Math.round(1/d),emsg:c.name+":"+c.message});if(e){e._sn&&(e._sn="og."+e._sn);for(const f in e)this.data[encodeURIComponent(f)]=e[f]}}};var uc;_.vc=function(){void 0===uc&&(uc=_.hb("ogb-qtm#html"));return uc};_.yc=function(a,b){this.j=a===_.wc&&b||"";this.o=_.xc};_.yc.prototype.Xb=!0;_.yc.prototype.Hb=function(){return this.j};_.xc={};_.wc={};_.Ac=class{constructor(a,b){this.j=b===_.zc?a:""}toString(){return this.j+""}};_.Ac.prototype.Xb=!0;_.Ac.prototype.Hb=function(){return this.j.toString()};_.Cc=function(a){return _.Bc(a).toString()};_.Bc=function(a){return a instanceof _.Ac&&a.constructor===_.Ac?a.j:"type_error:TrustedResourceUrl"};_.zc={};var Gc,Hc,Dc;_.Ec=class{constructor(a,b){this.j=b===Dc?a:""}toString(){return this.j.toString()}};_.Ec.prototype.Xb=!0;_.Ec.prototype.Hb=function(){return this.j.toString()};_.Fc=function(a){return a instanceof _.Ec&&a.constructor===_.Ec?a.j:"type_error:SafeUrl"};Gc=/^data:(.*);base64,[a-z0-9+\/]+=*$/i;Hc=/^(?:(?:https?|mailto|ftp):|[^:/?#]*(?:[/?#]|$))/i;
+_.Jc=function(a){if(a instanceof _.Ec)return a;a="object"==typeof a&&a.Xb?a.Hb():String(a);Hc.test(a)?a=_.Ic(a):(a=String(a).replace(/(%0A|%0D)/g,""),a=a.match(Gc)?_.Ic(a):null);return a};_.Kc=function(a){if(a instanceof _.Ec)return a;a="object"==typeof a&&a.Xb?a.Hb():String(a);Hc.test(a)||(a="about:invalid#zClosurez");return _.Ic(a)};Dc={};_.Ic=function(a){return new _.Ec(a,Dc)};_.Lc=_.Ic("about:invalid#zClosurez");_.Mc={};_.Nc=class{constructor(a,b){this.j=b===_.Mc?a:"";this.Xb=!0}Hb(){return this.j}toString(){return this.j.toString()}};_.Pc=new _.Nc("",_.Mc);_.Qc=RegExp("^[-+,.\"'%_!#/ a-zA-Z0-9\\[\\]]+$");_.Rc=RegExp("\\b(url\\([ \t\n]*)('[ -&(-\\[\\]-~]*'|\"[ !#-\\[\\]-~]*\"|[!#-&*-\\[\\]-~]*)([ \t\n]*\\))","g");
+_.Sc=RegExp("\\b(calc|cubic-bezier|fit-content|hsl|hsla|linear-gradient|matrix|minmax|radial-gradient|repeat|rgb|rgba|(rotate|scale|translate)(X|Y|Z|3d)?|steps|var)\\([-+*/0-9a-zA-Z.%#\\[\\], ]+\\)","g");var Tc;Tc={};_.Vc=function(a){return a instanceof _.Uc&&a.constructor===_.Uc?a.j:"type_error:SafeHtml"};_.Wc=function(a){const b=_.vc();a=b?b.createHTML(a):a;return new _.Uc(a,Tc)};_.Uc=class{constructor(a,b){this.j=b===Tc?a:"";this.Xb=!0}Hb(){return this.j.toString()}toString(){return this.j.toString()}};_.Xc=new _.Uc(_.m.trustedTypes&&_.m.trustedTypes.emptyHTML||"",Tc);_.Yc=_.Wc("<br>");var $c;_.Zc=function(a){let b=!1,c;return function(){b||(c=a(),b=!0);return c}}(function(){var a=document.createElement("div"),b=document.createElement("div");b.appendChild(document.createElement("div"));a.appendChild(b);b=a.firstChild.firstChild;a.innerHTML=_.Vc(_.Xc);return!b.parentElement});$c=/^[\w+/_-]+[=]{0,2}$/;
+_.ad=function(a){a=(a||_.m).document;return a.querySelector?(a=a.querySelector('style[nonce],link[rel="stylesheet"][nonce]'))&&(a=a.nonce||a.getAttribute("nonce"))&&$c.test(a)?a:"":""};_.bd=RegExp("^\\s{3,4}at(?: (?:(.*?)\\.)?((?:new )?(?:[a-zA-Z_$][\\w$]*|<anonymous>))(?: \\[as ([a-zA-Z_$][\\w$]*)\\])?)? (?:\\(unknown source\\)|\\(native\\)|\\((?:eval at )?((?:http|https|file)://[^\\s)]+|javascript:.*)\\)|((?:http|https|file)://[^\\s)]+|javascript:.*))$");_.cd=RegExp("^(?:(.*?)\\.)?([a-zA-Z_$][\\w$]*(?:/.?<)?)?(\\(.*\\))?@(?::0|((?:http|https|file)://[^\\s)]+|javascript:.*))$");var dd,gd,fd;_.ed=function(a){let b;b=window.google&&window.google.logUrl?"":"https://www.google.com";b+="/gen_204?use_corp=on&";b+=a.Ha(2040-b.length);dd(_.Jc(b)||_.Lc)};dd=function(a){var b=new Image,c=fd;b.onerror=b.onload=b.onabort=function(){c in gd&&delete gd[c]};gd[fd++]=b;b.src=_.Fc(a)};gd=[];fd=0;_.hd=class extends _.H{constructor(a){super(a)}};_.id=a=>{var b="Ec";if(a.Ec&&a.hasOwnProperty(b))return a.Ec;b=new a;return a.Ec=b};var pd,ld,nd;_.md=function(a,b){var c=_.jd.j();if(a in c.j){if(c.j[a]!=b)throw new ld;}else{c.j[a]=b;if(b=c.o[a])for(let d=0,e=b.length;d<e;d++)b[d].j(c.j,a);delete c.o[a]}};_.od=function(a,b){if(b in a.j)return a.j[b];throw new nd;};_.jd=class{constructor(){this.j={};this.o={}}static j(){return _.id(_.jd)}};pd=class extends _.aa{constructor(){super()}};ld=class extends pd{};nd=class extends pd{};var sd=class{constructor(){var a=qd;this.C=rd;this.o=_.Ya(_.bc(a,2,.001),.001);this.D=_.t(_.E(a,1))&&Math.random()<this.o;this.F=_.Ya(_.ac(a,3,1),1);this.B=0;this.j=this.A=null}log(a,b){if(this.j){const d=new gc;_.r(d,1,a.message);_.r(d,2,a.stack);_.r(d,3,a.lineNumber);_.r(d,5,1);const e=new _.hc;_.G(e,40,d);this.j.log(98,e)}try{if(this.D&&this.B<this.F){try{var c=(this.A||_.od(_.jd.j(),"lm")).B(a,b)}catch(d){c=new _.tc(this.C,"quantum:gapiBuildLabel",a,this.o,b)}_.ed(c);this.B++}}catch(d){}}};var td=[1,2,3,4,5,6,9,10,11,13,14,28,29,30,34,35,37,38,39,40,42,43,48,49,50,51,52,53,62,500],vd=function(a){if(!ud){ud={};for(var b=0;b<td.length;b++)ud[td[b]]=!0}return!!ud[a]},wd=function(a){a=String(a);return a.replace(".","%2E").replace(",","%2C")},xd=class extends sc{constructor(a,b,c,d,e){super(a,"quantum:gapiBuildLabel");_.ab(this.data,{oge:c,ogex:_.v(_.C(a,9)),ogp:_.v(_.C(a,6)),ogsr:Math.round(1/(vd(c)?_.Ya(_.bc(b,3,1)):_.Ya(_.bc(b,2,1E-4)))),ogus:d});if(e){"ogw"in e&&(this.data.ogw=e.ogw,
+delete e.ogw);"ved"in e&&(this.data.ved=e.ved,delete e.ved);a=[];for(var f in e)0!=a.length&&a.push(","),a.push(wd(f)),a.push("."),a.push(wd(e[f]));e=a.join("");""!=e&&(this.data.ogad=e)}}},ud=null;var yd=class extends _.H{constructor(a){super(a)}};var Cd=class{constructor(){var a=zd,b=Ad,c=Bd;this.o=a;this.j=b;this.B=_.Ya(_.bc(a,2,1E-4),1E-4);this.D=_.Ya(_.bc(a,3,1),1);b=Math.random();this.A=_.t(_.E(a,1))&&b<this.B;this.C=_.t(_.E(a,1))&&b<this.D;a=0;_.t(_.E(c,1))&&(a|=1);_.t(_.E(c,2))&&(a|=2);_.t(_.E(c,3))&&(a|=4);this.F=a}log(a,b){try{if(vd(a)?this.C:this.A){var c=new xd(this.j,this.o,a,this.F,b);_.ed(c)}}catch(d){}}};var Ed;_.Dd=function(a){if(0<a.o.length){var b=void 0!==a.Ea,c=void 0!==a.j;if(b||c){b=b?a.A:a.B;c=a.o;a.o=[];try{_.kb(c,b,a)}catch(d){console.error(d)}}}};_.Fd=class{constructor(a){this.Ea=a;this.j=void 0;this.o=[]}then(a,b,c){this.o.push(new Ed(a,b,c));_.Dd(this)}resolve(a){if(void 0!==this.Ea||void 0!==this.j)throw Error("C");this.Ea=a;_.Dd(this)}A(a){a.o&&a.o.call(a.j,this.Ea)}B(a){a.A&&a.A.call(a.j,this.j)}};Ed=class{constructor(a,b,c){this.o=a;this.A=b;this.j=c}};_.J=class{constructor(){this.B=new _.Fd;this.j=new _.Fd;this.G=new _.Fd;this.D=new _.Fd;this.F=new _.Fd;this.H=new _.Fd;this.C=new _.Fd;this.A=new _.Fd;this.o=new _.Fd;this.J=new _.Fd}N(){return this.B}T(){return this.j}Fb(){return this.G}Oa(){return this.D}S(){return this.F}O(){return this.H}P(){return this.C}M(){return this.A}L(){return this.o}static j(){return _.id(_.J)}};var Kd;_.Hd=function(){return _.F(_.Gd,_.kc,1)};_.Id=function(){return _.F(_.Gd,_.lc,5)};Kd=class extends _.H{constructor(){super(Jd)}};var Jd;window.gbar_&&window.gbar_.CONFIG?Jd=window.gbar_.CONFIG[0]||{}:Jd=[];_.Gd=new Kd;var qd,rd,Ad,Bd,zd;qd=_.F(_.Gd,_.hd,3)||new _.hd;rd=_.Hd()||new _.kc;_.nc=new sd;Ad=_.Hd()||new _.kc;Bd=_.Id()||new _.lc;zd=_.F(_.Gd,yd,4)||new yd;_.Ld=new Cd;_.y("gbar_._DumpException",function(a){_.nc?_.nc.log(a):console.error(a)});_.Md=new oc;_.Ld.log(8,{m:"BackCompat"==document.compatMode?"q":"s"});_.y("gbar.A",_.Fd);_.Fd.prototype.aa=_.Fd.prototype.then;_.y("gbar.B",_.J);_.J.prototype.ba=_.J.prototype.T;_.J.prototype.bb=_.J.prototype.Fb;_.J.prototype.bd=_.J.prototype.S;_.J.prototype.bf=_.J.prototype.N;_.J.prototype.bg=_.J.prototype.Oa;_.J.prototype.bh=_.J.prototype.O;_.J.prototype.bi=_.J.prototype.P;_.J.prototype.bj=_.J.prototype.M;_.J.prototype.bk=_.J.prototype.L;_.y("gbar.a",_.J.j());var Nd=new mc;_.md("api",Nd);var Od=_.Id()||new _.lc;
+window.__PVT=_.v(_.C(Od,8));_.md("eq",_.Md);
+}catch(e){_._DumpException(e)}
+try{
+var Pd=class extends _.H{constructor(){super()}};var Qd=class extends _.I{constructor(){super();this.o=[];this.j=[]}A(a,b){this.o.push({features:a,options:b})}init(a,b,c){window.gapi={};var d=window.___jsl={};d.h=_.v(_.C(a,1));null!=_.C(a,12,!1)&&(d.dpo=_.t(_.E(a,12)));d.ms=_.v(_.C(a,2));d.m=_.v(_.C(a,3));d.l=[];_.C(b,1)&&(a=_.C(b,3))&&this.j.push(a);_.C(c,1)&&(c=_.C(c,2))&&this.j.push(c);_.y("gapi.load",(0,_.x)(this.A,this));return this}};var Rd=_.F(_.Gd,_.pc,14)||new _.pc,Sd=_.F(_.Gd,_.qc,9)||new _.qc,Td=new Pd,Ud=new Qd;Ud.init(Rd,Sd,Td);_.md("gs",Ud);
+}catch(e){_._DumpException(e)}
+})(this.gbar_);
+// Google Inc.
+</script><script id="ogb-head-script2">this.gbar_=this.gbar_||{};(function(_){var window=this;
+try{
+_.Vd=function(a,b,c){if(!a.o)if(c instanceof Array)for(var d of c)_.Vd(a,b,d);else{d=(0,_.x)(a.F,a,b);const e=a.B+c;a.B++;b.setAttribute("data-eqid",e);a.D[e]=d;b&&b.addEventListener?b.addEventListener(c,d,!1):b&&b.attachEvent?b.attachEvent("on"+c,d):a.A.log(Error("x`"+b))}};
+}catch(e){_._DumpException(e)}
+try{
+_.Wd=function(){if(!_.m.addEventListener||!Object.defineProperty)return!1;var a=!1,b=Object.defineProperty({},"passive",{get:function(){a=!0}});try{_.m.addEventListener("test",()=>{},b),_.m.removeEventListener("test",()=>{},b)}catch(c){}return a}();_.Xd=_.qb?"webkitTransitionEnd":"transitionend";
+}catch(e){_._DumpException(e)}
+try{
+var Yd=document.querySelector(".gb_K .gb_e"),Zd=document.querySelector("#gb.gb_Pc");Yd&&!Zd&&_.Vd(_.Md,Yd,"click");
+}catch(e){_._DumpException(e)}
+try{
+var Nh;_.Mh=function(a){if(a.B)return a.B;for(const b in a.j)if(a.j[b].wb()&&a.j[b].G())return a.j[b];return null};
+Nh=new class extends _.I{constructor(){var a=_.nc;super();this.J=a;this.B=null;this.o={};this.M={};this.j={};this.F=null}D(a){a&&_.Mh(this)&&a!=_.Mh(this)&&_.Mh(this).ua(!1);this.B=a}G(a){a=this.j[a]||a;return _.Mh(this)==a}A(a,b){b=b.S();if(this.o[a]&&this.o[a][b])for(let c=0;c<this.o[a][b].length;c++)try{this.o[a][b][c]()}catch(d){this.J.log(d)}}L(a){return!this.M[a.S()]}H(a){this.j[a]&&(_.Mh(this)&&_.Mh(this).S()==a||this.j[a].ua(!0))}Za(a){this.F=a;for(const b in this.j)this.j[b].wb()&&this.j[b].Za(a)}C(a){this.j[a.S()]=
+a}Ac(a){return a in this.j?this.j[a]:null}};_.md("dd",Nh);
+}catch(e){_._DumpException(e)}
+try{
+var lj=document.querySelector(".gb_b .gb_e"),mj=document.querySelector("#gb.gb_Pc");lj&&!mj&&_.Vd(_.Md,lj,"click");
+}catch(e){_._DumpException(e)}
+})(this.gbar_);
+// Google Inc.
+</script><script id="ogb-head-script3">this.gbar_=this.gbar_||{};(function(_){var window=this;
+try{
+_.$d=function(a,b){return 0<=_.jb(a,b)};_.ae=function(a){var b=typeof a;return"object"!=b?b:a?Array.isArray(a)?"array":b:"null"};_.be=function(a){var b=_.ae(a);return"array"==b||"object"==b&&"number"==typeof a.length};_.ce=function(a,b){var c=Array.prototype.slice.call(arguments,1);return function(){var d=c.slice();d.push.apply(d,arguments);return a.apply(this,d)}};try{(new self.OffscreenCanvas(0,0)).getContext("2d")}catch(a){}_.de=_.A||_.qb;_.ee=function(a,b){this.width=a;this.height=b};_.k=_.ee.prototype;_.k.aspectRatio=function(){return this.width/this.height};_.k.lc=function(){return!(this.width*this.height)};_.k.ceil=function(){this.width=Math.ceil(this.width);this.height=Math.ceil(this.height);return this};_.k.floor=function(){this.width=Math.floor(this.width);this.height=Math.floor(this.height);return this};_.k.round=function(){this.width=Math.round(this.width);this.height=Math.round(this.height);return this};var ge,je;_.fe=function(a,b){return(b||document).getElementsByTagName(String(a))};_.he=function(a,b){_.Za(b,function(c,d){c&&"object"==typeof c&&c.Xb&&(c=c.Hb());"style"==d?a.style.cssText=c:"class"==d?a.className=c:"for"==d?a.htmlFor=c:ge.hasOwnProperty(d)?a.setAttribute(ge[d],c):0==d.lastIndexOf("aria-",0)||0==d.lastIndexOf("data-",0)?a.setAttribute(d,c):a[d]=c})};
+ge={cellpadding:"cellPadding",cellspacing:"cellSpacing",colspan:"colSpan",frameborder:"frameBorder",height:"height",maxlength:"maxLength",nonce:"nonce",role:"role",rowspan:"rowSpan",type:"type",usemap:"useMap",valign:"vAlign",width:"width"};_.ke=function(a,b){var c=b[1],d=_.ie(a,String(b[0]));c&&("string"===typeof c?d.className=c:Array.isArray(c)?d.className=c.join(" "):_.he(d,c));2<b.length&&je(a,d,b);return d};
+je=function(a,b,c){function d(h){h&&b.appendChild("string"===typeof h?a.createTextNode(h):h)}for(var e=2;e<c.length;e++){var f=c[e];if(!_.be(f)||_.cb(f)&&0<f.nodeType)d(f);else{a:{if(f&&"number"==typeof f.length){if(_.cb(f)){var g="function"==typeof f.item||"string"==typeof f.item;break a}if("function"===typeof f){g="function"==typeof f.item;break a}}g=!1}_.kb(g?_.ma(f):f,d)}}};_.le=function(a){return _.ie(document,a)};
+_.ie=function(a,b){b=String(b);"application/xhtml+xml"===a.contentType&&(b=b.toLowerCase());return a.createElement(b)};_.me=function(a){for(var b;b=a.firstChild;)a.removeChild(b)};_.ne=function(a){return _.cb(a)&&1==a.nodeType};_.oe=function(a){return 9==a.nodeType?a:a.ownerDocument||a.document};_.pe=function(a,b){for(var c=0;a;){if(b(a))return a;a=a.parentNode;c++}return null};
+}catch(e){_._DumpException(e)}
+try{
+var Fe;_.Ce=function(a){return/^[\s\xa0]*$/.test(a)};_.De=function(a,b){if(void 0!==a.Ea||void 0!==a.j)throw Error("C");a.j=b;_.Dd(a)};_.Ee=class extends _.H{constructor(a){super(a)}};Fe=0;_.Ge=function(a){return Object.prototype.hasOwnProperty.call(a,_.db)&&a[_.db]||(a[_.db]=++Fe)};_.He=function(a){return _.od(_.jd.j(),a)};
+}catch(e){_._DumpException(e)}
+try{
+_.qj=function(a,b,c){a.rel=c;-1!=c.toLowerCase().indexOf("stylesheet")?(a.href=_.Cc(b),(b=_.ad(a.ownerDocument&&a.ownerDocument.defaultView))&&a.setAttribute("nonce",b)):a.href=b instanceof _.Ac?_.Cc(b):b instanceof _.Ec?_.Fc(b):_.Fc(_.Kc(b))};
+}catch(e){_._DumpException(e)}
+try{
+_.rj=function(a){const b=_.vc();a=b?b.createScriptURL(a):a;return new _.Ac(a,_.zc)};/*
+
+ SPDX-License-Identifier: Apache-2.0
+*/
+var sj;try{new URL("s://g"),sj=!0}catch(a){sj=!1}_.tj=sj;
+}catch(e){_._DumpException(e)}
+try{
+_.uj=function(a){var b;let c;const d=null==(c=(b=(a.ownerDocument&&a.ownerDocument.defaultView||window).document).querySelector)?void 0:c.call(b,"script[nonce]");(b=d?d.nonce||d.getAttribute("nonce")||"":"")&&a.setAttribute("nonce",b)};
+}catch(e){_._DumpException(e)}
+try{
+var vj=function(a,b,c){_.Ld.log(46,{att:a,max:b,url:c})},xj=function(a,b,c){_.Ld.log(47,{att:a,max:b,url:c});a<b?wj(a+1,b):_.nc.log(Error("aa`"+a+"`"+b),{url:c})},wj=function(a,b){if(yj){const d=_.le("SCRIPT");d.async=!0;d.type="text/javascript";d.charset="UTF-8";var c=d;c.src=_.Bc(yj);_.uj(c);d.onload=_.ce(vj,a,b,d.src);d.onerror=_.ce(xj,a,b,d.src);_.Ld.log(45,{att:a,max:b,url:d.src});_.fe("HEAD")[0].appendChild(d)}},zj=class extends _.H{constructor(a){super(a)}},Aj=_.F(_.Gd,zj,17)||new zj,Bj,yj=
+(Bj=_.F(Aj,_.ic,1))?_.rj(_.C(Bj,4)||""):null,Cj,Dj=(Cj=_.F(Aj,_.ic,2))?_.rj(_.C(Cj,4)||""):null,Ej=function(){wj(1,2);if(Dj){const a=_.le("LINK");a.setAttribute("type","text/css");_.qj(a,Dj,"stylesheet");let b=_.ad();b&&a.setAttribute("nonce",b);_.fe("HEAD")[0].appendChild(a)}};(function(){const a=_.Hd();if(_.E(a,18))Ej();else{const b=_.C(a,19)||0;window.addEventListener("load",()=>{window.setTimeout(Ej,b)})}})();
+}catch(e){_._DumpException(e)}
+})(this.gbar_);
+// Google Inc.
+</script><script async="" type="text/javascript" charset="UTF-8" src="Normalizaci%C3%B3n%20Machine%20Learning%20Google%20Developers_files/rs=AA2YrTu5iFyPHKjIg4bk8v4hyk16pTWzzg" nonce=""></script><link type="text/css" rel="stylesheet" href="Normalizaci%C3%B3n%20Machine%20Learning%20Google%20Developers_files/rs=AA2YrTtZQaaLGWgX9yj-a2RCfh7W2MIOvA.css"><style type="text/css">.MathJax_Hover_Frame {border-radius: .25em; -webkit-border-radius: .25em; -moz-border-radius: .25em; -khtml-border-radius: .25em; box-shadow: 0px 0px 15px #83A; -webkit-box-shadow: 0px 0px 15px #83A; -moz-box-shadow: 0px 0px 15px #83A; -khtml-box-shadow: 0px 0px 15px #83A; border: 1px solid #A6D ! important; display: inline-block; position: absolute}
+.MathJax_Menu_Button .MathJax_Hover_Arrow {position: absolute; cursor: pointer; display: inline-block; border: 2px solid #AAA; border-radius: 4px; -webkit-border-radius: 4px; -moz-border-radius: 4px; -khtml-border-radius: 4px; font-family: 'Courier New',Courier; font-size: 9px; color: #F0F0F0}
+.MathJax_Menu_Button .MathJax_Hover_Arrow span {display: block; background-color: #AAA; border: 1px solid; border-radius: 3px; line-height: 0; padding: 4px}
+.MathJax_Hover_Arrow:hover {color: white!important; border: 2px solid #CCC!important}
+.MathJax_Hover_Arrow:hover span {background-color: #CCC!important}
+</style><style type="text/css">#MathJax_About {position: fixed; left: 50%; width: auto; text-align: center; border: 3px outset; padding: 1em 2em; background-color: #DDDDDD; color: black; cursor: default; font-family: message-box; font-size: 120%; font-style: normal; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; z-index: 201; border-radius: 15px; -webkit-border-radius: 15px; -moz-border-radius: 15px; -khtml-border-radius: 15px; box-shadow: 0px 10px 20px #808080; -webkit-box-shadow: 0px 10px 20px #808080; -moz-box-shadow: 0px 10px 20px #808080; -khtml-box-shadow: 0px 10px 20px #808080; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+#MathJax_About.MathJax_MousePost {outline: none}
+.MathJax_Menu {position: absolute; background-color: white; color: black; width: auto; padding: 2px; border: 1px solid #CCCCCC; margin: 0; cursor: default; font: menu; text-align: left; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; z-index: 201; box-shadow: 0px 10px 20px #808080; -webkit-box-shadow: 0px 10px 20px #808080; -moz-box-shadow: 0px 10px 20px #808080; -khtml-box-shadow: 0px 10px 20px #808080; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+.MathJax_MenuItem {padding: 2px 2em; background: transparent}
+.MathJax_MenuArrow {position: absolute; right: .5em; padding-top: .25em; color: #666666; font-size: .75em}
+.MathJax_MenuActive .MathJax_MenuArrow {color: white}
+.MathJax_MenuArrow.RTL {left: .5em; right: auto}
+.MathJax_MenuCheck {position: absolute; left: .7em}
+.MathJax_MenuCheck.RTL {right: .7em; left: auto}
+.MathJax_MenuRadioCheck {position: absolute; left: 1em}
+.MathJax_MenuRadioCheck.RTL {right: 1em; left: auto}
+.MathJax_MenuLabel {padding: 2px 2em 4px 1.33em; font-style: italic}
+.MathJax_MenuRule {border-top: 1px solid #CCCCCC; margin: 4px 1px 0px}
+.MathJax_MenuDisabled {color: GrayText}
+.MathJax_MenuActive {background-color: Highlight; color: HighlightText}
+.MathJax_MenuDisabled:focus, .MathJax_MenuLabel:focus {background-color: #E8E8E8}
+.MathJax_ContextMenu:focus {outline: none}
+.MathJax_ContextMenu .MathJax_MenuItem:focus {outline: none}
+#MathJax_AboutClose {top: .2em; right: .2em}
+.MathJax_Menu .MathJax_MenuClose {top: -10px; left: -10px}
+.MathJax_MenuClose {position: absolute; cursor: pointer; display: inline-block; border: 2px solid #AAA; border-radius: 18px; -webkit-border-radius: 18px; -moz-border-radius: 18px; -khtml-border-radius: 18px; font-family: 'Courier New',Courier; font-size: 24px; color: #F0F0F0}
+.MathJax_MenuClose span {display: block; background-color: #AAA; border: 1.5px solid; border-radius: 18px; -webkit-border-radius: 18px; -moz-border-radius: 18px; -khtml-border-radius: 18px; line-height: 0; padding: 8px 0 6px}
+.MathJax_MenuClose:hover {color: white!important; border: 2px solid #CCC!important}
+.MathJax_MenuClose:hover span {background-color: #CCC!important}
+.MathJax_MenuClose:hover:focus {outline: none}
+</style><style type="text/css">.MathJax_Preview .MJXf-math {color: inherit!important}
+</style><style type="text/css">.MJX_Assistive_MathML {position: absolute!important; top: 0; left: 0; clip: rect(1px, 1px, 1px, 1px); padding: 1px 0 0 0!important; border: 0!important; height: 1px!important; width: 1px!important; overflow: hidden!important; display: block!important; -webkit-touch-callout: none; -webkit-user-select: none; -khtml-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none}
+.MJX_Assistive_MathML.MJX_Assistive_MathML_Block {width: 100%!important}
+</style><style type="text/css">#MathJax_Zoom {position: absolute; background-color: #F0F0F0; overflow: auto; display: block; z-index: 301; padding: .5em; border: 1px solid black; margin: 0; font-weight: normal; font-style: normal; text-align: left; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; -webkit-box-sizing: content-box; -moz-box-sizing: content-box; box-sizing: content-box; box-shadow: 5px 5px 15px #AAAAAA; -webkit-box-shadow: 5px 5px 15px #AAAAAA; -moz-box-shadow: 5px 5px 15px #AAAAAA; -khtml-box-shadow: 5px 5px 15px #AAAAAA; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+#MathJax_ZoomOverlay {position: absolute; left: 0; top: 0; z-index: 300; display: inline-block; width: 100%; height: 100%; border: 0; padding: 0; margin: 0; background-color: white; opacity: 0; filter: alpha(opacity=0)}
+#MathJax_ZoomFrame {position: relative; display: inline-block; height: 0; width: 0}
+#MathJax_ZoomEventTrap {position: absolute; left: 0; top: 0; z-index: 302; display: inline-block; border: 0; padding: 0; margin: 0; background-color: white; opacity: 0; filter: alpha(opacity=0)}
+</style><style type="text/css">.MathJax_Preview {color: #888}
+#MathJax_Message {position: fixed; left: 1px; bottom: 2px; background-color: #E6E6E6; border: 1px solid #959595; margin: 0px; padding: 2px 8px; z-index: 102; color: black; font-size: 80%; width: auto; white-space: nowrap}
+#MathJax_MSIE_Frame {position: absolute; top: 0; left: 0; width: 0px; z-index: 101; border: 0px; margin: 0px; padding: 0px}
+.MathJax_Error {color: #CC0000; font-style: italic}
+</style><style type="text/css">.MJXp-script {font-size: .8em}
+.MJXp-right {-webkit-transform-origin: right; -moz-transform-origin: right; -ms-transform-origin: right; -o-transform-origin: right; transform-origin: right}
+.MJXp-bold {font-weight: bold}
+.MJXp-italic {font-style: italic}
+.MJXp-scr {font-family: MathJax_Script,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-frak {font-family: MathJax_Fraktur,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-sf {font-family: MathJax_SansSerif,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-cal {font-family: MathJax_Caligraphic,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-mono {font-family: MathJax_Typewriter,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-largeop {font-size: 150%}
+.MJXp-largeop.MJXp-int {vertical-align: -.2em}
+.MJXp-math {display: inline-block; line-height: 1.2; text-indent: 0; font-family: 'Times New Roman',Times,STIXGeneral,serif; white-space: nowrap; border-collapse: collapse}
+.MJXp-display {display: block; text-align: center; margin: 1em 0}
+.MJXp-math span {display: inline-block}
+.MJXp-box {display: block!important; text-align: center}
+.MJXp-box:after {content: " "}
+.MJXp-rule {display: block!important; margin-top: .1em}
+.MJXp-char {display: block!important}
+.MJXp-mo {margin: 0 .15em}
+.MJXp-mfrac {margin: 0 .125em; vertical-align: .25em}
+.MJXp-denom {display: inline-table!important; width: 100%}
+.MJXp-denom > * {display: table-row!important}
+.MJXp-surd {vertical-align: top}
+.MJXp-surd > * {display: block!important}
+.MJXp-script-box > *  {display: table!important; height: 50%}
+.MJXp-script-box > * > * {display: table-cell!important; vertical-align: top}
+.MJXp-script-box > *:last-child > * {vertical-align: bottom}
+.MJXp-script-box > * > * > * {display: block!important}
+.MJXp-mphantom {visibility: hidden}
+.MJXp-munderover, .MJXp-munder {display: inline-table!important}
+.MJXp-over {display: inline-block!important; text-align: center}
+.MJXp-over > * {display: block!important}
+.MJXp-munderover > *, .MJXp-munder > * {display: table-row!important}
+.MJXp-mtable {vertical-align: .25em; margin: 0 .125em}
+.MJXp-mtable > * {display: inline-table!important; vertical-align: middle}
+.MJXp-mtr {display: table-row!important}
+.MJXp-mtd {display: table-cell!important; text-align: center; padding: .5em 0 0 .5em}
+.MJXp-mtr > .MJXp-mtd:first-child {padding-left: 0}
+.MJXp-mtr:first-child > .MJXp-mtd {padding-top: 0}
+.MJXp-mlabeledtr {display: table-row!important}
+.MJXp-mlabeledtr > .MJXp-mtd:first-child {padding-left: 0}
+.MJXp-mlabeledtr:first-child > .MJXp-mtd {padding-top: 0}
+.MJXp-merror {background-color: #FFFF88; color: #CC0000; border: 1px solid #CC0000; padding: 1px 3px; font-style: normal; font-size: 90%}
+.MJXp-scale0 {-webkit-transform: scaleX(.0); -moz-transform: scaleX(.0); -ms-transform: scaleX(.0); -o-transform: scaleX(.0); transform: scaleX(.0)}
+.MJXp-scale1 {-webkit-transform: scaleX(.1); -moz-transform: scaleX(.1); -ms-transform: scaleX(.1); -o-transform: scaleX(.1); transform: scaleX(.1)}
+.MJXp-scale2 {-webkit-transform: scaleX(.2); -moz-transform: scaleX(.2); -ms-transform: scaleX(.2); -o-transform: scaleX(.2); transform: scaleX(.2)}
+.MJXp-scale3 {-webkit-transform: scaleX(.3); -moz-transform: scaleX(.3); -ms-transform: scaleX(.3); -o-transform: scaleX(.3); transform: scaleX(.3)}
+.MJXp-scale4 {-webkit-transform: scaleX(.4); -moz-transform: scaleX(.4); -ms-transform: scaleX(.4); -o-transform: scaleX(.4); transform: scaleX(.4)}
+.MJXp-scale5 {-webkit-transform: scaleX(.5); -moz-transform: scaleX(.5); -ms-transform: scaleX(.5); -o-transform: scaleX(.5); transform: scaleX(.5)}
+.MJXp-scale6 {-webkit-transform: scaleX(.6); -moz-transform: scaleX(.6); -ms-transform: scaleX(.6); -o-transform: scaleX(.6); transform: scaleX(.6)}
+.MJXp-scale7 {-webkit-transform: scaleX(.7); -moz-transform: scaleX(.7); -ms-transform: scaleX(.7); -o-transform: scaleX(.7); transform: scaleX(.7)}
+.MJXp-scale8 {-webkit-transform: scaleX(.8); -moz-transform: scaleX(.8); -ms-transform: scaleX(.8); -o-transform: scaleX(.8); transform: scaleX(.8)}
+.MJXp-scale9 {-webkit-transform: scaleX(.9); -moz-transform: scaleX(.9); -ms-transform: scaleX(.9); -o-transform: scaleX(.9); transform: scaleX(.9)}
+.MathJax_PHTML .noError {vertical-align: ; font-size: 90%; text-align: left; color: black; padding: 1px 3px; border: 1px solid}
+</style><script type="text/javascript" charset="UTF-8" nonce="" src="Normalizaci%C3%B3n%20Machine%20Learning%20Google%20Developers_files/api.js" gapi_processed="true"></script><style type="text/css">.MathJax_SVG_Display {text-align: center; margin: 1em 0em; position: relative; display: block!important; text-indent: 0; max-width: none; max-height: none; min-width: 0; min-height: 0; width: 100%}
+.MathJax_SVG .MJX-monospace {font-family: monospace}
+.MathJax_SVG .MJX-sans-serif {font-family: sans-serif}
+#MathJax_SVG_Tooltip {background-color: InfoBackground; color: InfoText; border: 1px solid black; box-shadow: 2px 2px 5px #AAAAAA; -webkit-box-shadow: 2px 2px 5px #AAAAAA; -moz-box-shadow: 2px 2px 5px #AAAAAA; -khtml-box-shadow: 2px 2px 5px #AAAAAA; padding: 3px 4px; z-index: 401; position: absolute; left: 0; top: 0; width: auto; height: auto; display: none}
+.MathJax_SVG {display: inline; font-style: normal; font-weight: normal; line-height: normal; font-size: 100%; font-size-adjust: none; text-indent: 0; text-align: left; text-transform: none; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; direction: ltr; max-width: none; max-height: none; min-width: 0; min-height: 0; border: 0; padding: 0; margin: 0}
+.MathJax_SVG * {transition: none; -webkit-transition: none; -moz-transition: none; -ms-transition: none; -o-transition: none}
+.MathJax_SVG > div {display: inline-block}
+.mjx-svg-href {fill: blue; stroke: blue}
+.MathJax_SVG_Processing {visibility: hidden; position: absolute; top: 0; left: 0; width: 0; height: 0; overflow: hidden; display: block!important}
+.MathJax_SVG_Processed {display: none!important}
+.MathJax_SVG_test {font-style: normal; font-weight: normal; font-size: 100%; font-size-adjust: none; text-indent: 0; text-transform: none; letter-spacing: normal; word-spacing: normal; overflow: hidden; height: 1px}
+.MathJax_SVG_test.mjx-test-display {display: table!important}
+.MathJax_SVG_test.mjx-test-inline {display: inline!important; margin-right: -1px}
+.MathJax_SVG_test.mjx-test-default {display: block!important; clear: both}
+.MathJax_SVG_ex_box {display: inline-block!important; position: absolute; overflow: hidden; min-height: 0; max-height: none; padding: 0; border: 0; margin: 0; width: 1px; height: 60ex}
+.mjx-test-inline .MathJax_SVG_left_box {display: inline-block; width: 0; float: left}
+.mjx-test-inline .MathJax_SVG_right_box {display: inline-block; width: 0; float: right}
+.mjx-test-display .MathJax_SVG_right_box {display: table-cell!important; width: 10000em!important; min-width: 0; max-width: none; padding: 0; border: 0; margin: 0}
+.MathJax_SVG .noError {vertical-align: ; font-size: 90%; text-align: left; color: black; padding: 1px 3px; border: 1px solid}
+</style></head>
+  <body class="" template="page" theme="white" type="article" layout="docs" touch="" style="--devsite-js-header-height: 48.80000305175781px; --devsite-panel-height: 0px;" ready="" signed-in=""><div style="visibility: hidden; overflow: hidden; position: absolute; top: 0px; height: 1px; width: auto; padding: 0px; border: 0px none; margin: 0px; text-align: left; text-indent: 0px; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal;"><div id="MathJax_SVG_Hidden"></div><svg><defs id="MathJax_SVG_glyphs"><path stroke-width="1" id="MJMATHI-78" d="M52 289Q59 331 106 386T222 442Q257 442 286 424T329 379Q371 442 430 442Q467 442 494 420T522 361Q522 332 508 314T481 292T458 288Q439 288 427 299T415 328Q415 374 465 391Q454 404 425 404Q412 404 406 402Q368 386 350 336Q290 115 290 78Q290 50 306 38T341 26Q378 26 414 59T463 140Q466 150 469 151T485 153H489Q504 153 504 145Q504 144 502 134Q486 77 440 33T333 -11Q263 -11 227 52Q186 -10 133 -10H127Q78 -10 57 16T35 71Q35 103 54 123T99 143Q142 143 142 101Q142 81 130 66T107 46T94 41L91 40Q91 39 97 36T113 29T132 26Q168 26 194 71Q203 87 217 139T245 247T261 313Q266 340 266 352Q266 380 251 392T217 404Q177 404 142 372T93 290Q91 281 88 280T72 278H58Q52 284 52 289Z"></path><path stroke-width="1" id="MJMAIN-2032" d="M79 43Q73 43 52 49T30 61Q30 68 85 293T146 528Q161 560 198 560Q218 560 240 545T262 501Q262 496 260 486Q259 479 173 263T84 45T79 43Z"></path><path stroke-width="1" id="MJMAIN-3D" d="M56 347Q56 360 70 367H707Q722 359 722 347Q722 336 708 328L390 327H72Q56 332 56 347ZM56 153Q56 168 72 173H708Q722 163 722 153Q722 140 707 133H70Q56 140 56 153Z"></path><path stroke-width="1" id="MJMAIN-28" d="M94 250Q94 319 104 381T127 488T164 576T202 643T244 695T277 729T302 750H315H319Q333 750 333 741Q333 738 316 720T275 667T226 581T184 443T167 250T184 58T225 -81T274 -167T316 -220T333 -241Q333 -250 318 -250H315H302L274 -226Q180 -141 137 -14T94 250Z"></path><path stroke-width="1" id="MJMAIN-2212" d="M84 237T84 250T98 270H679Q694 262 694 250T679 230H98Q84 237 84 250Z"></path><path stroke-width="1" id="MJMATHI-6D" d="M21 287Q22 293 24 303T36 341T56 388T88 425T132 442T175 435T205 417T221 395T229 376L231 369Q231 367 232 367L243 378Q303 442 384 442Q401 442 415 440T441 433T460 423T475 411T485 398T493 385T497 373T500 364T502 357L510 367Q573 442 659 442Q713 442 746 415T780 336Q780 285 742 178T704 50Q705 36 709 31T724 26Q752 26 776 56T815 138Q818 149 821 151T837 153Q857 153 857 145Q857 144 853 130Q845 101 831 73T785 17T716 -10Q669 -10 648 17T627 73Q627 92 663 193T700 345Q700 404 656 404H651Q565 404 506 303L499 291L466 157Q433 26 428 16Q415 -11 385 -11Q372 -11 364 -4T353 8T350 18Q350 29 384 161L420 307Q423 322 423 345Q423 404 379 404H374Q288 404 229 303L222 291L189 157Q156 26 151 16Q138 -11 108 -11Q95 -11 87 -5T76 7T74 17Q74 30 112 181Q151 335 151 342Q154 357 154 369Q154 405 129 405Q107 405 92 377T69 316T57 280Q55 278 41 278H27Q21 284 21 287Z"></path><path stroke-width="1" id="MJMATHI-69" d="M184 600Q184 624 203 642T247 661Q265 661 277 649T290 619Q290 596 270 577T226 557Q211 557 198 567T184 600ZM21 287Q21 295 30 318T54 369T98 420T158 442Q197 442 223 419T250 357Q250 340 236 301T196 196T154 83Q149 61 149 51Q149 26 166 26Q175 26 185 29T208 43T235 78T260 137Q263 149 265 151T282 153Q302 153 302 143Q302 135 293 112T268 61T223 11T161 -11Q129 -11 102 10T74 74Q74 91 79 106T122 220Q160 321 166 341T173 380Q173 404 156 404H154Q124 404 99 371T61 287Q60 286 59 284T58 281T56 279T53 278T49 278T41 278H27Q21 284 21 287Z"></path><path stroke-width="1" id="MJMATHI-6E" d="M21 287Q22 293 24 303T36 341T56 388T89 425T135 442Q171 442 195 424T225 390T231 369Q231 367 232 367L243 378Q304 442 382 442Q436 442 469 415T503 336T465 179T427 52Q427 26 444 26Q450 26 453 27Q482 32 505 65T540 145Q542 153 560 153Q580 153 580 145Q580 144 576 130Q568 101 554 73T508 17T439 -10Q392 -10 371 17T350 73Q350 92 386 193T423 345Q423 404 379 404H374Q288 404 229 303L222 291L189 157Q156 26 151 16Q138 -11 108 -11Q95 -11 87 -5T76 7T74 17Q74 30 112 180T152 343Q153 348 153 366Q153 405 129 405Q91 405 66 305Q60 285 60 284Q58 278 41 278H27Q21 284 21 287Z"></path><path stroke-width="1" id="MJMAIN-29" d="M60 749L64 750Q69 750 74 750H86L114 726Q208 641 251 514T294 250Q294 182 284 119T261 12T224 -76T186 -143T145 -194T113 -227T90 -246Q87 -249 86 -250H74Q66 -250 63 -250T58 -247T55 -238Q56 -237 66 -225Q221 -64 221 250T66 725Q56 737 55 738Q55 746 60 749Z"></path><path stroke-width="1" id="MJMAIN-2F" d="M423 750Q432 750 438 744T444 730Q444 725 271 248T92 -240Q85 -250 75 -250Q68 -250 62 -245T56 -231Q56 -221 230 257T407 740Q411 750 423 750Z"></path><path stroke-width="1" id="MJMATHI-61" d="M33 157Q33 258 109 349T280 441Q331 441 370 392Q386 422 416 422Q429 422 439 414T449 394Q449 381 412 234T374 68Q374 43 381 35T402 26Q411 27 422 35Q443 55 463 131Q469 151 473 152Q475 153 483 153H487Q506 153 506 144Q506 138 501 117T481 63T449 13Q436 0 417 -8Q409 -10 393 -10Q359 -10 336 5T306 36L300 51Q299 52 296 50Q294 48 292 46Q233 -10 172 -10Q117 -10 75 30T33 157ZM351 328Q351 334 346 350T323 385T277 405Q242 405 210 374T160 293Q131 214 119 129Q119 126 119 118T118 106Q118 61 136 44T179 26Q217 26 254 59T298 110Q300 114 325 217T351 328Z"></path><path stroke-width="1" id="MJMATHI-6C" d="M117 59Q117 26 142 26Q179 26 205 131Q211 151 215 152Q217 153 225 153H229Q238 153 241 153T246 151T248 144Q247 138 245 128T234 90T214 43T183 6T137 -11Q101 -11 70 11T38 85Q38 97 39 102L104 360Q167 615 167 623Q167 626 166 628T162 632T157 634T149 635T141 636T132 637T122 637Q112 637 109 637T101 638T95 641T94 647Q94 649 96 661Q101 680 107 682T179 688Q194 689 213 690T243 693T254 694Q266 694 266 686Q266 675 193 386T118 83Q118 81 118 75T117 65V59Z"></path><path stroke-width="1" id="MJMATHI-6F" d="M201 -11Q126 -11 80 38T34 156Q34 221 64 279T146 380Q222 441 301 441Q333 441 341 440Q354 437 367 433T402 417T438 387T464 338T476 268Q476 161 390 75T201 -11ZM121 120Q121 70 147 48T206 26Q250 26 289 58T351 142Q360 163 374 216T388 308Q388 352 370 375Q346 405 306 405Q243 405 195 347Q158 303 140 230T121 120Z"></path><path stroke-width="1" id="MJMATHI-67" d="M311 43Q296 30 267 15T206 0Q143 0 105 45T66 160Q66 265 143 353T314 442Q361 442 401 394L404 398Q406 401 409 404T418 412T431 419T447 422Q461 422 470 413T480 394Q480 379 423 152T363 -80Q345 -134 286 -169T151 -205Q10 -205 10 -137Q10 -111 28 -91T74 -71Q89 -71 102 -80T116 -111Q116 -121 114 -130T107 -144T99 -154T92 -162L90 -164H91Q101 -167 151 -167Q189 -167 211 -155Q234 -144 254 -122T282 -75Q288 -56 298 -13Q311 35 311 43ZM384 328L380 339Q377 350 375 354T369 368T359 382T346 393T328 402T306 405Q262 405 221 352Q191 313 171 233T151 117Q151 38 213 38Q269 38 323 108L331 118L384 328Z"></path><path stroke-width="1" id="MJMATHI-3BC" d="M58 -216Q44 -216 34 -208T23 -186Q23 -176 96 116T173 414Q186 442 219 442Q231 441 239 435T249 423T251 413Q251 401 220 279T187 142Q185 131 185 107V99Q185 26 252 26Q261 26 270 27T287 31T302 38T315 45T327 55T338 65T348 77T356 88T365 100L372 110L408 253Q444 395 448 404Q461 431 491 431Q504 431 512 424T523 412T525 402L449 84Q448 79 448 68Q448 43 455 35T476 26Q485 27 496 35Q517 55 537 131Q543 151 547 152Q549 153 557 153H561Q580 153 580 144Q580 138 575 117T555 63T523 13Q510 0 491 -8Q483 -10 467 -10Q446 -10 429 -4T402 11T385 29T376 44T374 51L368 45Q362 39 350 30T324 12T288 -4T246 -11Q199 -11 153 12L129 -85Q108 -167 104 -180T92 -202Q76 -216 58 -216Z"></path><path stroke-width="1" id="MJMATHI-3C3" d="M184 -11Q116 -11 74 34T31 147Q31 247 104 333T274 430Q275 431 414 431H552Q553 430 555 429T559 427T562 425T565 422T567 420T569 416T570 412T571 407T572 401Q572 357 507 357Q500 357 490 357T476 358H416L421 348Q439 310 439 263Q439 153 359 71T184 -11ZM361 278Q361 358 276 358Q152 358 115 184Q114 180 114 178Q106 141 106 117Q106 67 131 47T188 26Q242 26 287 73Q316 103 334 153T356 233T361 278Z"></path></defs></svg></div><div id="MathJax_Message" style="display: none;"></div>
+    <devsite-progress id="app-progress"></devsite-progress>
+  
+    <section class="devsite-wrapper"><devsite-header top-row--height="48.80000305175781" bottom-row--height="108" bottom-tabs--height="48" fixed="" offset="108" bottom-row--hidden="">
+  
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="devsite-header--inner nocontent">
+  <div class="devsite-top-logo-row-wrapper-wrapper">
+    <div class="devsite-top-logo-row-wrapper">
+      <div class="devsite-top-logo-row">
+        <button type="button" id="devsite-hamburger-menu" class="devsite-header-icon-button button-flat material-icons gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Navigation menu button" aria-label="Abrir menú">
+        </button>
+        <div class="devsite-product-name-wrapper">
+
+  
+    
+  
+
+
+
+  
+  
+  <span class="devsite-product-name">
+    <ul class="devsite-breadcrumb-list">
+  
+  <li class="devsite-breadcrumb-item
+             ">
+    
+    
+    
+      
+      
+        
+  <a href="https://developers.google.com/machine-learning" class="devsite-breadcrumb-link gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Upper Header" data-value="1" track-type="globalNav" track-name="breadcrumb" track-metadata-position="1" track-metadata-eventdetail="Machine Learning">
+    
+          Machine Learning
+        
+  </a>
+  
+      
+    
+  </li>
+  
+</ul>
+  </span>
+
+</div>
+        <div class="devsite-top-logo-row-middle">
+          <div class="devsite-header-upper-tabs">
+            
+              
+              
+  <devsite-tabs class="upper-tabs" connected="">
+
+    
+
+  <nav class="devsite-tabs-wrapper" aria-label="Pestañas superiores">
+      
+        
+          <tab active="">
+            
+    <a href="https://developers.google.com/machine-learning/foundational-courses" track-metadata-eventdetail="https://developers.google.com/machine-learning/foundational-courses" class="devsite-tabs-content gc-analytics-event " track-type="nav" track-metadata-position="nav - cursos básicos" track-metadata-module="primary nav" aria-label="Cursos básicos, selected" data-category="Site-Wide Custom Events" data-label="Tab: Cursos básicos" track-name="cursos básicos">
+    Cursos básicos
+  
+    </a>
+  
+  
+          </tab>
+        
+      
+        
+          <tab>
+            
+    <a href="https://developers.google.com/machine-learning/advanced-courses" track-metadata-eventdetail="https://developers.google.com/machine-learning/advanced-courses" class="devsite-tabs-content gc-analytics-event " track-type="nav" track-metadata-position="nav - cursos avanzados" track-metadata-module="primary nav" data-category="Site-Wide Custom Events" data-label="Tab: Cursos avanzados" track-name="cursos avanzados">
+    Cursos avanzados
+  
+    </a>
+  
+  
+          </tab>
+        
+      
+        
+          <tab>
+            
+    <a href="https://developers.google.com/machine-learning/guides" track-metadata-eventdetail="https://developers.google.com/machine-learning/guides" class="devsite-tabs-content gc-analytics-event " track-type="nav" track-metadata-position="nav - guías" track-metadata-module="primary nav" data-category="Site-Wide Custom Events" data-label="Tab: Guías" track-name="guías">
+    Guías
+  
+    </a>
+  
+  
+          </tab>
+        
+      
+        
+          <tab dropdown="">
+  
+    <a href="https://developers.google.com/machine-learning/glossary" track-metadata-eventdetail="https://developers.google.com/machine-learning/glossary" class="devsite-tabs-content gc-analytics-event " track-type="nav" track-metadata-position="nav - glosario" track-metadata-module="primary nav" data-category="Site-Wide Custom Events" data-label="Tab: Glosario" track-name="glosario">
+    Glosario
+  
+    </a>
+  
+  
+    <a href="#" role="button" aria-haspopup="true" aria-expanded="false" aria-label="Menú desplegable de Glosario" track-type="nav" track-metadata-eventdetail="https://developers.google.com/machine-learning/glossary" track-metadata-position="nav - glosario" track-metadata-module="primary nav" data-category="Site-Wide Custom Events" data-label="Tab: Glosario" track-name="glosario" class="devsite-tabs-dropdown-toggle devsite-icon devsite-icon-arrow-drop-down"></a>
+  
+  <div class="devsite-tabs-dropdown" aria-label="submenu" hidden="">
+    
+    <div class="devsite-tabs-dropdown-content">
+      
+        <div class="devsite-tabs-dropdown-column
+                    ">
+          
+            <ul class="devsite-tabs-dropdown-section
+                       ">
+              
+              
+              
+                <li class="devsite-nav-item">
+                  <a href="https://developers.google.com/machine-learning/glossary" track-type="nav" track-metadata-eventdetail="https://developers.google.com/machine-learning/glossary" track-metadata-position="nav - glosario" track-metadata-module="tertiary nav" tooltip="">
+                    
+                    <div class="devsite-nav-item-title">
+                      
+    Todos los términos
+  
+
+                    </div>
+                    
+                  </a>
+                </li>
+              
+                <li class="devsite-nav-item">
+                  <a href="https://developers.google.com/machine-learning/glossary/clustering" track-type="nav" track-metadata-eventdetail="https://developers.google.com/machine-learning/glossary/clustering" track-metadata-position="nav - glosario" track-metadata-module="tertiary nav" tooltip="">
+                    
+                    <div class="devsite-nav-item-title">
+                      
+    Agrupación en clústeres
+  
+
+                    </div>
+                    
+                  </a>
+                </li>
+              
+                <li class="devsite-nav-item">
+                  <a href="https://developers.google.com/machine-learning/glossary/df" track-type="nav" track-metadata-eventdetail="https://developers.google.com/machine-learning/glossary/df" track-metadata-position="nav - glosario" track-metadata-module="tertiary nav" tooltip="">
+                    
+                    <div class="devsite-nav-item-title">
+                      
+    Bosques de decisión
+  
+
+                    </div>
+                    
+                  </a>
+                </li>
+              
+                <li class="devsite-nav-item">
+                  <a href="https://developers.google.com/machine-learning/glossary/fairness" track-type="nav" track-metadata-eventdetail="https://developers.google.com/machine-learning/glossary/fairness" track-metadata-position="nav - glosario" track-metadata-module="tertiary nav" tooltip="">
+                    
+                    <div class="devsite-nav-item-title">
+                      
+    Equidad
+  
+
+                    </div>
+                    
+                  </a>
+                </li>
+              
+                <li class="devsite-nav-item">
+                  <a href="https://developers.google.com/machine-learning/glossary/fundamentals" track-type="nav" track-metadata-eventdetail="https://developers.google.com/machine-learning/glossary/fundamentals" track-metadata-position="nav - glosario" track-metadata-module="tertiary nav" tooltip="">
+                    
+                    <div class="devsite-nav-item-title">
+                      
+    Fundamentos
+  
+
+                    </div>
+                    
+                  </a>
+                </li>
+              
+                <li class="devsite-nav-item">
+                  <a href="https://developers.google.com/machine-learning/glossary/googlecloud" track-type="nav" track-metadata-eventdetail="https://developers.google.com/machine-learning/glossary/googlecloud" track-metadata-position="nav - glosario" track-metadata-module="tertiary nav" tooltip="">
+                    
+                    <div class="devsite-nav-item-title">
+                      
+    GCP
+  
+
+                    </div>
+                    
+                  </a>
+                </li>
+              
+                <li class="devsite-nav-item">
+                  <a href="https://developers.google.com/machine-learning/glossary/image" track-type="nav" track-metadata-eventdetail="https://developers.google.com/machine-learning/glossary/image" track-metadata-position="nav - glosario" track-metadata-module="tertiary nav" tooltip="">
+                    
+                    <div class="devsite-nav-item-title">
+                      
+    Imagen
+  
+
+                    </div>
+                    
+                  </a>
+                </li>
+              
+                <li class="devsite-nav-item">
+                  <a href="https://developers.google.com/machine-learning/glossary/language" track-type="nav" track-metadata-eventdetail="https://developers.google.com/machine-learning/glossary/language" track-metadata-position="nav - glosario" track-metadata-module="tertiary nav" tooltip="">
+                    
+                    <div class="devsite-nav-item-title">
+                      
+    Lang Eval
+  
+
+                    </div>
+                    
+                  </a>
+                </li>
+              
+                <li class="devsite-nav-item">
+                  <a href="https://developers.google.com/machine-learning/glossary/recsystems" track-type="nav" track-metadata-eventdetail="https://developers.google.com/machine-learning/glossary/recsystems" track-metadata-position="nav - glosario" track-metadata-module="tertiary nav" tooltip="">
+                    
+                    <div class="devsite-nav-item-title">
+                      
+    Sistemas de recomendación
+  
+
+                    </div>
+                    
+                  </a>
+                </li>
+              
+                <li class="devsite-nav-item">
+                  <a href="https://developers.google.com/machine-learning/glossary/rl" track-type="nav" track-metadata-eventdetail="https://developers.google.com/machine-learning/glossary/rl" track-metadata-position="nav - glosario" track-metadata-module="tertiary nav" tooltip="">
+                    
+                    <div class="devsite-nav-item-title">
+                      
+    Aprendizaje por refuerzo
+  
+
+                    </div>
+                    
+                  </a>
+                </li>
+              
+                <li class="devsite-nav-item">
+                  <a href="https://developers.google.com/machine-learning/glossary/sequence" track-type="nav" track-metadata-eventdetail="https://developers.google.com/machine-learning/glossary/sequence" track-metadata-position="nav - glosario" track-metadata-module="tertiary nav" tooltip="">
+                    
+                    <div class="devsite-nav-item-title">
+                      
+    Modelos de secuencias
+  
+
+                    </div>
+                    
+                  </a>
+                </li>
+              
+                <li class="devsite-nav-item">
+                  <a href="https://developers.google.com/machine-learning/glossary/tensorflow" track-type="nav" track-metadata-eventdetail="https://developers.google.com/machine-learning/glossary/tensorflow" track-metadata-position="nav - glosario" track-metadata-module="tertiary nav" tooltip="">
+                    
+                    <div class="devsite-nav-item-title">
+                      TensorFlow
+                    </div>
+                    
+                  </a>
+                </li>
+              
+            </ul>
+          
+        </div>
+      
+    </div>
+  </div>
+</tab>
+        
+      
+    <tab overflow-tab="" hidden=""><a href="#" class="devsite-icon devsite-icon-arrow-drop-down">Más</a><div class="devsite-tabs-overflow-menu" scrollbars="" hidden=""></div></tab></nav></devsite-tabs>
+
+            
+           </div>
+          
+<devsite-search aria-expanded="false" aria-haspopup="listbox" enable-signin="" enable-search="" enable-suggestions="" enable-query-completion="" project-name="Machine Learning" tenant-name="Google Developers" project-scope="/machine-learning" url-scoped="https://developers.google.com/s/results/machine-learning" role="combobox">
+  <form class="devsite-search-form" action="https://developers.google.com/s/results" method="GET">
+    <div class="devsite-search-container">
+      <div class="devsite-searchbox">
+        <input aria-activedescendant="" aria-autocomplete="list" aria-label="Buscar" aria-haspopup="false" aria-multiline="false" autocomplete="off" class="devsite-search-field devsite-search-query" name="q" placeholder="Buscar" role="searchbox" type="text" aria-controls="devsite-search-popout-container-id-1">
+        <div class="devsite-search-image material-icons" aria-hidden="true"></div>
+      </div>
+      <button type="button" search-open="" class="devsite-search-button devsite-header-icon-button button-flat material-icons" aria-label="Abrir la búsqueda"></button>
+    </div>
+  <div class="devsite-popout" id="devsite-search-popout-container-id-1"><div class="devsite-popout-result devsite-suggest-results-container" devsite-hide=""></div></div></form>
+  <button type="button" search-close="" class="devsite-search-button devsite-header-icon-button button-flat material-icons" aria-label="Cerrar la búsqueda"></button>
+</devsite-search>
+
+        <div class="devsite-search-background" style="opacity: 1;"></div></div>
+
+        
+
+        
+
+        
+
+        
+<devsite-language-selector aria-label="Selecciona tu preferencia de idioma.">
+  <ul role="presentation">
+    
+    
+    <li role="presentation">
+      <a role="menuitem" href="https://developers.google.com/machine-learning/data-prep/transform/normalization" aria-current="true" lang="en">English</a>
+    </li>
+    
+    <li role="presentation">
+      <a role="menuitem" href="https://developers.google.com/machine-learning/data-prep/transform/normalization?hl=id" lang="id">Bahasa Indonesia</a>
+    </li>
+    
+    <li role="presentation">
+      <a role="menuitem" href="https://developers.google.com/machine-learning/data-prep/transform/normalization?hl=de" lang="de">Deutsch</a>
+    </li>
+    
+    <li role="presentation">
+      <a role="menuitem" href="https://developers.google.com/machine-learning/data-prep/transform/normalization?hl=es" lang="es">Español</a>
+    </li>
+    
+    <li role="presentation">
+      <a role="menuitem" href="https://developers.google.com/machine-learning/data-prep/transform/normalization?hl=es-419" lang="es-419">Español – América Latina</a>
+    </li>
+    
+    <li role="presentation">
+      <a role="menuitem" href="https://developers.google.com/machine-learning/data-prep/transform/normalization?hl=fr" lang="fr">Français</a>
+    </li>
+    
+    <li role="presentation">
+      <a role="menuitem" href="https://developers.google.com/machine-learning/data-prep/transform/normalization?hl=it" lang="it">Italiano</a>
+    </li>
+    
+    <li role="presentation">
+      <a role="menuitem" href="https://developers.google.com/machine-learning/data-prep/transform/normalization?hl=pl" lang="pl">Polski</a>
+    </li>
+    
+    <li role="presentation">
+      <a role="menuitem" href="https://developers.google.com/machine-learning/data-prep/transform/normalization?hl=pt-br" lang="pt-br">Português – Brasil</a>
+    </li>
+    
+    <li role="presentation">
+      <a role="menuitem" href="https://developers.google.com/machine-learning/data-prep/transform/normalization?hl=vi" lang="vi">Tiếng Việt</a>
+    </li>
+    
+    <li role="presentation">
+      <a role="menuitem" href="https://developers.google.com/machine-learning/data-prep/transform/normalization?hl=tr" lang="tr">Türkçe</a>
+    </li>
+    
+    <li role="presentation">
+      <a role="menuitem" href="https://developers.google.com/machine-learning/data-prep/transform/normalization?hl=ru" lang="ru">Русский</a>
+    </li>
+    
+    <li role="presentation">
+      <a role="menuitem" href="https://developers.google.com/machine-learning/data-prep/transform/normalization?hl=he" lang="he">עברית</a>
+    </li>
+    
+    <li role="presentation">
+      <a role="menuitem" href="https://developers.google.com/machine-learning/data-prep/transform/normalization?hl=ar" lang="ar">العربيّة</a>
+    </li>
+    
+    <li role="presentation">
+      <a role="menuitem" href="https://developers.google.com/machine-learning/data-prep/transform/normalization?hl=fa" lang="fa">فارسی</a>
+    </li>
+    
+    <li role="presentation">
+      <a role="menuitem" href="https://developers.google.com/machine-learning/data-prep/transform/normalization?hl=hi" lang="hi">हिंदी</a>
+    </li>
+    
+    <li role="presentation">
+      <a role="menuitem" href="https://developers.google.com/machine-learning/data-prep/transform/normalization?hl=bn" lang="bn">বাংলা</a>
+    </li>
+    
+    <li role="presentation">
+      <a role="menuitem" href="https://developers.google.com/machine-learning/data-prep/transform/normalization?hl=th" lang="th">ภาษาไทย</a>
+    </li>
+    
+    <li role="presentation">
+      <a role="menuitem" href="https://developers.google.com/machine-learning/data-prep/transform/normalization?hl=zh-cn" lang="zh-cn">中文 – 简体</a>
+    </li>
+    
+    <li role="presentation">
+      <a role="menuitem" href="https://developers.google.com/machine-learning/data-prep/transform/normalization?hl=zh-tw" lang="zh-tw">中文 – 繁體</a>
+    </li>
+    
+    <li role="presentation">
+      <a role="menuitem" href="https://developers.google.com/machine-learning/data-prep/transform/normalization?hl=ja" lang="ja">日本語</a>
+    </li>
+    
+    <li role="presentation">
+      <a role="menuitem" href="https://developers.google.com/machine-learning/data-prep/transform/normalization?hl=ko" lang="ko">한국어</a>
+    </li>
+    
+  </ul>
+</devsite-language-selector>
+
+
+        
+
+        
+          
+          
+          <devsite-user signed-in="" enable-profiles="" fp-auth="" id="devsite-user" sign-in-url="https://developers.google.com/_d/signin?continue=https%3A%2F%2Fdevelopers.google.com%2Fmachine-learning%2Fdata-prep%2Ftransform%2Fnormalization&amp;prompt=select_account" sign-out-url="https://developers.google.com/_d/signout?continue=https%3A%2F%2Fdevelopers.google.com%2Fmachine-learning%2Fdata-prep%2Ftransform%2Fnormalization" url="https://developers.google.com/_d/signin?continue=https%3A%2F%2Fdevelopers.google.com%2Fmachine-learning%2Fdata-prep%2Ftransform%2Fnormalization&amp;prompt=select_account"><div class="ogb-wrapper ogb-si"><div class="devsite-devprofile-wrapper show"><devsite-feature-tooltip ack-key="AckViewSavedPagesPopoutDismiss" id="devsite-view-saved-pages" close-button-href="" close-button-text="Ver" dismiss-button="" managed="" ready="" current-step="0" style="--devsite-popout-offset-x: 32px;"><button class="devsite-devprofile-button" aria-controls="devsite-devprofile-popout" aria-expanded="false" aria-haspopup="true" aria-label="Abrir Perfil de desarrollador de Google" data-tooltip="Google Developer Profile"><svg width="4" height="16" viewBox="0 0 4 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M2 4C3.1 4 4 3.1 4 2C4 0.9 3.1 0 2 0C0.9 0 0 0.9 0 2C0 3.1 0.9 4 2 4ZM2 6C0.9 6 0 6.9 0 8C0 9.1 0.9 10 2 10C3.1 10 4 9.1 4 8C4 6.9 3.1 6 2 6ZM0 14C0 12.9 0.9 12 2 12C3.1 12 4 12.9 4 14C4 15.1 3.1 16 2 16C0.9 16 0 15.1 0 14Z" fill="#5F6368"></path></svg></button><span slot="popout-heading">Perfil de desarrollador de Google</span><span slot="popout-contents">Consulta tus páginas guardadas y termina de configurar tu perfil de desarrollador de Google aquí.</span></devsite-feature-tooltip><div class="devsite-devprofile-popout" role="menu"></div></div><div class="gb_Da gb_4d gb_6a gb_Ea" id="gb"><div class="gb_2d gb_4a gb_Qd" ng-non-bindable="" data-ogsr-up="" style="padding:0;height:auto;display:block"><div class="gb_Ve" style="display:block"><div class="gb_Zc"></div><div class="gb_b gb_md gb_pg gb_p gb_Ef"><div class="gb_Df gb_3a gb_pg gb_p"><a class="gb_e gb_Za gb_p devsite-top-button button" aria-label="Google Account: David Gonzalez Arrieta  
+(david.gonz.01@gmail.com)" href="https://accounts.google.com/SignOutOptions?hl=en&amp;continue=https://developers.google.com/_d/profile/ogb" role="button" tabindex="0" id="devsite-signin-btn"><img class="gb_g gbii" src="Normalizaci%C3%B3n%20Machine%20Learning%20Google%20Developers_files/unnamed_002.jpg" srcset="Normalizaci%C3%B3n%20Machine%20Learning%20Google%20Developers_files/unnamed_002.jpg 1x, Normalizaci%C3%B3n%20Machine%20Learning%20Google%20Developers_files/unnamed.jpg 2x" alt="" aria-hidden="true" data-noaft=""></a><div class="gb_9a"></div><div class="gb_8a"></div></div></div></div><div style="overflow: hidden; position: absolute; top: 0px; visibility: hidden; width: 400px; z-index: 991; height: 0px; margin-top: 57px; right: 0px; margin-right: 4px;"></div></div></div></div></devsite-user>
+           
+        
+      </div>
+    </div>
+  </div>
+
+
+
+  <div class="devsite-collapsible-section
+    " style="transform: translate3d(0px, -108px, 0px);">
+    <div class="devsite-header-background">
+      
+        
+          <div class="devsite-product-id-row">
+            <div class="devsite-product-description-row">
+              
+                
+                  
+                  
+                  <ul class="devsite-breadcrumb-list">
+  
+  <li class="devsite-breadcrumb-item
+             ">
+    
+    
+    
+      
+  <a href="https://developers.google.com/machine-learning/foundational-courses" class="devsite-breadcrumb-link gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Lower Header" data-value="1" track-type="globalNav" track-name="breadcrumb" track-metadata-position="1" track-metadata-eventdetail="">
+    
+        Cursos básicos
+      
+  </a>
+  
+    
+  </li>
+  
+</ul>
+                
+              
+              
+            </div>
+            
+          </div>
+          
+        
+      
+      
+        <div class="devsite-doc-set-nav-row">
+          
+          
+            
+            
+  <devsite-tabs class="lower-tabs" connected="">
+
+    
+
+  <nav class="devsite-tabs-wrapper" aria-label="Pestañas inferiores">
+      
+        
+          <tab>
+            
+    <a href="https://developers.google.com/machine-learning" track-metadata-eventdetail="https://developers.google.com/machine-learning" class="devsite-tabs-content gc-analytics-event " track-type="nav" track-metadata-position="nav - página principal" track-metadata-module="primary nav" data-category="Site-Wide Custom Events" data-label="Tab: Página principal" track-name="página principal">
+    Página principal
+  
+    </a>
+  
+  
+          </tab>
+        
+      
+        
+          <tab active="">
+            
+    <a href="https://developers.google.com/machine-learning/data-prep" track-metadata-eventdetail="https://developers.google.com/machine-learning/data-prep" class="devsite-tabs-content gc-analytics-event " track-type="nav" track-metadata-position="nav - preparación de los datos" track-metadata-module="primary nav" aria-label="Preparación de los datos, selected" data-category="Site-Wide Custom Events" data-label="Tab: Preparación de los datos" track-name="preparación de los datos">
+    Preparación de los datos
+  
+    </a>
+  
+  
+          </tab>
+        
+      
+    <tab overflow-tab="" hidden=""><a href="#" class="devsite-icon devsite-icon-arrow-drop-down">Más</a><div class="devsite-tabs-overflow-menu" scrollbars="" hidden=""></div></tab></nav></devsite-tabs>
+
+          
+          
+        </div>
+      
+    </div>
+  </div>
+
+</div>
+
+
+
+  
+
+  
+</devsite-header>
+      <div class="devsite-book-nav-bg" fixed=""></div><devsite-book-nav scrollbars="" fixed="" style="top: 156.8px; max-height: 690.2px; --devsite-js-book-nav-y-offset: -108px;" user-scrolled="">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="devsite-book-nav-filter
+            ">
+  <input type="text" placeholder="Filtrar" aria-label="Escribe para filtrar" role="searchbox">
+  
+  <span class="filter-clear-button hidden" data-title="Borrar filtro" aria-label="Borrar filtro" role="button" tabindex="0"></span>
+</div>
+
+<nav class="devsite-book-nav devsite-nav nocontent" aria-label="Menú lateral">
+  <div class="devsite-mobile-header">
+    <button type="button" id="devsite-close-nav" class="devsite-header-icon-button button-flat material-icons gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Close navigation" aria-label="Cerrar navegación">
+    </button>
+    <div class="devsite-product-name-wrapper">
+
+  
+    
+  
+
+
+  
+      <span class="devsite-product-name">
+        
+        
+        <ul class="devsite-breadcrumb-list">
+  
+  <li class="devsite-breadcrumb-item
+             ">
+    
+    
+    
+      
+      
+        
+  <a href="https://developers.google.com/machine-learning" class="devsite-breadcrumb-link gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Upper Header" data-value="1" track-type="globalNav" track-name="breadcrumb" track-metadata-position="1" track-metadata-eventdetail="Machine Learning">
+    
+          Machine Learning
+        
+  </a>
+  
+      
+    
+  </li>
+  
+</ul>
+      </span>
+    
+
+</div>
+  </div>
+
+  <div class="devsite-book-nav-wrapper">
+    <div class="devsite-mobile-nav-top">
+      
+        <ul class="devsite-nav-list">
+          
+            <li class="devsite-nav-item">
+              
+  
+  <a href="https://developers.google.com/machine-learning/foundational-courses" class="devsite-nav-title gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Tab: Cursos básicos" track-name="cursos básicos" track-type="globalNav" track-metadata-eventdetail="globalMenu" track-metadata-position="nav">
+  
+    <span class="devsite-nav-text" tooltip="">
+      Cursos básicos
+   </span>
+    
+  
+  </a>
+  
+
+  
+              
+                <ul class="devsite-nav-responsive-tabs">
+                  
+                    
+                    
+                    
+                    <li class="devsite-nav-item">
+                      
+  
+  <a href="https://developers.google.com/machine-learning" class="devsite-nav-title gc-analytics-event
+              
+              " data-category="Site-Wide Custom Events" data-label="Tab: Página principal" track-name="página principal" track-type="globalNav" track-metadata-eventdetail="globalMenu" track-metadata-position="nav">
+  
+    <span class="devsite-nav-text" tooltip="">
+      Página principal
+   </span>
+    
+  
+  </a>
+  
+
+  
+                    </li>
+                  
+                    
+                    
+                    
+                    <li class="devsite-nav-item">
+                      
+  
+  <a href="https://developers.google.com/machine-learning/data-prep" class="devsite-nav-title gc-analytics-event devsite-nav-has-children" data-category="Site-Wide Custom Events" data-label="Tab: Preparación de los datos" track-name="preparación de los datos" track-type="globalNav" track-metadata-eventdetail="globalMenu" track-metadata-position="nav">
+  
+    <span class="devsite-nav-text" tooltip="" menu="_book">
+      Preparación de los datos
+   </span>
+    
+    <span class="devsite-nav-icon material-icons" data-icon="forward" menu="_book">
+    </span>
+    
+  
+  </a>
+  
+
+  
+                    </li>
+                  
+                </ul>
+              
+            </li>
+          
+            <li class="devsite-nav-item">
+              
+  
+  <a href="https://developers.google.com/machine-learning/advanced-courses" class="devsite-nav-title gc-analytics-event
+              
+              " data-category="Site-Wide Custom Events" data-label="Tab: Cursos avanzados" track-name="cursos avanzados" track-type="globalNav" track-metadata-eventdetail="globalMenu" track-metadata-position="nav">
+  
+    <span class="devsite-nav-text" tooltip="">
+      Cursos avanzados
+   </span>
+    
+  
+  </a>
+  
+
+  
+              
+            </li>
+          
+            <li class="devsite-nav-item">
+              
+  
+  <a href="https://developers.google.com/machine-learning/guides" class="devsite-nav-title gc-analytics-event
+              
+              " data-category="Site-Wide Custom Events" data-label="Tab: Guías" track-name="guías" track-type="globalNav" track-metadata-eventdetail="globalMenu" track-metadata-position="nav">
+  
+    <span class="devsite-nav-text" tooltip="">
+      Guías
+   </span>
+    
+  
+  </a>
+  
+
+  
+              
+            </li>
+          
+            <li class="devsite-nav-item">
+              
+  
+  <a href="https://developers.google.com/machine-learning/glossary" class="devsite-nav-title gc-analytics-event
+              
+              " data-category="Site-Wide Custom Events" data-label="Tab: Glosario" track-name="glosario" track-type="globalNav" track-metadata-eventdetail="globalMenu" track-metadata-position="nav">
+  
+    <span class="devsite-nav-text" tooltip="">
+      Glosario
+   </span>
+    
+  
+  </a>
+  
+
+  
+    <ul class="devsite-nav-responsive-tabs devsite-nav-has-menu
+               ">
+      
+<li class="devsite-nav-item">
+
+  
+  <span class="devsite-nav-title" tooltip="" data-category="Site-Wide Custom Events" data-label="Tab: Glosario" track-name="glosario">
+  
+    <span class="devsite-nav-text" tooltip="" menu="Glosario">
+      Más
+   </span>
+    
+    <span class="devsite-nav-icon material-icons" data-icon="forward" menu="Glosario">
+    </span>
+    
+  
+  </span>
+  
+
+</li>
+
+    </ul>
+  
+              
+            </li>
+          
+          
+          
+        </ul>
+      
+    </div>
+    
+      <div class="devsite-mobile-nav-bottom" role="navigation">
+        
+          
+          <ul class="devsite-nav-list" menu="_book">
+            <li class="devsite-nav-item
+           devsite-nav-heading"><div class="devsite-nav-title devsite-nav-title-no-path">
+        <span class="devsite-nav-text" tooltip="">Descripción general (15 min)</span>
+      </div></li>
+
+  <li class="devsite-nav-item"><a href="https://developers.google.com/machine-learning/data-prep" class="devsite-nav-title gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Book nav link, pathname: /machine-learning/data-prep" track-type="bookNav" track-name="click" track-metadata-eventdetail="/machine-learning/data-prep"><span class="devsite-nav-text" tooltip="">Introducción</span></a></li>
+
+  <li class="devsite-nav-item"><a href="https://developers.google.com/machine-learning/data-prep/process" class="devsite-nav-title gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Book nav link, pathname: /machine-learning/data-prep/process" track-type="bookNav" track-name="click" track-metadata-eventdetail="/machine-learning/data-prep/process"><span class="devsite-nav-text" tooltip="">El proceso</span></a></li>
+
+  <li class="devsite-nav-item
+           devsite-nav-heading"><div class="devsite-nav-title devsite-nav-title-no-path">
+        <span class="devsite-nav-text" tooltip="">Crea tu conjunto de datos (60 min)</span>
+      </div></li>
+
+  <li class="devsite-nav-item"><a href="https://developers.google.com/machine-learning/data-prep/construct/construct-intro" class="devsite-nav-title gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Book nav link, pathname: /machine-learning/data-prep/construct/construct-intro" track-type="bookNav" track-name="click" track-metadata-eventdetail="/machine-learning/data-prep/construct/construct-intro"><span class="devsite-nav-text" tooltip="">Introducción a la construcción de tu conjunto de datos</span></a></li>
+
+  <li class="devsite-nav-item
+           devsite-nav-expandable"><div class="devsite-expandable-nav">
+      <a class="devsite-nav-toggle" aria-hidden="true"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0" role="button">
+        <span class="devsite-nav-text" tooltip="">Recopilando datos</span>
+      </div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="https://developers.google.com/machine-learning/data-prep/construct/collect/data-size-quality" class="devsite-nav-title gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Book nav link, pathname: /machine-learning/data-prep/construct/collect/data-size-quality" track-type="bookNav" track-name="click" track-metadata-eventdetail="/machine-learning/data-prep/construct/collect/data-size-quality"><span class="devsite-nav-text" tooltip="">Tamaño y calidad de un conjunto de datos</span></a></li><li class="devsite-nav-item"><a href="https://developers.google.com/machine-learning/data-prep/construct/collect/joining-logs" class="devsite-nav-title gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Book nav link, pathname: /machine-learning/data-prep/construct/collect/joining-logs" track-type="bookNav" track-name="click" track-metadata-eventdetail="/machine-learning/data-prep/construct/collect/joining-logs"><span class="devsite-nav-text" tooltip="">Unir registros</span></a></li><li class="devsite-nav-item"><a href="https://developers.google.com/machine-learning/data-prep/construct/collect/label-sources" class="devsite-nav-title gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Book nav link, pathname: /machine-learning/data-prep/construct/collect/label-sources" track-type="bookNav" track-name="click" track-metadata-eventdetail="/machine-learning/data-prep/construct/collect/label-sources"><span class="devsite-nav-text" tooltip="">Fuentes de etiquetas</span></a></li><li class="devsite-nav-item"><a href="https://developers.google.com/machine-learning/data-prep/construct/collect/check-your-understanding" class="devsite-nav-title gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Book nav link, pathname: /machine-learning/data-prep/construct/collect/check-your-understanding" track-type="bookNav" track-name="click" track-metadata-eventdetail="/machine-learning/data-prep/construct/collect/check-your-understanding"><span class="devsite-nav-text" tooltip="">Comprueba tu comprensión</span></a></li></ul></div></li>
+
+  <li class="devsite-nav-item
+           devsite-nav-expandable"><div class="devsite-expandable-nav">
+      <a class="devsite-nav-toggle" aria-hidden="true"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0" role="button">
+        <span class="devsite-nav-text" tooltip="">Muestreo y división</span>
+      </div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="https://developers.google.com/machine-learning/data-prep/construct/sampling-splitting/sampling" class="devsite-nav-title gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Book nav link, pathname: /machine-learning/data-prep/construct/sampling-splitting/sampling" track-type="bookNav" track-name="click" track-metadata-eventdetail="/machine-learning/data-prep/construct/sampling-splitting/sampling"><span class="devsite-nav-text" tooltip="">Muestreo</span></a></li><li class="devsite-nav-item"><a href="https://developers.google.com/machine-learning/data-prep/construct/sampling-splitting/imbalanced-data" class="devsite-nav-title gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Book nav link, pathname: /machine-learning/data-prep/construct/sampling-splitting/imbalanced-data" track-type="bookNav" track-name="click" track-metadata-eventdetail="/machine-learning/data-prep/construct/sampling-splitting/imbalanced-data"><span class="devsite-nav-text" tooltip="">Datos desequilibrados</span></a></li><li class="devsite-nav-item"><a href="https://developers.google.com/machine-learning/data-prep/construct/sampling-splitting/example" class="devsite-nav-title gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Book nav link, pathname: /machine-learning/data-prep/construct/sampling-splitting/example" track-type="bookNav" track-name="click" track-metadata-eventdetail="/machine-learning/data-prep/construct/sampling-splitting/example"><span class="devsite-nav-text" tooltip="">Ejemplo de división de datos</span></a></li><li class="devsite-nav-item"><a href="https://developers.google.com/machine-learning/data-prep/construct/sampling-splitting/split" class="devsite-nav-title gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Book nav link, pathname: /machine-learning/data-prep/construct/sampling-splitting/split" track-type="bookNav" track-name="click" track-metadata-eventdetail="/machine-learning/data-prep/construct/sampling-splitting/split"><span class="devsite-nav-text" tooltip="">Dividir tus datos</span></a></li><li class="devsite-nav-item"><a href="https://developers.google.com/machine-learning/data-prep/construct/sampling-splitting/randomization" class="devsite-nav-title gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Book nav link, pathname: /machine-learning/data-prep/construct/sampling-splitting/randomization" track-type="bookNav" track-name="click" track-metadata-eventdetail="/machine-learning/data-prep/construct/sampling-splitting/randomization"><span class="devsite-nav-text" tooltip="">Aleatorización</span></a></li><li class="devsite-nav-item"><a href="https://developers.google.com/machine-learning/data-prep/construct/sampling-splitting/check-your-understanding" class="devsite-nav-title gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Book nav link, pathname: /machine-learning/data-prep/construct/sampling-splitting/check-your-understanding" track-type="bookNav" track-name="click" track-metadata-eventdetail="/machine-learning/data-prep/construct/sampling-splitting/check-your-understanding"><span class="devsite-nav-text" tooltip="">Comprueba tu comprensión</span></a></li></ul></div></li>
+
+  <li class="devsite-nav-item
+           devsite-nav-heading"><div class="devsite-nav-title devsite-nav-title-no-path">
+        <span class="devsite-nav-text" tooltip="">Transforma tus datos (40 min)</span>
+      </div></li>
+
+  <li class="devsite-nav-item"><a href="https://developers.google.com/machine-learning/data-prep/transform/introduction" class="devsite-nav-title gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Book nav link, pathname: /machine-learning/data-prep/transform/introduction" track-type="bookNav" track-name="click" track-metadata-eventdetail="/machine-learning/data-prep/transform/introduction"><span class="devsite-nav-text" tooltip="">Introducción a la transformación de datos</span></a></li>
+
+  <li class="devsite-nav-item
+           devsite-nav-expandable"><div class="devsite-expandable-nav expanded">
+      <a class="devsite-nav-toggle" aria-hidden="true"></a><div class="devsite-nav-title devsite-nav-title-no-path" tabindex="0" role="button">
+        <span class="devsite-nav-text" tooltip="">Transformación de datos numéricos</span>
+      </div><ul class="devsite-nav-section"><li class="devsite-nav-item"><a href="https://developers.google.com/machine-learning/data-prep/transform/transform-numeric" class="devsite-nav-title gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Book nav link, pathname: /machine-learning/data-prep/transform/transform-numeric" track-type="bookNav" track-name="click" track-metadata-eventdetail="/machine-learning/data-prep/transform/transform-numeric"><span class="devsite-nav-text" tooltip="">Transformación de datos numéricos</span></a></li><li class="devsite-nav-item"><a href="https://developers.google.com/machine-learning/data-prep/transform/normalization" class="devsite-nav-title gc-analytics-event devsite-nav-active" data-category="Site-Wide Custom Events" data-label="Book nav link, pathname: /machine-learning/data-prep/transform/normalization" track-type="bookNav" track-name="click" track-metadata-eventdetail="/machine-learning/data-prep/transform/normalization"><span class="devsite-nav-text" tooltip="">Normalización</span></a></li><li class="devsite-nav-item"><a href="https://developers.google.com/machine-learning/data-prep/transform/bucketing" class="devsite-nav-title gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Book nav link, pathname: /machine-learning/data-prep/transform/bucketing" track-type="bookNav" track-name="click" track-metadata-eventdetail="/machine-learning/data-prep/transform/bucketing"><span class="devsite-nav-text" tooltip="">Agrupamiento</span></a></li></ul></div></li>
+
+  <li class="devsite-nav-item"><a href="https://developers.google.com/machine-learning/data-prep/transform/transform-categorical" class="devsite-nav-title gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Book nav link, pathname: /machine-learning/data-prep/transform/transform-categorical" track-type="bookNav" track-name="click" track-metadata-eventdetail="/machine-learning/data-prep/transform/transform-categorical"><span class="devsite-nav-text" tooltip="">Transformación de datos categóricos</span></a></li>
+
+  <li class="devsite-nav-item"><a href="https://developers.google.com/machine-learning/data-prep/transform/check-your-understanding" class="devsite-nav-title gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Book nav link, pathname: /machine-learning/data-prep/transform/check-your-understanding" track-type="bookNav" track-name="click" track-metadata-eventdetail="/machine-learning/data-prep/transform/check-your-understanding"><span class="devsite-nav-text" tooltip="">Comprueba tu comprensión</span></a></li>
+
+  <li class="devsite-nav-item
+           devsite-nav-heading"><div class="devsite-nav-title devsite-nav-title-no-path">
+        <span class="devsite-nav-text" tooltip="">Ejercicio de programación (60 min)</span>
+      </div></li>
+
+  <li class="devsite-nav-item"><a href="https://developers.google.com/machine-learning/data-prep/programming-exercise" class="devsite-nav-title gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Book nav link, pathname: /machine-learning/data-prep/programming-exercise" track-type="bookNav" track-name="click" track-metadata-eventdetail="/machine-learning/data-prep/programming-exercise"><span class="devsite-nav-text" tooltip="">Ejercicio de programación: Modelado de datos</span></a></li>
+
+  <li class="devsite-nav-item
+           devsite-nav-heading"><div class="devsite-nav-title devsite-nav-title-no-path">
+        <span class="devsite-nav-text" tooltip="">Conclusión</span>
+      </div></li>
+
+  <li class="devsite-nav-item"><a href="https://developers.google.com/machine-learning/data-prep/summary" class="devsite-nav-title gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Book nav link, pathname: /machine-learning/data-prep/summary" track-type="bookNav" track-name="click" track-metadata-eventdetail="/machine-learning/data-prep/summary"><span class="devsite-nav-text" tooltip="">Summary</span></a></li>
+          </ul>
+        
+        
+          
+    
+  
+    
+  
+    
+  
+    
+      
+      <ul class="devsite-nav-list" menu="Glosario" aria-label="Menú lateral" hidden="">
+        
+          
+            
+            
+              
+<li class="devsite-nav-item">
+
+  
+  <a href="https://developers.google.com/machine-learning/glossary" class="devsite-nav-title gc-analytics-event
+              
+              " data-category="Site-Wide Custom Events" data-label="Responsive Tab: 
+    Todos los términos
+  
+" track-type="navMenu" track-metadata-eventdetail="globalMenu" track-metadata-position="nav">
+  
+    <span class="devsite-nav-text" tooltip="">
+      
+    Todos los términos
+  
+
+   </span>
+    
+  
+  </a>
+  
+
+</li>
+
+            
+              
+<li class="devsite-nav-item">
+
+  
+  <a href="https://developers.google.com/machine-learning/glossary/clustering" class="devsite-nav-title gc-analytics-event
+              
+              " data-category="Site-Wide Custom Events" data-label="Responsive Tab: 
+    Agrupación en clústeres
+  
+" track-type="navMenu" track-metadata-eventdetail="globalMenu" track-metadata-position="nav">
+  
+    <span class="devsite-nav-text" tooltip="">
+      
+    Agrupación en clústeres
+  
+
+   </span>
+    
+  
+  </a>
+  
+
+</li>
+
+            
+              
+<li class="devsite-nav-item">
+
+  
+  <a href="https://developers.google.com/machine-learning/glossary/df" class="devsite-nav-title gc-analytics-event
+              
+              " data-category="Site-Wide Custom Events" data-label="Responsive Tab: 
+    Bosques de decisión
+  
+" track-type="navMenu" track-metadata-eventdetail="globalMenu" track-metadata-position="nav">
+  
+    <span class="devsite-nav-text" tooltip="">
+      
+    Bosques de decisión
+  
+
+   </span>
+    
+  
+  </a>
+  
+
+</li>
+
+            
+              
+<li class="devsite-nav-item">
+
+  
+  <a href="https://developers.google.com/machine-learning/glossary/fairness" class="devsite-nav-title gc-analytics-event
+              
+              " data-category="Site-Wide Custom Events" data-label="Responsive Tab: 
+    Equidad
+  
+" track-type="navMenu" track-metadata-eventdetail="globalMenu" track-metadata-position="nav">
+  
+    <span class="devsite-nav-text" tooltip="">
+      
+    Equidad
+  
+
+   </span>
+    
+  
+  </a>
+  
+
+</li>
+
+            
+              
+<li class="devsite-nav-item">
+
+  
+  <a href="https://developers.google.com/machine-learning/glossary/fundamentals" class="devsite-nav-title gc-analytics-event
+              
+              " data-category="Site-Wide Custom Events" data-label="Responsive Tab: 
+    Fundamentos
+  
+" track-type="navMenu" track-metadata-eventdetail="globalMenu" track-metadata-position="nav">
+  
+    <span class="devsite-nav-text" tooltip="">
+      
+    Fundamentos
+  
+
+   </span>
+    
+  
+  </a>
+  
+
+</li>
+
+            
+              
+<li class="devsite-nav-item">
+
+  
+  <a href="https://developers.google.com/machine-learning/glossary/googlecloud" class="devsite-nav-title gc-analytics-event
+              
+              " data-category="Site-Wide Custom Events" data-label="Responsive Tab: 
+    GCP
+  
+" track-type="navMenu" track-metadata-eventdetail="globalMenu" track-metadata-position="nav">
+  
+    <span class="devsite-nav-text" tooltip="">
+      
+    GCP
+  
+
+   </span>
+    
+  
+  </a>
+  
+
+</li>
+
+            
+              
+<li class="devsite-nav-item">
+
+  
+  <a href="https://developers.google.com/machine-learning/glossary/image" class="devsite-nav-title gc-analytics-event
+              
+              " data-category="Site-Wide Custom Events" data-label="Responsive Tab: 
+    Imagen
+  
+" track-type="navMenu" track-metadata-eventdetail="globalMenu" track-metadata-position="nav">
+  
+    <span class="devsite-nav-text" tooltip="">
+      
+    Imagen
+  
+
+   </span>
+    
+  
+  </a>
+  
+
+</li>
+
+            
+              
+<li class="devsite-nav-item">
+
+  
+  <a href="https://developers.google.com/machine-learning/glossary/language" class="devsite-nav-title gc-analytics-event
+              
+              " data-category="Site-Wide Custom Events" data-label="Responsive Tab: 
+    Lang Eval
+  
+" track-type="navMenu" track-metadata-eventdetail="globalMenu" track-metadata-position="nav">
+  
+    <span class="devsite-nav-text" tooltip="">
+      
+    Lang Eval
+  
+
+   </span>
+    
+  
+  </a>
+  
+
+</li>
+
+            
+              
+<li class="devsite-nav-item">
+
+  
+  <a href="https://developers.google.com/machine-learning/glossary/recsystems" class="devsite-nav-title gc-analytics-event
+              
+              " data-category="Site-Wide Custom Events" data-label="Responsive Tab: 
+    Sistemas de recomendación
+  
+" track-type="navMenu" track-metadata-eventdetail="globalMenu" track-metadata-position="nav">
+  
+    <span class="devsite-nav-text" tooltip="">
+      
+    Sistemas de recomendación
+  
+
+   </span>
+    
+  
+  </a>
+  
+
+</li>
+
+            
+              
+<li class="devsite-nav-item">
+
+  
+  <a href="https://developers.google.com/machine-learning/glossary/rl" class="devsite-nav-title gc-analytics-event
+              
+              " data-category="Site-Wide Custom Events" data-label="Responsive Tab: 
+    Aprendizaje por refuerzo
+  
+" track-type="navMenu" track-metadata-eventdetail="globalMenu" track-metadata-position="nav">
+  
+    <span class="devsite-nav-text" tooltip="">
+      
+    Aprendizaje por refuerzo
+  
+
+   </span>
+    
+  
+  </a>
+  
+
+</li>
+
+            
+              
+<li class="devsite-nav-item">
+
+  
+  <a href="https://developers.google.com/machine-learning/glossary/sequence" class="devsite-nav-title gc-analytics-event
+              
+              " data-category="Site-Wide Custom Events" data-label="Responsive Tab: 
+    Modelos de secuencias
+  
+" track-type="navMenu" track-metadata-eventdetail="globalMenu" track-metadata-position="nav">
+  
+    <span class="devsite-nav-text" tooltip="">
+      
+    Modelos de secuencias
+  
+
+   </span>
+    
+  
+  </a>
+  
+
+</li>
+
+            
+              
+<li class="devsite-nav-item">
+
+  
+  <a href="https://developers.google.com/machine-learning/glossary/tensorflow" class="devsite-nav-title gc-analytics-event
+              
+              " data-category="Site-Wide Custom Events" data-label="Responsive Tab: TensorFlow" track-type="navMenu" track-metadata-eventdetail="globalMenu" track-metadata-position="nav">
+  
+    <span class="devsite-nav-text" tooltip="">
+      TensorFlow
+   </span>
+    
+  
+  </a>
+  
+
+</li>
+
+            
+          
+        
+      </ul>
+    
+  
+        
+        
+          
+    
+  
+    
+  
+        
+      </div>
+    
+  </div>
+</nav>
+        
+      </devsite-book-nav><div class="devsite-book-nav-blur" fixed="" style="--devsite-js-book-nav-scrollbar-width: 17px;"></div><button class="devsite-book-nav-toggle" aria-haspopup="menu" fixed="" aria-label="Ocultar menú de navegación lateral" data-title="Ocultar menú de navegación lateral" aria-expanded="true"><span class="material-icons devsite-book-nav-toggle-icon"></span></button>
+      <section id="gc-wrapper" style="margin-top: 156.8px;">
+        <main role="main" class="devsite-main-content" has-book-nav="">
+          
+          <div class="devsite-sidebar" fixed="" style="--devsite-js-sidebar-max-height: 642.1999969482422px; --devsite-js-sidebar-offset: -108px;">
+            <div class="devsite-sidebar-content">
+              
+              <devsite-toc class="devsite-nav devsite-toc" role="navigation" aria-label="En esta página" depth="2" scrollbars="" hidden=""></devsite-toc>
+              <devsite-recommendations-sidebar class="nocontent devsite-nav"></devsite-recommendations-sidebar>
+            </div>
+          </div>
+          <devsite-content>
+            
+              
+
+
+
+
+
+
+
+
+
+
+
+<article class="devsite-article" has-bookmark=""><style>
+      /* Styles inlined from /machine-learning/ml.css */
+/**
+ * Left navigation icons indicating the type of lesson.
+ * 
+ * 
+ */
+
+/**
+ * Default icon.
+ */
+ nav a.devsite-nav-title::before {
+  content: 'subject';
+  display: inline-block;
+  font-family: 'Material Icons';
+  font-size: 16px;
+  text-transform: none;
+  width: 21px;
+  min-width: 21px;
+  vertical-align: middle;
+} 
+
+nav a.devsite-nav-title > span {
+  vertical-align: middle;
+}
+
+/**
+ * Match programming-exercise or programming exercises.
+ */
+nav a.devsite-nav-title[href*='programming-exercise']::before {
+  content: 'code';
+}
+
+/**
+ * In Practica, use code icon for generic "exercise" page.
+ */
+nav a.devsite-nav-title[href*='/exercise']::before {
+  content: 'code';
+}
+
+/**
+ * Match playground-exercise or playground-exercises.
+ */
+nav a.devsite-nav-title[href*='playground-exercise']::before {
+  content: 'touch_app';
+}
+
+/**
+ * Match check-your-intuition and check-your-understanding.
+ */
+nav a.devsite-nav-title[href*='check-your-intuition']::before,
+nav a.devsite-nav-title[href*='check-your-understanding']::before {
+  content: 'check_circle';
+} 
+
+/**
+ * Match video-lecture.
+ * Uses background image because the video icon is proprietary and can't be
+ *   included as font icon / content attribute.
+ */
+ nav a.devsite-nav-title[href*='video-lecture']::before {
+  background-image: url(images/video_icon.svg);
+  background-repeat: no-repeat;
+  background-size: 16px;
+  height: 16px;
+  content: '';
+}
+
+/* Estimated time callouts */
+aside.note.time::before {
+  content: 'schedule';
+}
+
+/* Example callouts */
+aside.note.example::before {
+  content: 'event_note';
+}
+
+/* For left-aligning equations where appropriate */
+div.left-align div.MathJax_SVG_Display {
+  text-align: left !important;
+}
+
+/* SVG handling */
+.doc-svg-container svg {
+  max-height: 100%;
+  max-width: 100%;
+}
+
+/* li elements containing exercise tables should be display: inline,
+   so whitespace is rendered properly */
+li.exercise-table {
+  display: inline;
+}
+
+/* Highlighting for table rows/cells */
+tr.highlight td,
+tr td.highlight,
+tr th.highlight {
+  background-color: #f7f7b0;
+}
+
+tr.highlight-bad td,
+tr td.highlight-bad,
+tr th.highlight-bad {
+  background-color: #f76868;
+}
+
+table.glossary {
+  border-width: 0;
+}
+
+td.glossary {
+  background-color: #fff;
+  color: #000;
+  visited: #9c9;
+}
+
+.learn-action-button,
+.learn-action-button:visited {
+  background-color: #06C;
+  background-image: none;
+  border: blue solid 1px;
+  color: white;
+  display: inline;
+  font-size: 15px;
+  padding: 5px;
+  text-decoration: none;
+  text-shadow: 0 1px rgba(0, 0, 0, 0.1);
+  text-transform: uppercase;
+  -webkit-border-radius: 2px;
+}
+
+.learn-action-button:hover {
+  background-color: rgb(38, 119, 202);
+  box-shadow: 0px 1px 5px #333;
+}
+
+/* Styling for instructor-led schedules */
+
+/* Module column text in bold */
+table.ml-il-agenda td:first-child {
+  font-weight: bold;
+}
+
+/* Styling for break rows */
+table.ml-il-agenda tr.break td {
+  background-color: #fbe5ce;
+}
+
+/* Styling for "total" (end of day) rows */
+table.ml-il-agenda tr.total td {
+  background-color: #b6b6b6;
+}
+
+/* Text styling for break and total rows */
+table.ml-il-agenda tr.break td.break,
+table.ml-il-agenda tr.total td.total,
+table.ml-il-agenda tr.total p.total {
+  text-transform: uppercase;
+  text-align: center;
+}
+
+/* Partner Chat Styling */
+table.ml-il-agenda li.partner-chat {
+  color: brown;
+}
+
+table.ml-il-agenda li.playground {
+  color: green;
+}
+
+table.ml-il-agenda li.programming {
+  color: blue;
+}
+
+/**
+ * Styling for content blocks which consist of a colored header and a lightly-
+ * colored body.
+ */
+.content-block-header {
+  color: #fff;
+  font: 500 16px/24px Roboto,sans-serif;
+  height: 48px;
+  line-height: 48px;
+  padding: 0 8px;
+}
+
+.content-block-body {
+  background: rgba(255, 255, 255, 0.95);
+  color: #212121;
+  font: 14px/20px Roboto,sans-serif;
+  padding: 8px;
+}
+
+.content-block.cyan {
+  background: #00acc1;
+}
+
+.content-block.blue {
+  background: #3949ab;
+}
+
+.content-block.green {
+  background: #7cb342;
+}
+
+.expand-background {
+  background-color: rgb(232, 232, 232);
+  border-radius: 0 4px 4px 4px;
+  border-width: 0 1px 1px 1px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, .12), 0 1px 2px rgba(0, 0, 0, .24);
+  margin-left: 40px;
+  padding: 5px 5px 5px 9px;
+}
+
+/* Styles for Decision forests */
+.tfdf_snippet {
+  background-color: #ffdc9c;
+  overflow-x: auto;
+  margin: 16px -40px;
+  padding: 20px 40px;
+}
+
+table.df-table {
+  /* The table do not take all the page width. */
+  width: auto;
+}
+      </style>
+  
+  
+  
+    <div class="devsite-banner devsite-banner-translated nocontent">
+      <div class="devsite-banner-message">
+        <div class="devsite-banner-message-text">
+          <img src="Normalizaci%C3%B3n%20Machine%20Learning%20Google%20Developers_files/translated.svg" class="devsite-banner-translated-image" alt="">
+          <span class="devsite-banner-translated-text">
+            
+            Se usó la <a href="https://cloud.google.com/translate/">API de Cloud&nbsp;Translation</a> para traducir esta página.
+          </span>
+        </div>
+        
+        <a href="https://developers.google.com/machine-learning/data-prep/transform/normalization?hl=en" class="button gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Switch to English" browser-load="">Switch to English</a>
+      </div>
+    </div>
+  
+
+  <div class="devsite-article-meta nocontent" role="navigation">
+    
+    
+    <ul class="devsite-breadcrumb-list" aria-label="Ruta de navegación">
+  
+  <li class="devsite-breadcrumb-item
+             ">
+    
+    
+    
+      
+  <a href="https://developers.google.com/" class="devsite-breadcrumb-link gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Breadcrumbs" data-value="1" track-type="globalNav" track-name="breadcrumb" track-metadata-position="1" track-metadata-eventdetail="">
+    
+        Página principal
+      
+  </a>
+  
+    
+  </li>
+  
+  <li class="devsite-breadcrumb-item
+             ">
+    
+      
+      <div class="devsite-breadcrumb-guillemet material-icons" aria-hidden="true"></div>
+    
+    
+    
+      
+  <a href="https://developers.google.com/products" class="devsite-breadcrumb-link gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Breadcrumbs" data-value="2" track-type="globalNav" track-name="breadcrumb" track-metadata-position="2" track-metadata-eventdetail="">
+    
+        Productos
+      
+  </a>
+  
+    
+  </li>
+  
+  <li class="devsite-breadcrumb-item
+             ">
+    
+      
+      <div class="devsite-breadcrumb-guillemet material-icons" aria-hidden="true"></div>
+    
+    
+    
+      
+  <a href="https://developers.google.com/machine-learning" class="devsite-breadcrumb-link gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Breadcrumbs" data-value="3" track-type="globalNav" track-name="breadcrumb" track-metadata-position="3" track-metadata-eventdetail="Machine Learning">
+    
+        Machine Learning
+      
+  </a>
+  
+    
+  </li>
+  
+  <li class="devsite-breadcrumb-item
+             ">
+    
+      
+      <div class="devsite-breadcrumb-guillemet material-icons" aria-hidden="true"></div>
+    
+    
+    
+      
+  <a href="https://developers.google.com/machine-learning/foundational-courses" class="devsite-breadcrumb-link gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Breadcrumbs" data-value="4" track-type="globalNav" track-name="breadcrumb" track-metadata-position="4" track-metadata-eventdetail="">
+    
+        Cursos básicos
+      
+  </a>
+  
+    
+  </li>
+  
+  <li class="devsite-breadcrumb-item
+             ">
+    
+      
+      <div class="devsite-breadcrumb-guillemet material-icons" aria-hidden="true"></div>
+    
+    
+    
+      
+  <a href="https://developers.google.com/machine-learning/data-prep" class="devsite-breadcrumb-link gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Breadcrumbs" data-value="5" track-type="globalNav" track-name="breadcrumb" track-metadata-position="5" track-metadata-eventdetail="">
+    
+        Preparación de los datos
+      
+  </a>
+  
+    
+  </li>
+  
+</ul>
+    
+      
+    <devsite-thumb-rating position="header"><div class="devsite-thumb-rating" role="form" aria-labelledby="devsite-thumb-label-header" tabindex="0"><div class="devsite-thumb-label" id="devsite-thumb-label-header">¿Te ha resultado útil?</div><div class="devsite-thumbs"><button class="devsite-thumb devsite-thumb-up" data-title="Útil" aria-label="Útil"><svg class="devsite-thumb-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M21,7h-6.31l0.95-4.57l0.03-0.32c0-0.41-0.17-0.79-0.44-1.06L14.17,0c0,0-7.09,6.85-7.17,7H2v13h16 c0.83,0,1.54-0.5,1.84-1.22l3.02-7.05C22.95,11.5,23,11.26,23,11V9C23,7.9,22.1,7,21,7z M7,18H4V9h3V18z M21,11l-3,7H9V8l4.34-4.34 L12,9h9V11z"></path></svg></button><button class="devsite-thumb devsite-thumb-down" data-title="No es útil" aria-label="No es útil"><svg class="devsite-thumb-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M3,17h6.31l-0.95,4.57l-0.03,0.32c0,0.41,0.17,0.79,0.44,1.06L9.83,24c0,0,7.09-6.85,7.17-7h5V4H6 C5.17,4,4.46,4.5,4.16,5.22l-3.02,7.05C1.05,12.5,1,12.74,1,13v2C1,16.1,1.9,17,3,17z M17,6h3v9h-3V6z M3,13l3-7h9v10l-4.34,4.34 L12,15H3V13z"></path></svg></button></div></div></devsite-thumb-rating>
+  
+    
+  </div>
+  
+    <devsite-feedback position="header" project-name="Machine Learning" product-id="5058906" bucket="" context="" version="t-devsite-webserver-20230117-r00-rc00.449407889378975235" data-label="Send Feedback Button" track-type="feedback" track-name="sendFeedbackLink" track-metadata-position="header" project-icon="https://www.gstatic.com/devrel-devsite/prod/v8630d525d2c63b97010320bed1b0ce38685d514a45414a53dd4326ac0a263ebf/developers/images/touchicon-180.png" feedback-type="thumb-rating">
+
+  <button>
+  
+    
+    Enviar comentarios
+  
+  </button>
+</devsite-feedback>
+  <h1 class="devsite-page-title">
+    Normalización
+  
+</h1><devsite-feature-tooltip ack-key="AckCollectionsBookmarkTooltipDismiss" analytics-category="Site-Wide Custom Events" analytics-action-show="Callout Profile displayed" analytics-action-close="Callout Profile dismissed" analytics-label="Create Collection Callout" class="devsite-page-bookmark-tooltip inline-block" dismiss-button="true" id="devsite-collections-dropdown" dismiss-button-text="Descartar" close-button-text="Entendido" ready="" current-step="0" style="--devsite-popout-offset-x: 32px;">
+
+        
+        <devsite-bookmark class="show"><devsite-dropdown-list ellipsis="" checkboxes="" fetchingitems="true" writable="" additemtext="Nueva colección" ready="" style="--devsite-popout-offset-x: 0px;"><span class="material-icons bookmark-icon" slot="toggle">bookmark_border</span></devsite-dropdown-list></devsite-bookmark>
+
+        <span slot="popout-heading">
+          
+          Organiza tus páginas con colecciones
+        </span>
+        <span slot="popout-contents">
+          
+          Guarda y categoriza el contenido según tus preferencias.
+        </span>
+      </devsite-feature-tooltip>
+    
+  
+  <devsite-toc class="devsite-nav devsite-toc-embedded" depth="2" devsite-toc-embedded="" hidden=""></devsite-toc>
+
+  
+  <devsite-recommendations-dropdown class="nocontent"></devsite-recommendations-dropdown>
+  
+
+  
+
+
+
+
+
+
+<div class="devsite-article-body clearfix
+  ">
+
+  
+    
+    
+<p>
+<devsite-mathjax config="TeX-AMS-MML_SVG"></devsite-mathjax></p>
+
+
+
+<p>El objetivo de la normalización es transformar los atributos para que
+ estén en una escala similar. Esto mejora el rendimiento y la 
+estabilidad del entrenamiento del modelo.</p>
+
+<h2 class="hide-from-toc" data-text="Técnicas de normalización de un vistazo" id="normalization-techniques-at-a-glance" role="presentation"><span class="devsite-heading" role="heading" aria-level="2">Técnicas de normalización de un vistazo</span><button type="button" class="devsite-heading-link button-flat material-icons" aria-label="Copiar enlace a esta sección: Técnicas de normalización de un vistazo" data-title="Copiar enlace a esta sección: Técnicas de normalización de un vistazo" data-id="normalization-techniques-at-a-glance"></button></h2>
+
+<p>Cuatro técnicas comunes de normalización pueden ser útiles:</p>
+
+<ul>
+<li>escalamiento a un rango</li>
+<li>recorte</li>
+<li>escalamiento logarítmico</li>
+<li>puntuación z</li>
+</ul>
+
+<p>En los siguientes gráficos, se muestra el efecto de cada técnica de 
+normalización en la distribución de la característica sin procesar 
+(precio) a la izquierda.
+Los gráficos se basan en el conjunto de datos del Yearbook de Automotive
+ de Ward de 1985 que forma parte del <a href="https://archive.ics.uci.edu/ml/datasets/automobile">UCI Machine Learning Repository en Automobile Data Set</a>.</p>
+
+<p><img alt="Cinco gráficos: 1. Una distribución sin procesar. 2. La distribución sin procesar escala a un rango, que tiene la misma forma que la distribución sin procesar. 3. La distribución sin procesar recortada, lo que elimina los valores más altos. 4. La distribución sin procesar escalada por logaritmo, que agrupa los datos en el medio de la distribución. 5. La puntuación z de la distribución, que tiene una forma similar a la distribución sin procesar." src="Normalizaci%C3%B3n%20Machine%20Learning%20Google%20Developers_files/normalizations-at-a-glance-v2.svg" style="margin: auto; display: block;" width="100%"> </p>
+
+<p><strong>Figura&nbsp;1 Resumen de las técnicas de normalización.</strong></p>
+
+<h3 class="hide-from-toc" data-text="Escalamiento a un rango" id="scaling-to-a-range" role="presentation"><span class="devsite-heading" role="heading" aria-level="3">Escalamiento a un rango</span><button type="button" class="devsite-heading-link button-flat material-icons" aria-label="Copiar enlace a esta sección: Escalamiento a un rango" data-title="Copiar enlace a esta sección: Escalamiento a un rango" data-id="scaling-to-a-range"></button></h3>
+
+<p><a href="https://developers.google.com/machine-learning/crash-course/representation/cleaning-data">Recuerda de MLCC</a> que el <strong><a href="https://developers.google.com/machine-learning/glossary#scaling">escalamiento</a></strong>
+ significa convertir los valores de atributos de punto flotante de su 
+rango natural (por ejemplo, de 100 a 900) en un rango estándar, por lo 
+general, de 0 a 1 (o a veces de -1 a +1). Usa la siguiente fórmula 
+simple para escalar a un rango:</p>
+
+<p><span class="MathJax_Preview" style="color: inherit;"></span><div class="MathJax_SVG_Display" style="text-align: center;"><span style="font-size: 100%; display: inline-block; position: relative;" class="MathJax_SVG" id="MathJax-Element-1-Frame" tabindex="0" data-mathml="&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot; display=&quot;block&quot;&gt;&lt;msup&gt;&lt;mi&gt;x&lt;/mi&gt;&lt;mo&gt;&amp;#x2032;&lt;/mo&gt;&lt;/msup&gt;&lt;mo&gt;=&lt;/mo&gt;&lt;mo stretchy=&quot;false&quot;&gt;(&lt;/mo&gt;&lt;mi&gt;x&lt;/mi&gt;&lt;mo&gt;&amp;#x2212;&lt;/mo&gt;&lt;msub&gt;&lt;mi&gt;x&lt;/mi&gt;&lt;mrow class=&quot;MJX-TeXAtom-ORD&quot;&gt;&lt;mi&gt;m&lt;/mi&gt;&lt;mi&gt;i&lt;/mi&gt;&lt;mi&gt;n&lt;/mi&gt;&lt;/mrow&gt;&lt;/msub&gt;&lt;mo stretchy=&quot;false&quot;&gt;)&lt;/mo&gt;&lt;mrow class=&quot;MJX-TeXAtom-ORD&quot;&gt;&lt;mo&gt;/&lt;/mo&gt;&lt;/mrow&gt;&lt;mo stretchy=&quot;false&quot;&gt;(&lt;/mo&gt;&lt;msub&gt;&lt;mi&gt;x&lt;/mi&gt;&lt;mrow class=&quot;MJX-TeXAtom-ORD&quot;&gt;&lt;mi&gt;m&lt;/mi&gt;&lt;mi&gt;a&lt;/mi&gt;&lt;mi&gt;x&lt;/mi&gt;&lt;/mrow&gt;&lt;/msub&gt;&lt;mo&gt;&amp;#x2212;&lt;/mo&gt;&lt;msub&gt;&lt;mi&gt;x&lt;/mi&gt;&lt;mrow class=&quot;MJX-TeXAtom-ORD&quot;&gt;&lt;mi&gt;m&lt;/mi&gt;&lt;mi&gt;i&lt;/mi&gt;&lt;mi&gt;n&lt;/mi&gt;&lt;/mrow&gt;&lt;/msub&gt;&lt;mo stretchy=&quot;false&quot;&gt;)&lt;/mo&gt;&lt;/math&gt;" role="presentation"><svg xmlns:xlink="http://www.w3.org/1999/xlink" width="30.836ex" height="2.731ex" style="vertical-align: -0.715ex;" viewBox="0 -868.2 13276.4 1175.9" role="img" focusable="false" aria-hidden="true"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><use xlink:href="#MJMATHI-78" x="0" y="0"></use><use transform="scale(0.707)" xlink:href="#MJMAIN-2032" x="809" y="583"></use><use xlink:href="#MJMAIN-3D" x="1145" y="0"></use><use xlink:href="#MJMAIN-28" x="2201" y="0"></use><use xlink:href="#MJMATHI-78" x="2590" y="0"></use><use xlink:href="#MJMAIN-2212" x="3385" y="0"></use><g transform="translate(4386,0)"><use xlink:href="#MJMATHI-78" x="0" y="0"></use><g transform="translate(572,-150)"><use transform="scale(0.707)" xlink:href="#MJMATHI-6D" x="0" y="0"></use><use transform="scale(0.707)" xlink:href="#MJMATHI-69" x="878" y="0"></use><use transform="scale(0.707)" xlink:href="#MJMATHI-6E" x="1224" y="0"></use></g></g><use xlink:href="#MJMAIN-29" x="6348" y="0"></use><use xlink:href="#MJMAIN-2F" x="6738" y="0"></use><use xlink:href="#MJMAIN-28" x="7238" y="0"></use><g transform="translate(7628,0)"><use xlink:href="#MJMATHI-78" x="0" y="0"></use><g transform="translate(572,-150)"><use transform="scale(0.707)" xlink:href="#MJMATHI-6D" x="0" y="0"></use><use transform="scale(0.707)" xlink:href="#MJMATHI-61" x="878" y="0"></use><use transform="scale(0.707)" xlink:href="#MJMATHI-78" x="1408" y="0"></use></g></g><use xlink:href="#MJMAIN-2212" x="9923" y="0"></use><g transform="translate(10924,0)"><use xlink:href="#MJMATHI-78" x="0" y="0"></use><g transform="translate(572,-150)"><use transform="scale(0.707)" xlink:href="#MJMATHI-6D" x="0" y="0"></use><use transform="scale(0.707)" xlink:href="#MJMATHI-69" x="878" y="0"></use><use transform="scale(0.707)" xlink:href="#MJMATHI-6E" x="1224" y="0"></use></g></g><use xlink:href="#MJMAIN-29" x="12886" y="0"></use></g></svg><span class="MJX_Assistive_MathML MJX_Assistive_MathML_Block" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><msup><mi>x</mi><mo>′</mo></msup><mo>=</mo><mo stretchy="false">(</mo><mi>x</mi><mo>−</mo><msub><mi>x</mi><mrow class="MJX-TeXAtom-ORD"><mi>m</mi><mi>i</mi><mi>n</mi></mrow></msub><mo stretchy="false">)</mo><mrow class="MJX-TeXAtom-ORD"><mo>/</mo></mrow><mo stretchy="false">(</mo><msub><mi>x</mi><mrow class="MJX-TeXAtom-ORD"><mi>m</mi><mi>a</mi><mi>x</mi></mrow></msub><mo>−</mo><msub><mi>x</mi><mrow class="MJX-TeXAtom-ORD"><mi>m</mi><mi>i</mi><mi>n</mi></mrow></msub><mo stretchy="false">)</mo></math></span></span></div><script type="math/tex; mode=display" id="MathJax-Element-1"> x' = (x - x_{min}) / (x_{max} - x_{min}) </script></p>
+
+<p>El escalamiento a un rango es una buena opción cuando se cumplen las siguientes condiciones:</p>
+
+<ul>
+<li>Conoces los límites inferior y superior aproximados en tus datos con pocos valores atípicos o sin valores atípicos.</li>
+<li>Tus datos se distribuyen de manera aproximadamente uniforme en ese rango.</li>
+</ul>
+
+<p>Un buen ejemplo es la edad. La mayoría de los valores de edad se 
+encuentran entre 0 y 90, y cada parte del rango tiene una cantidad 
+considerable de personas.</p>
+
+<p>Por el contrario, <em>no</em> deberías usar el escalamiento de los 
+ingresos, ya que solo unas pocas personas tienen ingresos muy altos. El 
+límite superior de la escala lineal para los ingresos sería muy alto, y 
+la mayoría de las personas estarían incluidas en una pequeña parte de la
+ escala.</p>
+
+<h3 class="hide-from-toc" data-text="Recorte de función" id="feature-clipping" role="presentation"><span class="devsite-heading" role="heading" aria-level="3">Recorte de función</span><button type="button" class="devsite-heading-link button-flat material-icons" aria-label="Copiar enlace a esta sección: Recorte de función" data-title="Copiar enlace a esta sección: Recorte de función" data-id="feature-clipping"></button></h3>
+
+<p>Si tu conjunto de datos contiene valores atípicos extremos, puedes 
+probar el recorte de atributos, que limita todos los valores de 
+atributos anteriores (o inferiores) a un valor determinado. Por ejemplo,
+ puedes recortar todos los valores de temperatura por encima de 40 para 
+que sean exactamente 40.</p>
+
+<p>Puedes aplicar el recorte de atributos antes o después de otras normalizaciones.</p>
+
+<p><strong>Fórmula: Establezca valores mínimos y máximos para evitar valores atípicos</strong></p>
+
+<p><img alt="Una comparación entre una distribución nativa y una distribución limitada En la distribución nativa, casi todos los valores se encuentran dentro del rango de 1 a 4, pero un pequeño porcentaje de estos se encuentran entre 5 y 55. En la distribución limitada, todos los valores originalmente superiores a 4 ahora tienen el valor 4." src="Normalizaci%C3%B3n%20Machine%20Learning%20Google%20Developers_files/norm-clipping-outliers.svg" style="margin: auto; display: block;" width="90%"> </p>
+
+<p><strong>Figura&nbsp;2: Comparar una distribución sin procesar y su versión recortada</strong></p>
+
+<p>Otra estrategia de recorte simple consiste en recortar la puntuación z
+ de modo que sea ++-NSIG (por ejemplo, límite a +3-3){}. Ten en cuenta 
+que <i>δ</i> es la desviación estándar.</p>
+
+<h3 class="hide-from-toc" data-text="Escalamiento de registros" id="log-scaling" role="presentation"><span class="devsite-heading" role="heading" aria-level="3">Escalamiento de registros</span><button type="button" class="devsite-heading-link button-flat material-icons" aria-label="Copiar enlace a esta sección: Escalamiento de registros" data-title="Copiar enlace a esta sección: Escalamiento de registros" data-id="log-scaling"></button></h3>
+
+<p>El escalamiento de registros calcula el registro de tus valores para comprimir un rango amplio en un rango limitado.</p>
+
+<p><span class="MathJax_Preview" style="color: inherit;"></span><div class="MathJax_SVG_Display" style="text-align: center;"><span style="font-size: 100%; display: inline-block; position: relative;" class="MathJax_SVG" id="MathJax-Element-2-Frame" tabindex="0" data-mathml="&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot; display=&quot;block&quot;&gt;&lt;msup&gt;&lt;mi&gt;x&lt;/mi&gt;&lt;mo&gt;&amp;#x2032;&lt;/mo&gt;&lt;/msup&gt;&lt;mo&gt;=&lt;/mo&gt;&lt;mi&gt;l&lt;/mi&gt;&lt;mi&gt;o&lt;/mi&gt;&lt;mi&gt;g&lt;/mi&gt;&lt;mo stretchy=&quot;false&quot;&gt;(&lt;/mo&gt;&lt;mi&gt;x&lt;/mi&gt;&lt;mo stretchy=&quot;false&quot;&gt;)&lt;/mo&gt;&lt;/math&gt;" role="presentation"><svg xmlns:xlink="http://www.w3.org/1999/xlink" width="11.189ex" height="2.731ex" style="vertical-align: -0.715ex;" viewBox="0 -868.2 4817.4 1175.9" role="img" focusable="false" aria-hidden="true"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><use xlink:href="#MJMATHI-78" x="0" y="0"></use><use transform="scale(0.707)" xlink:href="#MJMAIN-2032" x="809" y="583"></use><use xlink:href="#MJMAIN-3D" x="1145" y="0"></use><use xlink:href="#MJMATHI-6C" x="2201" y="0"></use><use xlink:href="#MJMATHI-6F" x="2499" y="0"></use><use xlink:href="#MJMATHI-67" x="2985" y="0"></use><use xlink:href="#MJMAIN-28" x="3465" y="0"></use><use xlink:href="#MJMATHI-78" x="3855" y="0"></use><use xlink:href="#MJMAIN-29" x="4427" y="0"></use></g></svg><span class="MJX_Assistive_MathML MJX_Assistive_MathML_Block" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><msup><mi>x</mi><mo>′</mo></msup><mo>=</mo><mi>l</mi><mi>o</mi><mi>g</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></math></span></span></div><script type="math/tex; mode=display" id="MathJax-Element-2"> x' = log(x) </script></p>
+
+<p>El escalamiento logarítmico es útil cuando varios de tus valores 
+tienen muchos puntos, mientras que la mayoría de los demás valores 
+tienen pocos puntos. Esta distribución de datos se conoce como 
+distribución de <em>ley de energía</em>. Las calificaciones de películas
+ son un buen ejemplo. En el siguiente gráfico, la mayoría de las 
+películas tienen muy pocas calificaciones (los datos en la cola), 
+mientras que unas pocas tienen muchas calificaciones (los datos en la 
+cabeza). El escalamiento logarítmico cambia la distribución, lo que 
+ayuda a mejorar el rendimiento del modelo lineal.</p>
+
+<p><img alt="Dos gráficos que comparan datos sin procesar con el registro de datos sin procesar. El gráfico de datos sin procesar muestra muchas calificaciones en la cabeza, seguidas de una cola larga. El grafo de registro tiene una distribución más uniforme." src="Normalizaci%C3%B3n%20Machine%20Learning%20Google%20Developers_files/norm-log-scaling-movie-ratings.svg" style="margin: auto; display: block;" width="80%"> </p>
+
+<p><strong>Figura&nbsp;3: Comparar una distribución sin procesar con su registro</strong></p>
+
+<h3 class="hide-from-toc" data-text="Puntuación Z" id="z-score" role="presentation"><span class="devsite-heading" role="heading" aria-level="3">Puntuación Z</span><button type="button" class="devsite-heading-link button-flat material-icons" aria-label="Copiar enlace a esta sección: Puntuación Z" data-title="Copiar enlace a esta sección: Puntuación Z" data-id="z-score"></button></h3>
+
+<p>La puntuación Z es una variación del escalamiento que representa la 
+cantidad de desviaciones estándar de la media. Usa la puntuación z para 
+garantizar que las distribuciones de atributos tengan una media = 0 y un
+ valor std = 1. Es útil cuando hay algunos valores atípicos, pero no tan
+ extremo que necesitas recortar.</p>
+
+<p>La fórmula para calcular la puntuación z de un punto, <i>x</i>, es la siguiente:</p>
+
+<p><span class="MathJax_Preview" style="color: inherit;"></span><div class="MathJax_SVG_Display" style="text-align: center;"><span style="font-size: 100%; display: inline-block; position: relative;" class="MathJax_SVG" id="MathJax-Element-3-Frame" tabindex="0" data-mathml="&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot; display=&quot;block&quot;&gt;&lt;msup&gt;&lt;mi&gt;x&lt;/mi&gt;&lt;mo&gt;&amp;#x2032;&lt;/mo&gt;&lt;/msup&gt;&lt;mo&gt;=&lt;/mo&gt;&lt;mo stretchy=&quot;false&quot;&gt;(&lt;/mo&gt;&lt;mi&gt;x&lt;/mi&gt;&lt;mo&gt;&amp;#x2212;&lt;/mo&gt;&lt;mrow class=&quot;MJX-TeXAtom-ORD&quot;&gt;&lt;mo&gt;&amp;#x3BC;&lt;/mo&gt;&lt;/mrow&gt;&lt;mo stretchy=&quot;false&quot;&gt;)&lt;/mo&gt;&lt;mrow class=&quot;MJX-TeXAtom-ORD&quot;&gt;&lt;mo&gt;/&lt;/mo&gt;&lt;/mrow&gt;&lt;mrow class=&quot;MJX-TeXAtom-ORD&quot;&gt;&lt;mo&gt;&amp;#x3C3;&lt;/mo&gt;&lt;/mrow&gt;&lt;/math&gt;" role="presentation"><svg xmlns:xlink="http://www.w3.org/1999/xlink" width="14.986ex" height="2.731ex" style="vertical-align: -0.715ex; margin-right: -0.002ex;" viewBox="0 -868.2 6452.3 1175.9" role="img" focusable="false" aria-hidden="true"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><use xlink:href="#MJMATHI-78" x="0" y="0"></use><use transform="scale(0.707)" xlink:href="#MJMAIN-2032" x="809" y="583"></use><use xlink:href="#MJMAIN-3D" x="1145" y="0"></use><use xlink:href="#MJMAIN-28" x="2201" y="0"></use><use xlink:href="#MJMATHI-78" x="2590" y="0"></use><use xlink:href="#MJMAIN-2212" x="3385" y="0"></use><use xlink:href="#MJMATHI-3BC" x="4386" y="0"></use><use xlink:href="#MJMAIN-29" x="4989" y="0"></use><use xlink:href="#MJMAIN-2F" x="5379" y="0"></use><use xlink:href="#MJMATHI-3C3" x="5879" y="0"></use></g></svg><span class="MJX_Assistive_MathML MJX_Assistive_MathML_Block" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><msup><mi>x</mi><mo>′</mo></msup><mo>=</mo><mo stretchy="false">(</mo><mi>x</mi><mo>−</mo><mrow class="MJX-TeXAtom-ORD"><mo>μ</mo></mrow><mo stretchy="false">)</mo><mrow class="MJX-TeXAtom-ORD"><mo>/</mo></mrow><mrow class="MJX-TeXAtom-ORD"><mo>σ</mo></mrow></math></span></span></div><script type="math/tex; mode=display" id="MathJax-Element-3"> x' = (x - μ) / σ </script></p>
+<aside class="note"><strong>Nota:</strong><span> <i>μ</i> es la media y <i>δ</i> es la desviación estándar.</span></aside>
+<p><img alt="Dos gráficos que comparan datos sin procesar con datos normalizados con una puntuación z. Los datos sin procesar muestran una distribución de Poisson aproximada de 5,000 a 45,000.
+Los datos normalizados oscilan entre -1 y +4." src="Normalizaci%C3%B3n%20Machine%20Learning%20Google%20Developers_files/norm-z-score.svg" style="margin: left; display: block;" width="80%"> </p>
+
+<p><strong>Figura&nbsp;4: Comparar una distribución sin procesar con su distribución con puntuación z.</strong></p>
+
+<p>Ten en cuenta que la puntuación z exprime los valores sin procesar 
+que tienen un rango de ~40,000 a un rango de aproximadamente -1 a +4.</p>
+
+<p>Supongamos que no está seguro de si los valores atípicos realmente 
+son extremos.
+En este caso, comienza con la puntuación z, a menos que tengas valores 
+de atributos que no quieras que el modelo aprenda. Por ejemplo, los 
+valores son el resultado de un error de medición o una peculiaridad.</p>
+
+<h2 class="hide-from-toc" data-text="Resumen" id="summary" role="presentation"><span class="devsite-heading" role="heading" aria-level="2">Resumen</span><button type="button" class="devsite-heading-link button-flat material-icons" aria-label="Copiar enlace a esta sección: Resumen" data-title="Copiar enlace a esta sección: Resumen" data-id="summary"></button></h2>
+
+<aside class="key-point">La mejor técnica de normalización es aquella 
+que funciona bien empírica, por lo que debes probar nuevas ideas si 
+crees que funcionarán bien en la distribución de tus atributos.</aside>
+
+<div class="devsite-table-wrapper"><table>
+  <tbody><tr><th>Técnica de normalización</th><th>Formula</th><th>Cuándo utilizarlas</th></tr>
+  <tr><td>Escalamiento lineal</td>
+      <td><span class="MathJax_Preview" style="color: inherit;"></span><div class="MathJax_SVG_Display" style="text-align: center;"><span style="font-size: 100%; display: inline-block; position: relative;" class="MathJax_SVG" id="MathJax-Element-4-Frame" tabindex="0" data-mathml="&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot; display=&quot;block&quot;&gt;&lt;msup&gt;&lt;mi&gt;x&lt;/mi&gt;&lt;mo&gt;&amp;#x2032;&lt;/mo&gt;&lt;/msup&gt;&lt;mo&gt;=&lt;/mo&gt;&lt;mo stretchy=&quot;false&quot;&gt;(&lt;/mo&gt;&lt;mi&gt;x&lt;/mi&gt;&lt;mo&gt;&amp;#x2212;&lt;/mo&gt;&lt;msub&gt;&lt;mi&gt;x&lt;/mi&gt;&lt;mrow class=&quot;MJX-TeXAtom-ORD&quot;&gt;&lt;mi&gt;m&lt;/mi&gt;&lt;mi&gt;i&lt;/mi&gt;&lt;mi&gt;n&lt;/mi&gt;&lt;/mrow&gt;&lt;/msub&gt;&lt;mo stretchy=&quot;false&quot;&gt;)&lt;/mo&gt;&lt;mrow class=&quot;MJX-TeXAtom-ORD&quot;&gt;&lt;mo&gt;/&lt;/mo&gt;&lt;/mrow&gt;&lt;mo stretchy=&quot;false&quot;&gt;(&lt;/mo&gt;&lt;msub&gt;&lt;mi&gt;x&lt;/mi&gt;&lt;mrow class=&quot;MJX-TeXAtom-ORD&quot;&gt;&lt;mi&gt;m&lt;/mi&gt;&lt;mi&gt;a&lt;/mi&gt;&lt;mi&gt;x&lt;/mi&gt;&lt;/mrow&gt;&lt;/msub&gt;&lt;mo&gt;&amp;#x2212;&lt;/mo&gt;&lt;msub&gt;&lt;mi&gt;x&lt;/mi&gt;&lt;mrow class=&quot;MJX-TeXAtom-ORD&quot;&gt;&lt;mi&gt;m&lt;/mi&gt;&lt;mi&gt;i&lt;/mi&gt;&lt;mi&gt;n&lt;/mi&gt;&lt;/mrow&gt;&lt;/msub&gt;&lt;mo stretchy=&quot;false&quot;&gt;)&lt;/mo&gt;&lt;/math&gt;" role="presentation"><svg xmlns:xlink="http://www.w3.org/1999/xlink" width="30.836ex" height="2.847ex" style="vertical-align: -0.815ex;" viewBox="0 -874.7 13276.4 1225.8" role="img" focusable="false" aria-hidden="true"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><use xlink:href="#MJMATHI-78" x="0" y="0"></use><use transform="scale(0.707)" xlink:href="#MJMAIN-2032" x="809" y="583"></use><use xlink:href="#MJMAIN-3D" x="1145" y="0"></use><use xlink:href="#MJMAIN-28" x="2201" y="0"></use><use xlink:href="#MJMATHI-78" x="2590" y="0"></use><use xlink:href="#MJMAIN-2212" x="3385" y="0"></use><g transform="translate(4386,0)"><use xlink:href="#MJMATHI-78" x="0" y="0"></use><g transform="translate(572,-150)"><use transform="scale(0.707)" xlink:href="#MJMATHI-6D" x="0" y="0"></use><use transform="scale(0.707)" xlink:href="#MJMATHI-69" x="878" y="0"></use><use transform="scale(0.707)" xlink:href="#MJMATHI-6E" x="1224" y="0"></use></g></g><use xlink:href="#MJMAIN-29" x="6348" y="0"></use><use xlink:href="#MJMAIN-2F" x="6738" y="0"></use><use xlink:href="#MJMAIN-28" x="7238" y="0"></use><g transform="translate(7628,0)"><use xlink:href="#MJMATHI-78" x="0" y="0"></use><g transform="translate(572,-150)"><use transform="scale(0.707)" xlink:href="#MJMATHI-6D" x="0" y="0"></use><use transform="scale(0.707)" xlink:href="#MJMATHI-61" x="878" y="0"></use><use transform="scale(0.707)" xlink:href="#MJMATHI-78" x="1408" y="0"></use></g></g><use xlink:href="#MJMAIN-2212" x="9923" y="0"></use><g transform="translate(10924,0)"><use xlink:href="#MJMATHI-78" x="0" y="0"></use><g transform="translate(572,-150)"><use transform="scale(0.707)" xlink:href="#MJMATHI-6D" x="0" y="0"></use><use transform="scale(0.707)" xlink:href="#MJMATHI-69" x="878" y="0"></use><use transform="scale(0.707)" xlink:href="#MJMATHI-6E" x="1224" y="0"></use></g></g><use xlink:href="#MJMAIN-29" x="12886" y="0"></use></g></svg><span class="MJX_Assistive_MathML MJX_Assistive_MathML_Block" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><msup><mi>x</mi><mo>′</mo></msup><mo>=</mo><mo stretchy="false">(</mo><mi>x</mi><mo>−</mo><msub><mi>x</mi><mrow class="MJX-TeXAtom-ORD"><mi>m</mi><mi>i</mi><mi>n</mi></mrow></msub><mo stretchy="false">)</mo><mrow class="MJX-TeXAtom-ORD"><mo>/</mo></mrow><mo stretchy="false">(</mo><msub><mi>x</mi><mrow class="MJX-TeXAtom-ORD"><mi>m</mi><mi>a</mi><mi>x</mi></mrow></msub><mo>−</mo><msub><mi>x</mi><mrow class="MJX-TeXAtom-ORD"><mi>m</mi><mi>i</mi><mi>n</mi></mrow></msub><mo stretchy="false">)</mo></math></span></span></div><script type="math/tex; mode=display" id="MathJax-Element-4"> x' = (x - x_{min}) / (x_{max} - x_{min}) </script></td>
+      <td>Cuando el atributo se distribuye de manera más o menos uniforme en un rango fijo.</td></tr>
+  <tr><td>Recorte</td>
+      <td>si x &gt; máx., entonces x' = máx. si x &lt; min, entonces x' = min</td>
+      <td>Cuando el atributo contiene valores atípicos extremos. </td></tr>
+  <tr><td>Escalamiento de registros</td>
+      <td>x' = registro(x)</td>
+      <td>Cuando la función cumple con la ley de energía.</td></tr>
+  <tr><td>Puntuación Z</td>
+      <td>x' = (x - μ) / δ</td>
+      <td>Cuando la distribución de atributos no contiene valores atípicos extremos.</td></tr>
+</tbody></table></div>
+
+<aside class="key-term"><b>Términos clave:</b>
+  <div class="devsite-table-wrapper"><table class="columns">
+    <tbody><tr>
+      <td><ul><li> <a href="https://developers.google.com/machine-learning/glossary#scaling" target="G">escalamiento</a> </li></ul></td>
+      <td><ul><li> <a href="https://developers.google.com/machine-learning/glossary#normalization" target="G">normalización</a> </li></ul></td>
+    </tr>
+  </tbody></table></div>
+</aside>
+
+  
+
+  
+
+  
+</div>
+
+  
+    <div class="devsite-steps">
+  
+  <div class="steps-previous steps-direction">
+    <a href="https://developers.google.com/machine-learning/data-prep/transform/transform-numeric" class="steps-link gc-analytics-event" data-category="Site-Wide Custom Events" data-action="Previous step" data-label="/machine-learning/data-prep/transform/transform-numeric">
+      
+      <div class="steps-link-direction">Anterior</div>
+      <span class="steps-link-arrow steps-link-arrow-left material-icons" aria-hidden="true">
+        arrow_back
+      </span>
+      <span class="steps-link-title-previous steps-link-title">
+        Transformación de datos numéricos
+      </span>
+    </a>
+  </div>
+  
+  
+  <div class="steps-next steps-direction">
+    <a href="https://developers.google.com/machine-learning/data-prep/transform/bucketing" class="steps-link gc-analytics-event" data-category="Site-Wide Custom Events" data-action="Next step" data-label="/machine-learning/data-prep/transform/bucketing">
+      
+      <div class="steps-link-direction">Siguiente</div>
+      <span class="steps-link-title-next steps-link-title">
+        Agrupamiento
+      </span>
+      <span class="steps-link-arrow steps-link-arrow-right material-icons" aria-hidden="true">
+        arrow_forward
+      </span>
+    </a>
+  </div>
+  
+</div>
+  
+
+  
+    
+      <devsite-recommendations display="in-page" yield="" hidden="">
+      </devsite-recommendations>
+    
+    
+      
+    <devsite-thumb-rating position="footer"><div class="devsite-thumb-rating" role="form" aria-labelledby="devsite-thumb-label-footer" tabindex="0"><div class="devsite-thumb-label" id="devsite-thumb-label-footer">¿Te ha resultado útil?</div><div class="devsite-thumbs"><button class="devsite-thumb devsite-thumb-up" data-title="Útil" aria-label="Útil"><svg class="devsite-thumb-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M21,7h-6.31l0.95-4.57l0.03-0.32c0-0.41-0.17-0.79-0.44-1.06L14.17,0c0,0-7.09,6.85-7.17,7H2v13h16 c0.83,0,1.54-0.5,1.84-1.22l3.02-7.05C22.95,11.5,23,11.26,23,11V9C23,7.9,22.1,7,21,7z M7,18H4V9h3V18z M21,11l-3,7H9V8l4.34-4.34 L12,9h9V11z"></path></svg></button><button class="devsite-thumb devsite-thumb-down" data-title="No es útil" aria-label="No es útil"><svg class="devsite-thumb-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M3,17h6.31l-0.95,4.57l-0.03,0.32c0,0.41,0.17,0.79,0.44,1.06L9.83,24c0,0,7.09-6.85,7.17-7h5V4H6 C5.17,4,4.46,4.5,4.16,5.22l-3.02,7.05C1.05,12.5,1,12.74,1,13v2C1,16.1,1.9,17,3,17z M17,6h3v9h-3V6z M3,13l3-7h9v10l-4.34,4.34 L12,15H3V13z"></path></svg></button></div></div></devsite-thumb-rating>
+  
+       
+         <devsite-feedback position="footer" project-name="Machine Learning" product-id="5058906" bucket="" context="" version="t-devsite-webserver-20230117-r00-rc00.449407889378975235" data-label="Send Feedback Button" track-type="feedback" track-name="sendFeedbackLink" track-metadata-position="footer" project-icon="https://www.gstatic.com/devrel-devsite/prod/v8630d525d2c63b97010320bed1b0ce38685d514a45414a53dd4326ac0a263ebf/developers/images/touchicon-180.png" feedback-type="thumb-rating">
+
+  <button>
+  
+    
+    Enviar comentarios
+  
+  </button>
+</devsite-feedback>
+       
+    
+    
+      
+    
+  
+
+  
+  
+</article>
+
+
+<devsite-content-footer class="nocontent">
+  <p>Except as otherwise noted, the content of this page is licensed under the <a href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 License</a>, and code samples are licensed under the <a href="https://www.apache.org/licenses/LICENSE-2.0">Apache 2.0 License</a>. For details, see the <a href="https://developers.google.com/site-policies">Google Developers Site Policies</a>. Java is a registered trademark of Oracle and/or its affiliates.</p>
+  <p>Last updated 2022-09-27 UTC.</p>
+</devsite-content-footer>
+
+
+<devsite-notification>
+</devsite-notification>
+
+
+  
+<div class="devsite-content-data">
+  <template class="devsite-thumb-rating-down-categories">
+  [{
+      "type": "thumb-down",
+      "id": "missingTheInformationINeed",
+      "label":"Falta la información que necesito"
+    },{
+      "type": "thumb-down",
+      "id": "tooComplicatedTooManySteps",
+      "label":"Muy complicado o demasiados pasos"
+    },{
+      "type": "thumb-down",
+      "id": "outOfDate",
+      "label":"Desactualizado"
+    },{
+      "type": "thumb-down",
+      "id": "translationIssue",
+      "label":"Problema de traducción"
+    },{
+      "type": "thumb-down",
+      "id": "samplesCodeIssue",
+      "label":"Problema con las muestras o los códigos"
+    },{
+      "type": "thumb-down",
+      "id": "otherDown",
+      "label":"Otro"
+    }]
+  </template>
+  <template class="devsite-thumb-rating-up-categories">
+  [{
+      "type": "thumb-up",
+      "id": "easyToUnderstand",
+      "label":"Fácil de comprender"
+    },{
+      "type": "thumb-up",
+      "id": "solvedMyProblem",
+      "label":"Resolvió mi problema"
+    },{
+      "type": "thumb-up",
+      "id": "otherUp",
+      "label":"Otro"
+    }]
+  </template>
+  
+    
+    
+    <template class="devsite-thumb-rating-feedback">
+      <devsite-feedback position="thumb-rating" project-name="Machine Learning" product-id="5058906" bucket="" context="" version="t-devsite-webserver-20230117-r00-rc00.449407889378975235" data-label="Send Feedback Button" track-type="feedback" track-name="sendFeedbackLink" track-metadata-position="thumb-rating" project-icon="https://www.gstatic.com/devrel-devsite/prod/v8630d525d2c63b97010320bed1b0ce38685d514a45414a53dd4326ac0a263ebf/developers/images/touchicon-180.png" feedback-type="thumb-rating">
+
+  <button>
+  
+    ¿Quieres brindar más información?
+  
+  </button>
+</devsite-feedback>
+    </template>
+  
+</div>
+            
+          </devsite-content>
+        </main>
+        <devsite-footer-promos class="devsite-footer">
+          
+            
+          
+        </devsite-footer-promos>
+        <devsite-footer-linkboxes class="devsite-footer">
+          
+            
+<nav class="devsite-footer-linkboxes nocontent" aria-label="Vínculos a pie de página">
+  
+  <ul class="devsite-footer-linkboxes-list">
+    
+    <li class="devsite-footer-linkbox ">
+    <h3 class="devsite-footer-linkbox-heading no-link">Conéctate</h3>
+      <ul class="devsite-footer-linkbox-list">
+        
+        <li class="devsite-footer-linkbox-item">
+          
+          <a href="https://desarrolladores.googleblog.com/" class="devsite-footer-linkbox-link gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Footer Link (index 1)">
+            
+          
+            Blog
+          
+          </a>
+          
+          
+        </li>
+        
+        <li class="devsite-footer-linkbox-item">
+          
+          <a href="https://www.facebook.com/Google-Developers-967415219957038" class="devsite-footer-linkbox-link gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Footer Link (index 2)">
+            
+          
+            Facebook
+          
+          </a>
+          
+          
+        </li>
+        
+        <li class="devsite-footer-linkbox-item">
+          
+          <a href="https://medium.com/google-developers" class="devsite-footer-linkbox-link gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Footer Link (index 3)">
+            
+          
+            Medium
+          
+          </a>
+          
+          
+        </li>
+        
+        <li class="devsite-footer-linkbox-item">
+          
+          <a href="https://twitter.com/googledevslatam" class="devsite-footer-linkbox-link gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Footer Link (index 4)">
+            
+          
+            Twitter
+          
+          </a>
+          
+          
+        </li>
+        
+        <li class="devsite-footer-linkbox-item">
+          
+          <a href="https://www.youtube.com/channel/UCeo-MamuQVFRcfQmS2N7fhw" class="devsite-footer-linkbox-link gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Footer Link (index 5)">
+            
+              
+              
+            
+          
+            YouTube
+          
+          </a>
+          
+          
+        </li>
+        
+      </ul>
+    </li>
+    
+    <li class="devsite-footer-linkbox ">
+    <h3 class="devsite-footer-linkbox-heading no-link">Programas</h3>
+      <ul class="devsite-footer-linkbox-list">
+        
+        <li class="devsite-footer-linkbox-item">
+          
+          <a href="https://www.womentechmakers.com/" class="devsite-footer-linkbox-link gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Footer Link (index 1)">
+            
+          
+            Women Techmakers
+          
+          </a>
+          
+          
+        </li>
+        
+        <li class="devsite-footer-linkbox-item">
+          
+          <a href="https://developers.google.com/community/gdg" class="devsite-footer-linkbox-link gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Footer Link (index 2)">
+            
+          
+            Google Developer Groups
+          
+          </a>
+          
+          
+        </li>
+        
+        <li class="devsite-footer-linkbox-item">
+          
+          <a href="https://developers.google.com/community/experts" class="devsite-footer-linkbox-link gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Footer Link (index 3)">
+            
+          
+            Google Developers Experts
+          
+          </a>
+          
+          
+        </li>
+        
+        <li class="devsite-footer-linkbox-item">
+          
+          <a href="https://developers.google.com/community/accelerators" class="devsite-footer-linkbox-link gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Footer Link (index 4)">
+            
+          
+            Accelerators
+          
+          </a>
+          
+          
+        </li>
+        
+        <li class="devsite-footer-linkbox-item">
+          
+          <a href="https://developers.google.com/community/gdsc" class="devsite-footer-linkbox-link gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Footer Link (index 5)">
+            
+              
+              
+            
+          
+            Google Developer Student Clubs
+          
+          </a>
+          
+          
+        </li>
+        
+      </ul>
+    </li>
+    
+    <li class="devsite-footer-linkbox ">
+    <h3 class="devsite-footer-linkbox-heading no-link">Consolas para desarrolladores</h3>
+      <ul class="devsite-footer-linkbox-list">
+        
+        <li class="devsite-footer-linkbox-item">
+          
+          <a href="https://console.developers.google.com/" class="devsite-footer-linkbox-link gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Footer Link (index 1)">
+            
+          
+            Google API Console
+          
+          </a>
+          
+          
+        </li>
+        
+        <li class="devsite-footer-linkbox-item">
+          
+          <a href="https://console.cloud.google.com/" class="devsite-footer-linkbox-link gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Footer Link (index 2)">
+            
+          
+            Google Cloud Platform Console
+          
+          </a>
+          
+          
+        </li>
+        
+        <li class="devsite-footer-linkbox-item">
+          
+          <a href="https://play.google.com/apps/publish" class="devsite-footer-linkbox-link gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Footer Link (index 3)">
+            
+          
+            Google&nbsp;Play&nbsp;Console
+          
+          </a>
+          
+          
+        </li>
+        
+        <li class="devsite-footer-linkbox-item">
+          
+          <a href="https://console.firebase.google.com/" class="devsite-footer-linkbox-link gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Footer Link (index 4)">
+            
+          
+            Firebase Console
+          
+          </a>
+          
+          
+        </li>
+        
+        <li class="devsite-footer-linkbox-item">
+          
+          <a href="https://console.actions.google.com/" class="devsite-footer-linkbox-link gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Footer Link (index 5)">
+            
+          
+            Actions on Google Console
+          
+          </a>
+          
+          
+        </li>
+        
+        <li class="devsite-footer-linkbox-item">
+          
+          <a href="https://cast.google.com/publish" class="devsite-footer-linkbox-link gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Footer Link (index 6)">
+            
+          
+            Cast SDK Developer Console
+          
+          </a>
+          
+          
+        </li>
+        
+        <li class="devsite-footer-linkbox-item">
+          
+          <a href="https://chrome.google.com/webstore/developer/dashboard" class="devsite-footer-linkbox-link gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Footer Link (index 7)">
+            
+              
+              
+            
+          
+            Chrome Web Store Dashboard
+          
+          </a>
+          
+          
+        </li>
+        
+      </ul>
+    </li>
+    
+  </ul>
+  
+</nav>
+          
+        </devsite-footer-linkboxes>
+        <devsite-footer-utility class="devsite-footer">
+          
+            
+
+<div class="devsite-footer-utility nocontent">
+  
+  
+  <nav class="devsite-footer-sites" aria-label="Otros sitios web de Google&nbsp;Developers">
+    <a href="https://developers.google.com/" class="devsite-footer-sites-logo-link gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Footer Google Developers Link">
+      <picture>
+        <source srcset="Normalizaci%C3%B3n%20Machine%20Learning%20Google%20Developers_files/lockup-developers-dark-theme.svg 1x" media="(prefers-color-scheme: none)" class="devsite-dark-theme" loading="lazy" alt="Google Developers">
+        <img class="devsite-footer-sites-logo" src="Normalizaci%C3%B3n%20Machine%20Learning%20Google%20Developers_files/lockup-developers.svg" loading="lazy" alt="Google Developers">
+      </picture>
+    </a>
+    <ul class="devsite-footer-sites-list">
+      
+      <li class="devsite-footer-sites-item">
+        <a href="https://developer.android.com/" class="devsite-footer-sites-link
+                  gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Footer Android Link">
+          Android
+        </a>
+      </li>
+      
+      <li class="devsite-footer-sites-item">
+        <a href="https://developer.chrome.com/home" class="devsite-footer-sites-link
+                  gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Footer Chrome Link">
+          Chrome
+        </a>
+      </li>
+      
+      <li class="devsite-footer-sites-item">
+        <a href="https://firebase.google.com/" class="devsite-footer-sites-link
+                  gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Footer Firebase Link">
+          Firebase
+        </a>
+      </li>
+      
+      <li class="devsite-footer-sites-item">
+        <a href="https://cloud.google.com/" class="devsite-footer-sites-link
+                  gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Footer Google Cloud Platform Link">
+          Google Cloud Platform
+        </a>
+      </li>
+      
+      <li class="devsite-footer-sites-item">
+        <a href="https://developers.google.com/products" class="devsite-footer-sites-link
+                  gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Footer All products Link">
+          Todos los productos
+        </a>
+      </li>
+      
+    </ul>
+  </nav>
+  
+
+  
+  <nav class="devsite-footer-utility-links" aria-label="Vínculos de utilidad">
+    
+    <ul class="devsite-footer-utility-list">
+      
+      <li class="devsite-footer-utility-item
+                 ">
+        
+        
+        <a class="devsite-footer-utility-link gc-analytics-event" href="https://developers.google.com/terms/site-terms" data-category="Site-Wide Custom Events" data-label="Footer Terms link">
+          Condiciones
+        </a>
+        
+      </li>
+      
+      <li class="devsite-footer-utility-item
+                 ">
+        
+        
+        <a class="devsite-footer-utility-link gc-analytics-event" href="https://policies.google.com/privacy" data-category="Site-Wide Custom Events" data-label="Footer Privacy link">
+          Privacidad
+        </a>
+        
+      </li>
+      
+      <li class="devsite-footer-utility-item
+                 devsite-footer-utility-button">
+        
+        <span class="devsite-footer-utility-description">Regístrate en el boletín informativo de Google&nbsp;Developers</span>
+        
+        
+        <a class="devsite-footer-utility-link gc-analytics-event" href="https://services.google.com/fb/forms/googledevelopersnewsletter/?utm_medium=referral&amp;utm_source=google-products&amp;utm_team=googledevs&amp;utm_campaign=201611-newsletter-launch" data-category="Site-Wide Custom Events" data-label="Footer Subscribe link">
+          Suscribirse
+        </a>
+        
+      </li>
+      
+    </ul>
+    
+    
+<devsite-language-selector aria-label="Selecciona tu preferencia de idioma.">
+  <ul role="presentation">
+    
+    
+    <li role="presentation">
+      <a role="menuitem" href="https://developers.google.com/machine-learning/data-prep/transform/normalization" aria-current="true" lang="en">English</a>
+    </li>
+    
+    <li role="presentation">
+      <a role="menuitem" href="https://developers.google.com/machine-learning/data-prep/transform/normalization?hl=id" lang="id">Bahasa Indonesia</a>
+    </li>
+    
+    <li role="presentation">
+      <a role="menuitem" href="https://developers.google.com/machine-learning/data-prep/transform/normalization?hl=de" lang="de">Deutsch</a>
+    </li>
+    
+    <li role="presentation">
+      <a role="menuitem" href="https://developers.google.com/machine-learning/data-prep/transform/normalization?hl=es" lang="es">Español</a>
+    </li>
+    
+    <li role="presentation">
+      <a role="menuitem" href="https://developers.google.com/machine-learning/data-prep/transform/normalization?hl=es-419" lang="es-419">Español – América Latina</a>
+    </li>
+    
+    <li role="presentation">
+      <a role="menuitem" href="https://developers.google.com/machine-learning/data-prep/transform/normalization?hl=fr" lang="fr">Français</a>
+    </li>
+    
+    <li role="presentation">
+      <a role="menuitem" href="https://developers.google.com/machine-learning/data-prep/transform/normalization?hl=it" lang="it">Italiano</a>
+    </li>
+    
+    <li role="presentation">
+      <a role="menuitem" href="https://developers.google.com/machine-learning/data-prep/transform/normalization?hl=pl" lang="pl">Polski</a>
+    </li>
+    
+    <li role="presentation">
+      <a role="menuitem" href="https://developers.google.com/machine-learning/data-prep/transform/normalization?hl=pt-br" lang="pt-br">Português – Brasil</a>
+    </li>
+    
+    <li role="presentation">
+      <a role="menuitem" href="https://developers.google.com/machine-learning/data-prep/transform/normalization?hl=vi" lang="vi">Tiếng Việt</a>
+    </li>
+    
+    <li role="presentation">
+      <a role="menuitem" href="https://developers.google.com/machine-learning/data-prep/transform/normalization?hl=tr" lang="tr">Türkçe</a>
+    </li>
+    
+    <li role="presentation">
+      <a role="menuitem" href="https://developers.google.com/machine-learning/data-prep/transform/normalization?hl=ru" lang="ru">Русский</a>
+    </li>
+    
+    <li role="presentation">
+      <a role="menuitem" href="https://developers.google.com/machine-learning/data-prep/transform/normalization?hl=he" lang="he">עברית</a>
+    </li>
+    
+    <li role="presentation">
+      <a role="menuitem" href="https://developers.google.com/machine-learning/data-prep/transform/normalization?hl=ar" lang="ar">العربيّة</a>
+    </li>
+    
+    <li role="presentation">
+      <a role="menuitem" href="https://developers.google.com/machine-learning/data-prep/transform/normalization?hl=fa" lang="fa">فارسی</a>
+    </li>
+    
+    <li role="presentation">
+      <a role="menuitem" href="https://developers.google.com/machine-learning/data-prep/transform/normalization?hl=hi" lang="hi">हिंदी</a>
+    </li>
+    
+    <li role="presentation">
+      <a role="menuitem" href="https://developers.google.com/machine-learning/data-prep/transform/normalization?hl=bn" lang="bn">বাংলা</a>
+    </li>
+    
+    <li role="presentation">
+      <a role="menuitem" href="https://developers.google.com/machine-learning/data-prep/transform/normalization?hl=th" lang="th">ภาษาไทย</a>
+    </li>
+    
+    <li role="presentation">
+      <a role="menuitem" href="https://developers.google.com/machine-learning/data-prep/transform/normalization?hl=zh-cn" lang="zh-cn">中文 – 简体</a>
+    </li>
+    
+    <li role="presentation">
+      <a role="menuitem" href="https://developers.google.com/machine-learning/data-prep/transform/normalization?hl=zh-tw" lang="zh-tw">中文 – 繁體</a>
+    </li>
+    
+    <li role="presentation">
+      <a role="menuitem" href="https://developers.google.com/machine-learning/data-prep/transform/normalization?hl=ja" lang="ja">日本語</a>
+    </li>
+    
+    <li role="presentation">
+      <a role="menuitem" href="https://developers.google.com/machine-learning/data-prep/transform/normalization?hl=ko" lang="ko">한국어</a>
+    </li>
+    
+  </ul>
+</devsite-language-selector>
+
+  </nav>
+</div>
+          
+        </devsite-footer-utility>
+        <devsite-panel style="height: auto;"></devsite-panel>
+      </section></section>
+    <devsite-sitemask></devsite-sitemask>
+    <devsite-snackbar style="bottom: 0px;">
+</devsite-snackbar>
+    
+    <devsite-heading-link></devsite-heading-link>
+    <devsite-analytics analytics-iframe="">
+      
+        <script type="application/json" analytics="">[{&#34;dimensions&#34;: {&#34;dimension11&#34;: true, &#34;dimension1&#34;: &#34;Signed In&#34;, &#34;dimension4&#34;: &#34;Machine Learning&#34;, &#34;dimension3&#34;: false, &#34;dimension6&#34;: &#34;es-419&#34;, &#34;dimension5&#34;: &#34;es&#34;}, &#34;gaid&#34;: &#34;UA-24532603-1&#34;, &#34;metrics&#34;: {&#34;ratings_count&#34;: &#34;metric2&#34;, &#34;ratings_value&#34;: &#34;metric1&#34;}}, {&#34;dimensions&#34;: {&#34;dimension11&#34;: true, &#34;dimension1&#34;: &#34;Signed In&#34;, &#34;dimension4&#34;: &#34;Machine Learning&#34;, &#34;dimension3&#34;: false, &#34;dimension6&#34;: &#34;es-419&#34;, &#34;dimension5&#34;: &#34;es&#34;}, &#34;gaid&#34;: &#34;UA-76465953-5&#34;, &#34;metrics&#34;: {&#34;ratings_count&#34;: &#34;metric2&#34;, &#34;ratings_value&#34;: &#34;metric1&#34;}}]</script>
+<script type="application/json" gtm="">{&#34;parameters&#34;: {&#34;internalUser&#34;: &#34;False&#34;, &#34;language&#34;: {&#34;machineTranslated&#34;: &#34;True&#34;, &#34;requested&#34;: &#34;es&#34;, &#34;served&#34;: &#34;es-419&#34;}, &#34;pageType&#34;: &#34;article&#34;, &#34;projectName&#34;: &#34;Machine Learning&#34;, &#34;signedIn&#34;: &#34;True&#34;, &#34;tenant&#34;: &#34;developers&#34;, &#34;recommendations&#34;: {&#34;sourcePage&#34;: &#34;&#34;, &#34;sourceType&#34;: 0, &#34;sourceRank&#34;: 0, &#34;sourceIdenticalDescriptions&#34;: 0, &#34;sourceTitleWords&#34;: 0, &#34;sourceDescriptionWords&#34;: 0, &#34;experiment&#34;: &#34;&#34;}, &#34;experiment&#34;: {&#34;ids&#34;: &#34;&#34;}}, &#34;tags&#34;: []}</script>
+      
+    <iframe src="Normalizaci%C3%B3n%20Machine%20Learning%20Google%20Developers_files/analytics-iframe.htm"></iframe></devsite-analytics>
+    
+      <devsite-badger></devsite-badger>
+    
+    
+    <script nonce="">
+  
+  (function(d,e,v,s,i,t,E){d['GoogleDevelopersObject']=i;
+    t=e.createElement(v);t.async=1;t.src=s;E=e.getElementsByTagName(v)[0];
+    E.parentNode.insertBefore(t,E);})(window, document, 'script',
+    'https://www.gstatic.com/devrel-devsite/prod/v8630d525d2c63b97010320bed1b0ce38685d514a45414a53dd4326ac0a263ebf/developers/js/app_loader.js', '[1,"es",null,"/js/devsite_app_module.js","https://www.gstatic.com/devrel-devsite/prod/v8630d525d2c63b97010320bed1b0ce38685d514a45414a53dd4326ac0a263ebf","https://www.gstatic.com/devrel-devsite/prod/v8630d525d2c63b97010320bed1b0ce38685d514a45414a53dd4326ac0a263ebf/developers","https://developers-dot-devsite-v2-prod.appspot.com",null,null,["/_pwa/developers/manifest.json","https://www.gstatic.com/devrel-devsite/prod/v8630d525d2c63b97010320bed1b0ce38685d514a45414a53dd4326ac0a263ebf/images/video-placeholder.svg","https://www.gstatic.com/devrel-devsite/prod/v8630d525d2c63b97010320bed1b0ce38685d514a45414a53dd4326ac0a263ebf/developers/images/favicon.png","https://fonts.googleapis.com/css?family=Google+Sans:400,500|Roboto:400,400italic,500,500italic,700,700italic|Roboto+Mono:400,500,700&display=swap"],1,null,[1,6,8,12,14,17,21,25,40,50,52,63,70,75,76,80,87,91,92,93,97,98,100,101,102,103,104,105,107,108,109,110,111,112,113,115,116,117,118,120,122,124,125,126,127,129,130,131,132,133,134,135,136,138,140,141,144,147,148,149,150,151,152,154,155,156,157,158,159,161,163,164,165,168,169,170,172,173,179,180,182,183,186,190,191,193,196],"AIzaSyAP-jjEJBzmIyKR4F-3XITp8yM9T1gEEI8","AIzaSyB6xiKGDR5O3Ak2okS4rLkauxGUG7XP0hg","developers.google.com","AIzaSyAQk0fBONSGUqCNznf6Krs82Ap1-NV6J4o","AIzaSyCCxcqdrZ_7QMeLCRY20bh_SXdAYqy70KY",null,null,null,["Profiles__enable_developer_profiles_interests","Profiles__enable_page_saving","Profiles__enable_profile_notifications_ui","Search__enable_page_map","BookNav__enable_book_nav_filtering","Search__enable_acl_suggestions","MiscFeatureFlags__enable_footprints_record_views","Significatio__enable_by_tenant","Experiments__enable_experiments","Cloud__enable_cloud_shell_fte_user_flow","Profiles__enable_developer_profiles_callout","Experiments__reqs_query_experiments","Badges__enable_drag_and_drop_badges","SignIn__enable_auto_signin_oauth","Search__enable_suggestions_from_borg","Cloud__enable_cloud_shell","Cloud__enable_cloudx_experiment_ids","MiscFeatureFlags__emergency_css","Search__enable_devsite_serp","Significatio__enable_experiment_id_caching","Profiles__require_profile_eligibility_for_signin","BookNav__enable_collapsible_book_nav","Cloud__enable_cloud_dlp_service","Cloud__enable_cloud_facet_chat","Profiles__enable_public_developer_profiles","Profiles__enable_profile_collections","MiscFeatureFlags__enable_tls_version_for_gaia_calls","Profiles__enable_developer_profiles_dashboard_recommendations","Badges__enable_delete_badges"]]')
+  
+</script>
+    <devsite-a11y-announce aria-live="assertive" aria-atomic="true"></devsite-a11y-announce>
+  
+</body></html>

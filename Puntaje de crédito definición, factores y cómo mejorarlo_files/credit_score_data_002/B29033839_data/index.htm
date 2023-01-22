@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="UTF-8">
+    <title>300x250</title>
+    <!-- IMPORTANT: DETERMINES THE SIZE OF YOUR AD (See Readme)--> 
+    <meta name="ad.size" content="width=300,height=250">
+
+    <!-- GREENSOCK -->
+    <script async="" src="index_data/TweenMax.min.js" integrity="sha384-CEWGa7zvp+QFdz40Dx3eLdw4sdl86GAx3dzUkZIntyoF582Do6a2HR86K1OUVQmd" crossorigin="anonymous"></script>
+
+    <!--removeIf(dist)-->
+    <!-- IMPORTANT: GSAP Dev Tools -->
+    <!-- <script src="../../utils/GSDevTools.js"></script> -->
+    <!--endRemoveIf(dist)-->
+
+    <script>
+        var clickTag = "https://us.etrade.com/platforms/power-etrade#tab_4";
+    </script>
+
+    <!-- OUR SCRIPTS -->
+    <link rel="stylesheet" type="text/css" href="index_data/main.css">
+
+    <script src="index_data/createjs.min.js"></script>
+    <script src="300x250.js?1581611818741"></script>
+    <script>
+        var canvas, stage, exportRoot, anim_container, dom_overlay_container, fnStartAnimation;
+        function canvasMask() {
+            canvas = document.getElementById("canvas");
+            anim_container = document.getElementById("animation_container");
+            dom_overlay_container = document.getElementById("dom_overlay_container");
+            var comp=AdobeAn.getComposition("42D6E2F680C345868746A5F342F8840F");
+            var lib=comp.getLibrary();
+            var loader = new createjs.LoadQueue(false);
+            loader.addEventListener("fileload", function(evt){handleFileLoad(evt,comp)});
+            loader.addEventListener("complete", function(evt){handleComplete(evt,comp)});
+            var lib=comp.getLibrary();
+            loader.loadManifest(lib.properties.manifest);
+        }
+        function handleFileLoad(evt, comp) {
+            var images=comp.getImages();    
+            if (evt && (evt.item.type == "image")) { images[evt.item.id] = evt.result; }    
+        }
+        function handleComplete(evt,comp) {
+            //This function is always called, irrespective of the content. You can use the variable "stage" after it is created in token create_stage.
+            var lib=comp.getLibrary();
+            var ss=comp.getSpriteSheet();
+            var queue = evt.target;
+            var ssMetadata = lib.ssMetadata;
+            for(i=0; i<ssMetadata.length; i++) {
+                ss[ssMetadata[i].name] = new createjs.SpriteSheet( {"images": [queue.getResult(ssMetadata[i].name)], "frames": ssMetadata[i].frames} )
+            }
+            exportRoot = new lib._300x250();
+            stage = new lib.Stage(canvas);  
+            //Registers the "tick" event listener.
+            fnStartAnimation = function() {
+                stage.addChild(exportRoot);
+                createjs.Ticker.framerate = lib.properties.fps;
+                createjs.Ticker.addEventListener("tick", stage);
+            }       
+            //Code to support hidpi screens and responsive scaling.
+            AdobeAn.makeResponsive(false,'both',false,1,[canvas,anim_container,dom_overlay_container]); 
+            AdobeAn.compositionLoaded(lib.properties.id);
+            fnStartAnimation();
+        }
+</script>
+
+<script type="text/javascript">
+    
+  (function() {
+    var MAX_URL_PARAM_LENGTH = 34;
+    var CLICK_X_URL_KEY = 'nx';
+    var CLICK_Y_URL_KEY = 'ny';
+    var CREATIVE_DIMENSIONS_KEY = 'dim';
+    var AD_URL_PARAM = '&adurl=';
+
+    var relegateNavigation = '';
+    var urlParamMap = {};
+
+    urlParamMap[CLICK_X_URL_KEY] = null;
+    urlParamMap[CLICK_Y_URL_KEY] = null;
+    urlParamMap[CREATIVE_DIMENSIONS_KEY] = null;
+
+    var handleClickTagMessage = function(e) {
+      try {
+        var eventData = JSON.parse(e.data);
+      } catch (err) {
+        return;
+      }
+      if (eventData.isInitClickTag) {
+        if (eventData.clickTags) {
+          for (var i = 0; i < eventData.clickTags.length; i++) {
+            var clkTag = eventData.clickTags[i];
+            window[clkTag.name] = clkTag.url;
+          }
+        } else if (eventData.clickTag) {
+          window.clickTag = eventData.clickTag;
+        }
+        relegateNavigation = eventData.relegateNavigation;
+      }
+    };
+
+    var storeClickCoordinates = function(e) {
+      urlParamMap[CLICK_X_URL_KEY] = Math.round(e.clientX);
+      urlParamMap[CLICK_Y_URL_KEY] = Math.round(e.clientY);
+    };
+
+    var getCreativeDimensions = function() {
+      return window.innerWidth + 'x' + window.innerHeight;
+    }
+
+    var getExitClickParams = function(e) {
+      urlParamMap[CREATIVE_DIMENSIONS_KEY] = getCreativeDimensions();
+
+      var exitParams = '';
+      for (var key in urlParamMap) {
+        exitParams += '&' + key + '=';
+        if (urlParamMap[key] !== null) {
+          exitParams += urlParamMap[key];
+        }
+      }
+      return exitParams;
+    }
+
+    var appendExitClickParams = function(url) {
+      var adUrlIndex = url.toLowerCase().indexOf(AD_URL_PARAM);
+      var paramsToBeAdded = getExitClickParams();
+      if (adUrlIndex > -1 && paramsToBeAdded.length <= MAX_URL_PARAM_LENGTH) {
+        url = url.substr(0, adUrlIndex) + paramsToBeAdded +
+          url.substr(adUrlIndex);
+      };
+      return url;
+    };
+
+    if (open.call) {
+      window.open = function(open) {
+        return function(url, name, features) {
+          url = appendExitClickParams(url);
+          if (relegateNavigation === 'parent') {
+            var message = {'clickTag': url, 'isPostClickTag': true};
+            parent.postMessage(JSON.stringify(message), '*');
+          } else {
+            var args = [url, name];
+            if (features) {
+              args.push(features);
+            }
+            open.apply(window, args);
+          }
+        };
+      }(window.open);
+    }
+
+    if (window.addEventListener) {
+      window.addEventListener(
+          'message', handleClickTagMessage, false);
+      window.addEventListener('mousedown', storeClickCoordinates, true);
+    } else {
+      window.attachEvent('onmessage', handleClickTagMessage);
+    }
+  })();
+    
+  </script></head>
+
+<body>
+    <!--removeIf(dist)--><div class="centerXXXX">
+      <!-- START HTML to Canvas -->
+      <!-- Source = https://html2canvas.hertzen.com/ -->
+          
+          <!-- <script src="https://review.mullenloweus.agency/_shared_resources/preview_page/js/html2canvas.js"></script>
+          <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script> -->
+
+  <!--   NEW DOWNLOAD BUTTON SCRIPT  -- WORKS ON SPACE BAR PRESS-->
+          <!-- <script type="text/javascript">
+              document.body.onkeyup = function(e){
+                if(e.keyCode == 32)
+              {
+            masterTl.seek(15);
+            html2canvas($('#container')[0], {
+              width: dimensions.width,
+              height: dimensions.height
+            }).then(function(canvas) {
+              var a = document.createElement('a');
+              a.href = canvas.toDataURL("image/png");
+              a.download = dimensions.width+'x'+dimensions.height+'.png';
+              a.click();
+            });
+          }};
+          </script>     --> 
+
+      <!-- END HTML to Canvas -->
+    <!--endRemoveIf(dist)-->
+    <div id="container">
+        <a href="javascript:void(window.open(window.clickTag))">
+            <!-- Banner contents will be auto-generated by the gulp process below **AUTO DIV START** 
+                Do not change or alter the AUTO DIV START comment, process is dependent upon it! -->
+            <!-- **AUTO DIV START** -->
+			
+            <!-- <div id="bg" class="sprite"></div> -->
+
+            <div id="animation_container" class="ef sprite" style="width:300px;height:250px;top:0;left:0;position: absolute;overflow:hidden;display: block;">
+                <canvas id="canvas" class="ef sprite" style="width:300px;height:250px;top:0;left:0;position: absolute;overflow:hidden;display: block;"></canvas>
+                <div id="dom_overlay_container" class="ef sprite" style="pointer-events:none; width:300px;height:250px;top:0;left:0;position: absolute;overflow:hidden;display: block;"></div>
+            </div>
+
+            <div class="sprite retina_container">
+                <div id="ef_copy1c" class="ef_copy1b sprite"></div>
+                <div id="ef_copy1b" class="ef_copy1b sprite"></div>
+                <div id="ef_copy1a" class="sprite"></div>
+            </div>
+
+            <div id="logo_box" class="sprite"></div>
+                        
+            <div class="sprite retina_container">
+                <div id="legal" class="sprite"></div>
+            </div>
+
+            <div class="sprite retina_container">
+                <div id="logo" class="sprite"></div>
+            </div>
+
+            <div id="cta_container" class="sprite">
+                <div id="cta" class="sprite" style="background-image:none;"></div>
+                <div id="cta_over" class="sprite"></div>
+                <div id="ctaCopy_container" class="sprite retina_container">
+                    <div id="cta_copy_Open" class="sprite"></div>
+                    <!-- <div id="cta_copy_Learn" class="sprite"></div> -->
+                    <!-- <div id="cta_copy_GetStarted" class="sprite"></div> -->
+                </div>
+            </div>
+
+            <div id="curtain" class="sprite"></div>
+            <div id="border_top" class="sprite"></div> 
+            <div id="border_right" class="sprite"></div>
+            <div id="border_left" class="sprite"></div>
+            <div id="border_bottom" class="sprite"></div>
+        </a>
+    </div>
+    <!--removeIf(dist)--></div><!--endRemoveIf(dist)-->
+
+
+<script type="text/javascript" src="com/main.js"></script>
+
+<script type="text/javascript">
+    window.onload = function(){
+        window.setTimeout(function() { init(); }, 1000);
+    }
+
+</script>
+
+
+</body></html>

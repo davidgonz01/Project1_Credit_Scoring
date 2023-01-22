@@ -1,0 +1,163 @@
+body { margin:0px 0px; padding:0px; }
+
+* { box-sizing: Border-box }
+
+#container {
+	background-color:#241056;
+	position:absolute;
+	overflow:hidden;
+	cursor: pointer;
+}
+
+.sprite {
+	position:absolute;
+	background-repeat:no-repeat;
+}
+
+.center {
+	width:95vw;
+    height:95vh;
+    padding: 0;
+    margin: 0;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /*box-sizing: Border-box*/
+}
+
+.half {
+	background-size: contain;
+}
+
+.retina_container {
+	left:0px;
+	top:0px;
+	width:200%;
+	height:200%;
+    transform-style: preserve-3d;
+    transform: matrix3d(0.5, 8.72665e-05, 0, 0, -8.72665e-05, 0.5, 0, 0, 0, 0, 1, 0, 0, 0, 0.1, 0.9999);
+    transform-origin: left top 0px;
+}
+
+#curtain {
+	left:0px;
+	top:0px;
+	width:100%;
+	height:100%;
+	background-color: white;
+	z-index:100;
+}
+
+[id^="border"] {
+	z-index:99;
+	background-color:#999999;
+	height:100%;
+	width:100%;
+}
+
+#border_top {
+	top:0;
+	left:0;
+	height:1px;
+}
+
+#border_right {
+	top:0;
+	right:0;
+	width:1px;
+}
+
+#border_bottom {
+	bottom:0;
+	left:0;
+	height:1px;
+}
+
+#border_left {
+	top:0;
+	left:0;
+	width:1px;
+}
+
+#logo_box {
+	right:0;
+	bottom:0;
+	width:100%;
+	height:100%;
+	background-color: white;
+}
+
+#cta_container {
+	left:0;
+	top:0;
+	width:100%;
+	height:100%;
+}
+
+#cta, #cta_over {
+	border-radius: 2px;
+	left: 160px;
+	top: 209px;
+	width: 122px;
+	height: 27px;
+}
+
+#cta_copy_Open {
+	left:352px;
+	top:436px;
+	width:184px;
+	height:21px;
+	background-image:url(../img/cta_copy_Open.png);
+}
+
+#legal {
+	left:466px;
+	top:486px;
+	width:132px;
+	height:11px;
+	background-image:url(../img/legal.png);
+}
+
+#logo {
+	left:35px;
+	top:406px;
+	width:248px;
+	height:64px;
+	background-image:url(../img/logo.png);
+}
+
+#ef_copy1a {
+	left:37px;
+	top:73px;
+	width:450px;
+	height:104px;
+	background-image:url(../img/ef_copy1a.png);
+}
+
+#ef_copy1b {
+	left:37px;
+	top:198px;
+	width:448px;
+	height:49px;
+	background-image:url(../img/ef_copy1b.png);
+}
+
+#ef_copy1c {
+	left:38px;
+	top:258px;
+	width:451px;
+	height:50px;
+	background-image:url(../img/ef_copy1c.png);
+}
+
+#cta_copy_Open {
+	left:352px;
+	top:437px;
+	width:184px;
+	height:21px;
+	background-image:url(../img/cta_copy_Open.png);
+}
